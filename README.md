@@ -1,33 +1,33 @@
-# Tu codigo puede ser mas simple y puedo demostrarlo matematicamente
+# Tu código puede ser más simple y puedo demostrarlo matemáticamente
 
-Charla para Meetup.js Argentina sobre Programacion Funcional
+Charla para Meetup.js Argentina sobre Programación Funcional
 
-## Descripcion
-Programacion funcional. El ultimo grito de la moda, pero solo para aquellos dispuestos a sumergirse en la terminologia. No mas. Sin matematica ni formulas, la programacion funcional ya esta entre nosotros, y ha llegado para quedarse. Con esta charla espero sacar a la luz distintos conceptos que ya manejamos en nuestro dia a dia, y demostrar que detras de las palabras raras y los diagramas se esconde una herramienta mas para hacer nuestro codigo mas simple.
+## Descripción
+Programación funcional. El último grito de la moda, pero solo para aquellos dispuestos a sumergirse en la terminología. No más. Sin matemática ni formulas, la programación funcional ya esta entre nosotros, y ha llegado para quedarse. Con esta charla espero sacar a la luz distintos conceptos que ya manejamos en nuestro día a día, y demostrar que detrás de las palabras raras y los diagramas se esconde una herramienta más para hacer nuestro código más simple.
 
 
-Por ultimo, tambien espero hacerle el camino un poco mas facil a quien quiera profundizar en los fundamentos teoricos de la teoria de categorias.
+Por último, también espero hacerle el camino un poco más fácil a quien quiera profundizar en los fundamentos de la teoría de categorías.
 
 ## TODO
-* Preparar ejemplos (codigo)
+* Preparar ejemplos (código)
 * Preparar slides
 * Timear y ajustar temario
 
 ## Indice
-##### Introduccion
-* Programacion funcional ➞ Conceptos matematicos ➞ Wikipedia ➞ Fracaso
-* Comparacion jquery/arrays/promises
+##### Introducción
+* Programación funcional ➞ Conceptos matemáticos ➞ Wikipedia ➞ Fracaso
+* Comparación jquery/arrays/promises
 
 ##### Generalidades
 * Tipos. Tipos primitivos.
 * Funciones. Type signature.
-* Composicion de funciones
+* Composición de funciones
 
 ##### Cajas/Contenedores/Contextos
 * Conceptualmente, contienen tipos, no valores
 * Ejemplo: Array
 * ⟹ Son tipos ellos mismos
-* Polimoricos/monomorficos
+* Polimórficos/monomórficos
 
 ##### Problema 1
 * Usar funciones de elementos sobre las cajas
@@ -41,17 +41,17 @@ Por ultimo, tambien espero hacerle el camino un poco mas facil a quien quiera pr
 * Usar ```f: x ➞ [ x ]``` sobre listas
 * Flat/join
 
-##### Parentesis
+##### Paréntesis
 * Listar operaciones. bind. ```[ x ] ➞ (x ➞ [ x ]) ➞ [ x ]```
 * ```bind f = join (fmap f)``` [=flatmap]
-* De que nos sirvio todo esto?
+* De que nos sirvió todo esto?
 
 ##### Promises
 * Que representan
 * Que queremos hacer sobre ellas
-* then. Expresar como funcion estatica. curry. fmap?
+* then. Expresar como función estática. curry. fmap?
 * "Extras" de Promise (lift return values)
-* Control de flujo Reject/Resolve. Manejo de errores. Comparacion con callbacks.
+* Control de flujo Reject/Resolve. Manejo de errores. Comparación con callbacks.
 * Promesas de Promesas? No existencia de join? then = bind!
 * ```then(...).then(...).then(...)``` [bind=chain]
 
@@ -61,16 +61,16 @@ Por ultimo, tambien espero hacerle el camino un poco mas facil a quien quiera pr
 * run
 * join
 
-##### Control de flujo sincronico
+##### Control de flujo sincrónico
 * Either/Maybe
 * fmap
 * join
 
-##### Teoria de Categorias
-* Categoria, definicion.
-* Categoria de tipos y funciones tipadas en JS
-* Categoria de tipos array y funciones sobre tipos array en JS
-* Subcategoria
+##### Teoría de Categorías
+* Categoría, definición.
+* Categoría de tipos y funciones tipadas en JS
+* Categoría de tipos array y funciones sobre tipos array en JS
+* Subcategoría
 * Functor
 * (Pointed Functor)
 * Monad
