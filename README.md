@@ -2,12 +2,18 @@
 
 Charla para Meetup.js Argentina sobre Programacion Funcional
 
-# TODO
+## Descripcion
+Programacion funcional. El ultimo grito de la moda, pero solo para aquellos dispuestos a sumergirse en la terminologia. No mas. Sin matematica ni formulas, la programacion funcional ya esta entre nosotros, y ha llegado para quedarse. Con esta charla espero sacar a la luz distintos conceptos que ya manejamos en nuestro dia a dia, y demostrar que detras de las palabras raras y los diagramas se esconde una herramienta mas para hacer nuestro codigo mas simple.
+
+
+Por ultimo, tambien espero hacerle el camino un poco mas facil a quien quiera profundizar en los fundamentos teoricos de la teoria de categorias.
+
+## TODO
 * Preparar ejemplos (codigo)
 * Preparar slides
 * Timear y ajustar temario
 
-# Indice
+## Indice
 ##### Introduccion
 * Programacion funcional ➞ Conceptos matematicos ➞ Wikipedia ➞ Fracaso
 * Comparacion jquery/arrays/promises
@@ -71,7 +77,7 @@ Charla para Meetup.js Argentina sobre Programacion Funcional
 * Axiomas/Leyes
 * Simplificar map/compose
 
-##### Referencias
+## Referencias
 * [Professor Frisby's Mostly Adequate Guide to Functional Programming](https://drboolean.gitbooks.io/mostly-adequate-guide/content/) by Brian Lonsdorf
 * [Haskell/Category theory (Wikibooks)](https://en.wikibooks.org/wiki/Haskell/Category_theory)
 * [You Could Have Invented Monads! (And Maybe You Already Have.)](http://blog.sigfpe.com/2006/08/you-could-have-invented-monads-and.html) by Dan Piponi
