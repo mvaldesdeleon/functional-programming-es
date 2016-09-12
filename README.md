@@ -78,13 +78,13 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 * Simplificar map/compose
 
 ## Referencias
-* [Professor Frisby's Mostly Adequate Guide to Functional Programming](https://drboolean.gitbooks.io/mostly-adequate-guide/content/) by Brian Lonsdorf
-* [Haskell/Category theory (Wikibooks)](https://en.wikibooks.org/wiki/Haskell/Category_theory)
-* [You Could Have Invented Monads! (And Maybe You Already Have.)](http://blog.sigfpe.com/2006/08/you-could-have-invented-monads-and.html) by Dan Piponi
-* [Translation from Haskell to JavaScript of selected portions of the best introduction to monads I’ve ever read](https://blog.jcoglan.com/2011/03/05/translation-from-haskell-to-javascript-of-selected-portions-of-the-best-introduction-to-monads-ive-ever-read/) by James Coglan
-* [Faster JavaScript Through Category Theory](http://johnbender.us/2012/02/29/faster-javascript-through-category-theory/) by John Bender
-* [Category theory for JavaScript programmers](https://www.youtube.com/playlist?list=PLwuUlC2HlHGe7vmItFmrdBLn6p0AS8ALX) by Mike Stay
+* **JS** [Professor Frisby's Mostly Adequate Guide to Functional Programming](https://drboolean.gitbooks.io/mostly-adequate-guide/content/) by Brian Lonsdorf
+* **HS** [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html) by Aditya Bhargava
+* **HS** [Haskell/Category theory (Wikibooks)](https://en.wikibooks.org/wiki/Haskell/Category_theory)
+* **JS** [Translation from Haskell to JavaScript of selected portions of the best introduction to monads I’ve ever read](https://blog.jcoglan.com/2011/03/05/translation-from-haskell-to-javascript-of-selected-portions-of-the-best-introduction-to-monads-ive-ever-read/) by James Coglan
+* **HS** [You Could Have Invented Monads! (And Maybe You Already Have.)](http://blog.sigfpe.com/2006/08/you-could-have-invented-monads-and.html) by Dan Piponi
+* **HS** [Functors are Containers](https://bartoszmilewski.com/2014/01/14/functors-are-containers/) by Bartosz Milewsk
+* **JS** [Faster JavaScript Through Category Theory](http://johnbender.us/2012/02/29/faster-javascript-through-category-theory/) by John Bender
+* **JS** [Category theory for JavaScript programmers](https://www.youtube.com/playlist?list=PLwuUlC2HlHGe7vmItFmrdBLn6p0AS8ALX) by Mike Stay
 * [Category theory (Wikipedia)](https://en.wikipedia.org/wiki/Category_theory)
 * [Monad (Wikipedia)](https://en.wikipedia.org/wiki/Monad_(functional_programming))
-* [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html) by Aditya Bhargava
-* [Functors are Containers](https://bartoszmilewski.com/2014/01/14/functors-are-containers/) by Bartosz Milewsk
