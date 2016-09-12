@@ -87,3 +87,4 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 * [Category theory (Wikipedia)](https://en.wikipedia.org/wiki/Category_theory)
 * [Monad (Wikipedia)](https://en.wikipedia.org/wiki/Monad_(functional_programming))
 * [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html) by Aditya Bhargava
+* [Functors are Containers](https://bartoszmilewski.com/2014/01/14/functors-are-containers/) by Bartosz Milewsk
