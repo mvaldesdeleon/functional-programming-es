@@ -51,3 +51,13 @@ var doALotOfThingsMoreᐟ = compose(doALotOfThingsᐟ, sumArrayᐟ);
 
 doALotOfThingsMoreᐟ(Ⅰ_Ⅹ);
 // [1505]
+
+// lift :: ([Number] -> Number) -> ([Number] -> [Number])
+var lift = fn => compose(unit, fn);
+var sumArrayᐟᐟ = lift(sumArray);
+
+// doALotOfThingsMoreᐟᐟ :: [Number] -> [Number]
+var doALotOfThingsMoreᐟᐟ = compose(doALotOfThingsᐟ, sumArrayᐟᐟ);
+
+doALotOfThingsMoreᐟᐟ(Ⅰ_Ⅹ);
+// [1505]
