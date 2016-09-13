@@ -22,12 +22,12 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 * Tipos. Tipos primitivos.
 * Funciones. Type signature.
 * Composición de funciones
+* Currying
 
 ##### Cajas/Contenedores/Contextos
-* Conceptualmente, contienen tipos, no valores
 * Ejemplo: Array
 * ⟹ Son tipos ellos mismos
-* Polimórficos/monomórficos
+* Tipos derivados. Polimórficos/monomórficos
 
 ##### Problema 1
 * Usar funciones de elementos sobre las cajas
@@ -56,15 +56,17 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 * ```then(...).then(...).then(...)``` [bind=chain]
 
 ##### Lazy Promises
-* Thunk
+* Delegación de ejecución/funciones/thunks. Lazy.
 * fmap
-* run
 * join
+* do/fork
 
 ##### Control de flujo sincrónico
-* Either/Maybe
+* Either
 * fmap
 * join
+* chain
+* do/either
 
 ##### Teoría de Categorías
 * Categoría, definición.
