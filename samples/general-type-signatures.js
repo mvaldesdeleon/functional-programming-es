@@ -85,8 +85,11 @@ filterMultiplesOfSix(Ⅰ_Ⅹ);
 // reduce :: (b -> a -> b) -> b -> [a] -> b
 var reduce = fn => acc => xs => xs.reduce(fn, acc);
 
-// sumArray :: [a] -> b
+// sumArray :: [Number] -> Number
 var sumArray = reduce((acc, x) => acc + x)(0);
+//                             /            \
+//        Number -> Number -> Number       Number
+//        (Number, Number) -> Number
 
 sumArray([1, 2, 3, 4, 5]);
 // 15
@@ -101,7 +104,7 @@ var b = toString(a);       // Number -> String
 var c = addTwo(b);         // Number -> Number
 // "12.342"
 
-// compose :: {(y -> z), ... ,(b -> c), (a -> b)} -> (a -> z)
+// compose :: [(y -> z), ... ,(b -> c), (a -> b)] -> (a -> z)
 var compose = (...fns) => fns.reduce((cfn, fn) => x => cfn(fn(x)), x => x);
 
 // 𝐘 :: String -> String

@@ -24,7 +24,7 @@ addTwoᐟ(Ⅰ_Ⅹ);
 // fmap :: (Number -> Number) -> ([Number] -> [Number])
 var fmap = ಠ_ಠ;
 
-// compose :: {(y -> z), ... ,(b -> c), (a -> b)} -> (a -> z)
+// compose :: [(y -> z), ... ,(b -> c), (a -> b)] -> (a -> z)
 var compose = (...fns) => fns.reduce((cfn, fn) => x => cfn(fn(x)), x => x);
 
 // timesThree :: Number -> Number
