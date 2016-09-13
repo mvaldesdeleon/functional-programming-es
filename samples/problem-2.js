@@ -38,7 +38,7 @@ doALotOfThingsᐟ(ಠ_ಠ(two));
 
 // unit :: Number -> [Number]
 var unit = ಠ_ಠ;
-// return :: Number -> [Number]
+// ʀeturn :: Number -> [Number]
 var ʀeturn = ಠ_ಠ;
 
 var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
