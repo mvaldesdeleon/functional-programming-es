@@ -17,7 +17,7 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
     * ~~**Problema 1**~~
     * ~~**Problema 2**~~
     * ~~**Problema 3**~~
-    * **Paréntesis** bind para arrays
+    * ~~**Paréntesis** bind para arrays~~
     * **Promises** De then a fmap
     * **Promises** Extras
     * **Promises** Control de flujo
