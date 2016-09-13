@@ -16,7 +16,7 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
     * ~~**Generalidades** Composición de funciones~~
     * ~~**Problema 1**~~
     * ~~**Problema 2**~~
-    * **Problema 3**
+    * ~~**Problema 3**~~
     * **Paréntesis** bind para arrays
     * **Promises** De then a fmap
     * **Promises** Extras
