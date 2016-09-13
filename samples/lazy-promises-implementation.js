@@ -1,15 +1,15 @@
 function Lazy(x) { this.__value = x; };
 
-// unit :: (a -> Promise[b,x]) -> Lazy[a -> Promise[b,x]]
+// unit :: (a -> Promise[b, x]) -> Lazy[a -> Promise[b, x]]
 Lazy.of = x => new Lazy(x);
 
-// map :: Lazy[a -> Promise[b,x]] -> (b -> c) -> Lazy[a -> Promise[c,x]]
-// map :: Lazy[a -> Promise[b,x]] -> (b -> Promise[c,y]) -> Lazy[a -> Promise[c,y]]
+// map :: Lazy[a -> Promise[b, x]] -> (b -> c) -> Lazy[a -> Promise[c, x]]
+// map :: Lazy[a -> Promise[b, x]] -> (b -> Promise[c, y]) -> Lazy[a -> Promise[c, y]]
 Lazy.prototype.map = function(fn) {
     return Lazy.of((x) => this.__value(x).then(fn));
 };
 
-// do :: Lazy[a -> Promise[b,z]] -> a -> Promise[b,z]
+// do :: Lazy[a -> Promise[b, z]] -> a -> Promise[b, z]
 Lazy.prototype.do = function(x) {
     return this.__value(x);
 };

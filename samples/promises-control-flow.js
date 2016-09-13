@@ -3,9 +3,9 @@ var compose = (...fns) => fns.reduce((cfn, fn) => x => cfn(fn(x)), x => x);
 
 // Promise[a, b] = Resolved[a] ㅣ Rejected[b]
 
-// unit :: x -> Resolved[x]
+// unit :: a -> Resolved[a]
 var unit = x => Promise.resolve(x);
-// ʀeject :: x -> Rejected[x]
+// ʀeject :: b -> Rejected[b]
 var ʀeject = x => Promise.reject(x);
 
 // Promise[Number, a]
