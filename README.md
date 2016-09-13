@@ -14,7 +14,7 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
     * ~~**Generalidades** Type signatures~~
     * ~~**Generalidades** Composición de funciones~~
     * ~~**Generalidades** Currying~~
-    * **Problema 1**
+    * ~~**Problema 1**~~
     * **Problema 2**
     * **Problema 3**
     * **Paréntesis** bind para arrays
