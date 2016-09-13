@@ -22,7 +22,7 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
     * **Promises** Extras
     * **Promises** Control de flujo
     * **Promises** Promesas de promesas, bind/chain
-    * **Lazy promises** Funciones/thunks
+    * ~~**Lazy promises** Funciones/thunks~~
     * ~~**Lazy promises** Implementación~~
     * ~~**Control de flujo** Implementación~~
     * **Teoría de categorías** Simplificar map/compose
