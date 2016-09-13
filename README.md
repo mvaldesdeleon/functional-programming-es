@@ -10,6 +10,22 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 
 ## TODO
 * Preparar ejemplos (código)
+    * **Introducción** Comparación jquery/arrays/promises
+    * **Generalidades** Type signatures
+    * **Generalidades** Composición de funciones
+    * **Generalidades** Currying
+    * **Problema 1**
+    * **Problema 2**
+    * **Problema 3**
+    * **Paréntesis** bind para arrays
+    * **Promises** De then a fmap
+    * **Promises** Extras
+    * **Promises** Control de flujo
+    * **Promises** Promesas de promesas, bind/chain
+    * **Lazy promises** Funciones/thunks
+    * ~~**Lazy promises** Implementación~~
+    * ~~**Control de flujo** Implementación~~
+    * **Teoría de categorías** Simplificar map/compose
 * Preparar slides
 * Timear y ajustar temario
 
