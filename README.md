@@ -11,9 +11,9 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 ## TODO
 * Preparar ejemplos (código)
     * **Introducción** Comparación jquery/arrays/promises
+    * ~~**Generalidades** Currying~~
     * ~~**Generalidades** Type signatures~~
     * ~~**Generalidades** Composición de funciones~~
-    * ~~**Generalidades** Currying~~
     * ~~**Problema 1**~~
     * **Problema 2**
     * **Problema 3**
@@ -35,10 +35,10 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 * Comparación jquery/arrays/promises
 
 ##### Generalidades
+* Funciones. Currying.
 * Tipos. Tipos primitivos.
-* Funciones. Type signature.
+* Type signature.
 * Composición de funciones
-* Currying
 
 ##### Cajas/Contenedores/Contextos
 * Ejemplo: Array
