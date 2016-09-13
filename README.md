@@ -36,9 +36,9 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 
 ##### Generalidades
 * Funciones. Currying.
+* Composición de funciones
 * Tipos. Tipos primitivos.
 * Type signature.
-* Composición de funciones
 
 ##### Cajas/Contenedores/Contextos
 * Ejemplo: Array
