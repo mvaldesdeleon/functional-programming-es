@@ -36,6 +36,7 @@ var ಠ_ಠ = xss => xss.reduce((acc, xs) => acc.concat(xs), []);
 
 // join :: [[Number]] -> [Number]
 var join = ಠ_ಠ;
+// flatten :: [[Number]] -> [Number]
 var flatten = ಠ_ಠ;
 
 // firstFiveMultiples :: Number -> [Number]
