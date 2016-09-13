@@ -11,7 +11,7 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 ## TODO
 * Preparar ejemplos (código)
     * **Introducción** Comparación jquery/arrays/promises
-    * **Generalidades** Type signatures
+    * ~~**Generalidades** Type signatures~~
     * ~~**Generalidades** Composición de funciones~~
     * ~~**Generalidades** Currying~~
     * **Problema 1**
