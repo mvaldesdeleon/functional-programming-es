@@ -100,3 +100,18 @@ var a = parseNum('12.34'); // String -> Number
 var b = toString(a);       // Number -> String
 var c = addTwo(b);         // Number -> Number
 // "12.342"
+
+// compose :: {(y -> z), ... ,(b -> c), (a -> b)} -> (a -> z)
+var compose = (...fns) => fns.reduce((cfn, fn) => x => cfn(fn(x)), x => x);
+
+// 𝐘 :: String -> String
+var 𝐘 = compose(toString, addTwo, parseNum);
+
+// 𝐍 :: String -> Number ?
+var 𝐍 = compose(addTwo, toString, parseNum);
+
+𝐘('12.34');
+// "14.34"
+
+𝐍('12.34');
+// "12.342"
