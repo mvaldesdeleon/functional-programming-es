@@ -18,10 +18,9 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
     * ~~**Problema 2**~~
     * ~~**Problema 3**~~
     * ~~**Paréntesis** bind para arrays~~
-    * **Promises** De then a fmap
-    * **Promises** Extras
-    * **Promises** Control de flujo
-    * **Promises** Promesas de promesas, bind/chain
+    * ~~**Promises** De then a fmap~~
+    * ~~**Promises** Extras~~
+    * ~~**Promises** Control de flujo~~
     * ~~**Lazy promises** Funciones/thunks~~
     * ~~**Lazy promises** Implementación~~
     * ~~**Control de flujo** Implementación~~
@@ -65,11 +64,10 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 ##### Promises
 * Que representan
 * Que queremos hacer sobre ellas
-* then. Expresar como función estática. curry. fmap?
+* then. Expresar como función estática. curry. fmap o chain?
 * "Extras" de Promise (lift return values)
+* Promesas de Promesas? No existencia de join? then = chain!
 * Control de flujo Reject/Resolve. Manejo de errores. Comparación con callbacks.
-* Promesas de Promesas? No existencia de join? then = bind!
-* ```then(...).then(...).then(...)``` [bind=chain]
 
 ##### Lazy Promises
 * Delegación de ejecución/funciones/thunks. Lazy.
