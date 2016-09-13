@@ -45,36 +45,42 @@ addᐟ(2);
 addᐟ(2)(3);
 // 5
 
-// map :: Array -> Function -> Array
-// mapᐟ :: [a] -> (a -> a) -> [a]
-// mapᐟᐟ :: [a] -> (a -> b) -> [b]
-var mapᐟᐟ = xs => fn => xs.map(fn);
+var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-mapᐟᐟ([1, 2, 3, 4, 5])(addTwo);
-// [3, 4, 5, 6, 7]
+// filter :: Array -> Function -> Array
+// filterᐟ :: [a] -> (a -> Boolean) -> [a]
+var filterᐟ = xs => pr => xs.filter(pr);
 
-// mapOnMyList :: (a -> b) -> [b]
-var mapOnMyList = mapᐟᐟ([1, 2, 3, 4, 5]);
+filterᐟ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])(x => x % 2);
+// [1, 3, 5, 7, 9]
 
-mapOnMyList(addTwo);
-// [3, 4, 5, 6, 7]
-mapOnMyList(addᐟ(-1));
-// [0, 1, 2, 3, 4]
+// filterMyList :: (a -> Boolean) -> [a]
+var filterMyList = filterᐟ(Ⅰ_Ⅹ);
 
-// mapᐟᐟᐟ :: (a -> b) -> [a] -> [b]
-var mapᐟᐟᐟ = fn => xs => xs.map(fn);
+filterMyList(x => x % 2);
+// [1, 3, 5, 7, 9]
+filterMyList(x => x % 3);
+// [1, 2, 4, 5, 7, 8, 10]
 
-// addTwoᐟ :: [a] -> [b]
-var addTwoᐟ = mapᐟᐟᐟ(addTwo);
+// filterᐟᐟ :: (a -> Boolean) -> [a] -> [a]
+var filterᐟᐟ = pr => xs => xs.filter(pr);
 
-addTwoᐟ([1, 2, 3, 4, 5]);
-// [3, 4, 5, 6, 7]
+// filterMultiplesOfTwo :: [a] -> [a]
+var filterMultiplesOfTwo = filterᐟᐟ(x => x % 2);
 
-// addFourᐟ :: [a] -> [b]
-var addFourᐟ = x => addTwoᐟ(addTwoᐟ(x));
+filterMultiplesOfTwo(Ⅰ_Ⅹ);
+// [1, 3, 5, 7, 9]
 
-addFourᐟ([1, 2, 3, 4, 5]);
-// [5, 6, 7, 8, 9]
+// filterMultiplesOfThree :: [a] -> [a]
+var filterMultiplesOfThree = filterᐟᐟ(x => x % 3);
+filterMultiplesOfThree(Ⅰ_Ⅹ);
+// [1, 2, 4, 5, 7, 8, 10]
+
+// filterMultiplesOfSix :: [a] -> [a]
+var filterMultiplesOfSix = x => filterMultiplesOfThree(filterMultiplesOfTwo(x));
+
+filterMultiplesOfSix(Ⅰ_Ⅹ);
+// [1, 5, 7]
 
 // reduce :: (b -> a -> b) -> b -> [a] -> b
 var reduce = fn => acc => xs => xs.reduce(fn, acc);
