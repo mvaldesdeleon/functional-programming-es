@@ -30,8 +30,8 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 
 ## Indice
 ##### Introducción
+* Comparación visual. jQuery/Arrays/Promises.
 * Programación funcional ➞ Conceptos matemáticos ➞ Wikipedia ➞ Fracaso
-* Comparación jquery/arrays/promises
 
 ##### Generalidades
 * Funciones. Currying.
@@ -42,7 +42,7 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 ##### Cajas/Contenedores/Contextos
 * Ejemplo: Array
 * ⟹ Son tipos ellos mismos
-* Tipos derivados. Polimórficos/monomórficos
+* Tipos derivados. Polimórficos/monomórficos.
 
 ##### Problema 1
 * Usar funciones de elementos sobre las cajas
@@ -54,7 +54,7 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 
 ##### Problema 3
 * Usar ```f: x ➞ [ x ]``` sobre listas
-* Flat/join
+* Flatten/join
 
 ##### Paréntesis
 * Listar operaciones. bind. ```[ x ] ➞ (x ➞ [ x ]) ➞ [ x ]```
