@@ -9,8 +9,8 @@ Programación funcional. El último grito de la moda, pero solo para aquellos di
 Por último, también espero hacerle el camino un poco más fácil a quien quiera profundizar en los fundamentos de la teoría de categorías.
 
 ## TODO
-* Preparar ejemplos (código)
-    * **Introducción** Comparación jquery/arrays/promises
+* ~~Preparar ejemplos (código)~~
+    * ~~**Introducción** Comparación jquery/arrays/promises~~
     * ~~**Generalidades** Currying~~
     * ~~**Generalidades** Type signatures~~
     * ~~**Generalidades** Composición de funciones~~
