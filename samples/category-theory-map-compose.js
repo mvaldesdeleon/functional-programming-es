@@ -34,8 +34,8 @@ console.log('compose(fmap(g), fmap(f))', t1 - t0, 'ms');
 // "compose(fmap(g), fmap(f))" 225.44499999999994 "ms"
 
 var t2 = performance.now();
-fmap(compose(addTwo,timesThree))(Ⅰ_ⅯⅯ);
+fmap(compose(addTwo, timesThree))(Ⅰ_ⅯⅯ);
 var t3 = performance.now();
 
-console.log('fmap(compose(g,f))', t3 - t2, 'ms');
+console.log('fmap(compose(g, f))', t3 - t2, 'ms');
 // "fmap(compose(g,f))" 134.97500000000002 "ms"
