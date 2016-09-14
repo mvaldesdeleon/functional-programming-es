@@ -27,6 +27,9 @@ var flip = fn => x => y => fn(y)(x);
 // bindᐟᐟ :: [a] -> (a -> [a]) -> [a]
 var bindᐟᐟ = flip(bindᐟ);
 
+// flatmap :: [a] -> (a -> [a]) -> [a]
+var flatmap = bind;
+
 var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 // firstNthMultiples :: Number -> Number -> [Number]
