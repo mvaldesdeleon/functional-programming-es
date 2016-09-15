@@ -11,12 +11,12 @@ addTwo(timesThree(2));
 timesThree(addTwo(2));
 // 12
 
-var addTwoㅣtimesThree = x => addTwo(timesThree(x));
-var timesThreeㅣaddTwo = x => timesThree(addTwo(x));
+var addTwo_timesThree = x => addTwo(timesThree(x));
+var timesThree_addTwo = x => timesThree(addTwo(x));
 
-addTwoㅣtimesThree(2);
+addTwo_timesThree(2);
 // 8
-timesThreeㅣaddTwo(2);
+timesThree_addTwo(2);
 // 12
 
 //  lista de funciones    (acumulador, función)     genera una nueva función...
