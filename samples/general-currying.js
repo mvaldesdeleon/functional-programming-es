@@ -16,7 +16,7 @@ function addFourNumbersOneByOne(a) {
             }
         }
     }
-};
+}
 
 addFourNumbersOneByOne(1);
 // function (b) {...}
