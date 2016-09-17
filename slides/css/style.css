@@ -1,0 +1,79 @@
+@font-face {
+  font-family: 'halflife';
+  src: url("../assets/fonts/halflife-webfont.woff2") format("woff2"), url("../assets/fonts/halflife-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+.slides .lambda {
+  font-family: 'halflife';
+  text-transform: none; }
+
+.slides .js-yellow {
+  color: #f7df1e; }
+
+.slides .glitch {
+  position: relative; }
+  .slides .glitch::before, .slides .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #222; }
+  .slides .glitch::before {
+    left: 2px;
+    text-shadow: 2px 0 red;
+    animation: glitch-anim-1 2s infinite linear alternate-reverse; }
+  .slides .glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 blue;
+    animation: glitch-anim-2 2s infinite linear alternate-reverse; }
+
+@keyframes glitch-anim-1 {
+  0% {
+    clip: rect(16px, 960px, 87px, 0); }
+  10% {
+    clip: rect(31px, 960px, 67px, 0); }
+  20% {
+    clip: rect(40px, 960px, 3px, 0); }
+  30% {
+    clip: rect(73px, 960px, 18px, 0); }
+  40% {
+    clip: rect(114px, 960px, 21px, 0); }
+  50% {
+    clip: rect(42px, 960px, 102px, 0); }
+  60% {
+    clip: rect(42px, 960px, 33px, 0); }
+  70% {
+    clip: rect(19px, 960px, 15px, 0); }
+  80% {
+    clip: rect(2px, 960px, 43px, 0); }
+  90% {
+    clip: rect(66px, 960px, 62px, 0); }
+  100% {
+    clip: rect(99px, 960px, 98px, 0); } }
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip: rect(99px, 960px, 85px, 0); }
+  10% {
+    clip: rect(83px, 960px, 82px, 0); }
+  20% {
+    clip: rect(70px, 960px, 20px, 0); }
+  30% {
+    clip: rect(78px, 960px, 24px, 0); }
+  40% {
+    clip: rect(90px, 960px, 81px, 0); }
+  50% {
+    clip: rect(108px, 960px, 75px, 0); }
+  60% {
+    clip: rect(100px, 960px, 81px, 0); }
+  70% {
+    clip: rect(47px, 960px, 20px, 0); }
+  80% {
+    clip: rect(61px, 960px, 63px, 0); }
+  90% {
+    clip: rect(105px, 960px, 16px, 0); }
+  100% {
+    clip: rect(34px, 960px, 88px, 0); } }
