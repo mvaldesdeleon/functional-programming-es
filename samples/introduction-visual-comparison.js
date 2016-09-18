@@ -103,7 +103,7 @@ var path = require('path');
 var fs = require('fs');
 var request = require('request');
 var fsp = require('fs.promised');
-var rp = require('request-promise');
+var requestp = require('request-promise');
 
 // Imperativo
 
@@ -136,6 +136,6 @@ fs.readFile(path.resolve(__dirname, 'config.json'), function(err, data) {
 
 fsp.readFile(path.resolve(__dirname, 'config.json'))
     .then(x => JSON.parse(x))
-    .then(x => rp(x.targetUrl))
+    .then(x => requestp(x.targetUrl))
     .then(x => fsp.writeFile(path.resolve(__dirname, 'target.txt')))
     .then(() => console.log.bind(console, 'Success'), (err) => console.log.bind(console, 'Something went wrong', err));
