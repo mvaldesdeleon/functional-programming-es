@@ -162,13 +162,13 @@ function addFourNumbers(a, b, c, d) {
     <span class="fragment">return function(b) {
         <span class="fragment">return function(c) {
             <span class="fragment">return function(d) {
-                return a + b + c + d;
+                return addFourNumbers(a, b, c, d);
             }</span>
         }</span>
     }</span>
 }</span>
 
-<span class="fragment">var addFourNumbersOneByOneᐟ = a => <span class="fragment">b => <span class="fragment">c => <span class="fragment">d => a + b + c + d;</span></span></span></span>
+<span class="fragment">var addFourNumbersOneByOneᐟ = a => <span class="fragment">b => <span class="fragment">c => <span class="fragment">d => addFourNumbers(a, b, c, d);</span></span></span></span>
                         </code></pre>
                     </section>
                 </section>

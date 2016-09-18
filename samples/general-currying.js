@@ -12,7 +12,7 @@ function addFourNumbersOneByOne(a) {
     return function(b) {
         return function(c) {
             return function(d) {
-                return a + b + c + d;
+                return addFourNumbers(a, b, c, d);
             }
         }
     }
@@ -29,7 +29,7 @@ var addSix = addFourNumbersOneByOne(1)(2)(3);
 addSix(6);
 // 12
 
-var addFourNumbersOneByOneᐟ = a => b => c => d => a + b + c + d;
+var addFourNumbersOneByOneᐟ = a => b => c => d => addFourNumbers(a, b, c, d);
 
 addFourNumbersOneByOneᐟ(1)(2)(3)(4);
 // 10
