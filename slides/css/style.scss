@@ -1,4 +1,6 @@
 @import 'fonts';
+@import 'glitch';
+@import 'flicker';
 
 $js-yellow: #f7df1e;
 $js-gray: #2e2e2e;
@@ -13,6 +15,14 @@ $logo-size: 200px;
 
     .js-yellow {
         color: $js-yellow;
+    }
+
+    .flicker {
+        @include flicker;
+    }
+
+    .glitch {
+        @include glitch;
     }
 
     .js-logo {
@@ -41,80 +51,9 @@ $logo-size: 200px;
         }
     }
 
-    .flicker {
-        animation: flicker-anim 7s infinite linear alternate-reverse;
-        opacity: 0;
-
-        @at-root {
-            @keyframes flicker-anim {
-                5% { opacity: 0; }
-                5.001% { opacity: 1; }
-                9.999% { opacity: 1; }
-                10% { opacity: 0; }
-                25% { opacity: 0; }
-                25.001% { opacity: 1; }
-                34.999% { opacity: 1; }
-                35% { opacity: 0; }
-                56% { opacity: 0; }
-                56.001% { opacity: 1; }
-                59.999% { opacity: 1; }
-                60% { opacity: 0; }
-                70% { opacity: 0; }
-                70.001% { opacity: 1; }
-                74.999% { opacity: 1; }
-                75% { opacity: 0; }
-                80% { opacity: 0; }
-                80.001% { opacity: 1; }
-                94.999% { opacity: 1; }
-                95% { opacity: 0; }
-            }
-        }
-    }
-
-    .glitch {
-        position: relative;
-
-        &::before, &::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: $js-yellow;
-        }
-
-        &::before {
-            left: 2px;
-            text-shadow: 2px 0 red;
-            animation: glitch-anim-1 2s infinite linear alternate-reverse;
-        }
-
-        &::after {
-            left: -2px;
-            text-shadow: -2px 0 blue;
-            animation: glitch-anim-2 2s infinite linear alternate-reverse;
-        }
-
-        $steps: 10;
-        $height: $logo-size;
-        $width: $logo-size;
-
-        @at-root {
-            @for $i from 1 through 2 {
-                @keyframes glitch-anim-#{$i} {
-                    @for $i from 0 through $steps {
-                        #{percentage($i*(1/$steps))} {
-                            clip: rect(
-                                random($height)+px,
-                                $width,
-                                random($height)+px,
-                                0
-                            );
-                        }
-                    }
-                }
-            }
+    #splash {
+        .fragment {
+            transition: none;
         }
     }
 }

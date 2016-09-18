@@ -1,0 +1,46 @@
+@mixin glitch {
+    position: relative;
+
+    &::before, &::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $js-yellow;
+    }
+
+    &::before {
+        left: 2px;
+        text-shadow: 2px 0 red;
+        animation: glitch-anim-1 2s infinite linear alternate-reverse;
+    }
+
+    &::after {
+        left: -2px;
+        text-shadow: -2px 0 blue;
+        animation: glitch-anim-2 2s infinite linear alternate-reverse;
+    }
+
+    $steps: 10;
+    $height: $logo-size;
+    $width: $logo-size;
+
+    @at-root {
+        @for $i from 1 through 2 {
+            @keyframes glitch-anim-#{$i} {
+                @for $i from 0 through $steps {
+                    #{percentage($i*(1/$steps))} {
+                        clip: rect(
+                            random($height)+px,
+                            $width,
+                            random($height)+px,
+                            0
+                        );
+                    }
+                }
+            }
+        }
+    }
+}

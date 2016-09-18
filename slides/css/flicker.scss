@@ -1,0 +1,29 @@
+@mixin flicker {
+    animation: flicker-anim 7s infinite linear alternate-reverse;
+    opacity: 0;
+
+    @at-root {
+        @keyframes flicker-anim {
+            5% { opacity: 0; }
+            5.001% { opacity: 1; }
+            9.999% { opacity: 1; }
+            10% { opacity: 0; }
+            25% { opacity: 0; }
+            25.001% { opacity: 1; }
+            34.999% { opacity: 1; }
+            35% { opacity: 0; }
+            56% { opacity: 0; }
+            56.001% { opacity: 1; }
+            59.999% { opacity: 1; }
+            60% { opacity: 0; }
+            70% { opacity: 0; }
+            70.001% { opacity: 1; }
+            74.999% { opacity: 1; }
+            75% { opacity: 0; }
+            80% { opacity: 0; }
+            80.001% { opacity: 1; }
+            94.999% { opacity: 1; }
+            95% { opacity: 0; }
+        }
+    }
+}
