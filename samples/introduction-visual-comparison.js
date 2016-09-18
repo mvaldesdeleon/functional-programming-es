@@ -137,5 +137,5 @@ fs.readFile(path.resolve(__dirname, 'config.json'), function(err, data) {
 fsp.readFile(path.resolve(__dirname, 'config.json'))
     .then(x => JSON.parse(x))
     .then(x => requestp(x.targetUrl))
-    .then(x => fsp.writeFile(path.resolve(__dirname, 'target.txt')))
+    .then(x => fsp.writeFile(path.resolve(__dirname, 'target.txt'), x))
     .then(() => console.log.bind(console, 'Success'), (err) => console.log.bind(console, 'Something went wrong', err));
