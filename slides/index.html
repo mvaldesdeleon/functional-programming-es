@@ -32,14 +32,125 @@
                         <div class="glitch flicker lambda" data-text="a">a</div>
                     </div>
                 </section>
-                <section>[Title]</section>
-                <section>[Functional programming (img)]</section>
+                <section>
+                    <h1>Tu código puede ser más simple</h1>
+                    <h3>y puedo demostrarlo matemáticamente</h3>
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-large data-wrap>
+var li = document.getElementsByTagName('li');
+
+var filtered = [];
+for (let i = 0; i < li.length; i++) {
+    if (li[i].classList.contains('item')) {
+        filtered.push(li[i]);
+    }
+}
+
+for (let i = 0; i < filtered.length; i++) {
+    for (let j = 0; j < filtered[i].children.length; j++) {
+        let div = document.createElement('div');
+
+        div.classList.add('title');
+        div.innerHTML = 'Hello!';
+        filtered[i].children[j].insertAdjacentElement('afterbegin', div);
+    }
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+$('li')
+    .filter('.item')
+    .children()
+        .prepend(
+            $('&lt;div&gt;')
+                .addClass('title')
+                .html('Hello!')
+        );
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-large>
+var filtered = [];
+for (let i = 0; i < list.length; i++) {
+    if (list[i].age >= 18) {
+        filtered.push(list[i]);
+    }
+}
+
+var sorted = [];
+for (let i = 0; i < filtered.length; i++) {
+    let max = i;
+    for (let j = i; j < filtered.length; j++) {
+        if (filtered[j].age > filtered[max].age) {
+            max = j;
+        }
+
+    }
+    sorted[i] = filtered[max];
+    filtered[max] = filtered[i];
+}
+
+var uppercaseNames = [];
+for (let i = 0; i < sorted.length; i++) {
+    uppercaseNames[i] = sorted[i].name.toUpperCase();
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+list
+    .filter(x => x.age >= 18)
+    .sort((a, b) => b.age - a.age)
+    .map(x => x.name.toUpperCase());
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-large data-wrap>
+fs.readFile(path.resolve(__dirname, 'config.json'), function(err, data) {
+    if (err) {
+        console.log('Something went wrong', err);
+        return;
+    }
+
+    var config = JSON.parse(data);
+
+    request(config.targetUrl, function(err, response, body) {
+        if (err) {
+            console.log('Something went wrong', err);
+            return;
+        }
+
+        fs.writeFile(path.resolve(__dirname, 'target.txt'), body, function(err) {
+            if (err) {
+                console.log('Something went wrong', err);
+                return;
+            }
+
+            console.log('Success');
+        });
+    });
+});
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-wrap>
+fsp.readFile(path.resolve(__dirname, 'config.json'))
+    .then(x => JSON.parse(x))
+    .then(x => requestp(x.targetUrl))
+    .then(x => fsp.writeFile(path.resolve(__dirname, 'target.txt')))
+    .then(() => console.log.bind(console, 'Success'), (err) => console.log.bind(console, 'Something went wrong', err));
+                        </code></pre>
+                    </section>
+                </section>
                 <section>[Motivation]</section>
                 <section>[Functions (img)]</section>
                 <section>
                     <section>[Currying (code)]</section>
                     <section>
-                        <pre><code data-trim data-noescape data-runnable>
+                        <pre><code class="js" data-trim data-noescape data-runnable>
 function addFourNumbers(a, b, c, d) {
     return a + b + c + d;
 }
@@ -70,8 +181,20 @@ function addFourNumbers(a, b, c, d) {
                 <section>[Lazy promises (code)]</section>
                 <section>[Control flow (code)]</section>
                 <section>[Category theory (code)]</section>
-                <section>[References]</section>
-                <section>[Thank you!]</section>
+                <section data-markdown>
+                    <script type="text/template">
+## Referencias
+* **JS** [Professor Frisby's Mostly Adequate Guide to Functional Programming](https://drboolean.gitbooks.io/mostly-adequate-guide/content/) by Brian Lonsdorf
+* **HS** [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html) by Aditya Bhargava
+* **HS** [Haskell/Category theory (Wikibooks)](https://en.wikibooks.org/wiki/Haskell/Category_theory)
+* **HS** [You Could Have Invented Monads! (And Maybe You Already Have.)](http://blog.sigfpe.com/2006/08/you-could-have-invented-monads-and.html) by Dan Piponi
+* **HS** [Functors are Containers](https://bartoszmilewski.com/2014/01/14/functors-are-containers/) by Bartosz Milewsk
+* **JS** [Faster JavaScript Through Category Theory](http://johnbender.us/2012/02/29/faster-javascript-through-category-theory/) by John Bender
+                    </script>
+                </section>
+                <section>
+                    <h2>Gracias!</h2>
+                </section>
             </div>
         </div>
 

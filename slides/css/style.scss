@@ -56,4 +56,12 @@ $logo-size: 200px;
             transition: none;
         }
     }
+
+    pre > code[data-large] {
+        max-height: initial;
+    }
+
+    pre > code[data-wrap] {
+        white-space: pre-wrap;
+    }
 }
