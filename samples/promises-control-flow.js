@@ -27,7 +27,7 @@ var divideTwoBy = function(x) {
 };
 
 promise.then(subtractFifty).then(divideTwoBy).then(timesTwoDelayed).then(console.log.bind(console, 'res A'));
-// "res A" 0.04
+// "res A" 0.08
 
 promise.then(subtractFifty).then(subtractFifty).then(divideTwoBy).then(timesTwoDelayed).then(console.log.bind(console, 'res B'));
 // ლ(ಠ益ಠლ)

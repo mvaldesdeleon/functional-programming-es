@@ -25,7 +25,7 @@ var compose = (...fns) => fns.reduce((cfn, fn) => x => cfn(fn(x)), x => x);
 //                                                        /           \
 //                ...componiendo la función con el acumulador...   ...cuyo valor inicial es la función identidad
 
-var doALotOfThings = compose(addTwo,timesThree,timesThree,addTwo,timesThree);
+var doALotOfThings = compose(addTwo, timesThree, timesThree, addTwo, timesThree);
 //  2 + (3 * (3 * (2 + (3 * x))))
 
 doALotOfThings(2);

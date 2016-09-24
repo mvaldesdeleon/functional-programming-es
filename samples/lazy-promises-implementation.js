@@ -14,7 +14,7 @@ Lazy.prototype.do = function(x) {
     return this.__value(x);
 };
 
-// thunk :: _ -> Promise[Number, a]               Resolved[Number]
+// thunk :: Number -> Promise[Number, a]               Resolved[Number]
 function thunk(n) { //                               /
     return new Promise((res, rej) => setTimeout(res.bind(null, 100 * n), 1500 * n));
 };

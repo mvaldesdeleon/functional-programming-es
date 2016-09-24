@@ -7,8 +7,8 @@ var toString = x => x.toString();
 // parseNum :: String -> Number
 var parseNum = x => parseFloat(x);
 
-addTwo(2);
-// 2
+addTwo(3);
+// 5
 
 toString(2);
 // "2"

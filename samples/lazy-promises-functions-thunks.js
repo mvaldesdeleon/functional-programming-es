@@ -22,7 +22,7 @@ four();
 //                                                aca hay otro thunk ;-)
 function thunk() { //                                 /
     return new Promise((res, rej) => setTimeout(res.bind(null, 100), 3000));
-};
+}
 
 thunk().then(console.log.bind(console, 'res'));
 // "res" 300

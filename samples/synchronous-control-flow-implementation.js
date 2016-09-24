@@ -27,10 +27,10 @@ Either.prototype.map = function(fn) {
 };
 
 // plusOne :: Number -> Number
-var plusOne = x => x + 1
+var plusOne = x => x + 1;
 
 // timesTwo :: Number -> Number
-var timesTwo = x => x * 2
+var timesTwo = x => x * 2;
 
 // toString :: Number -> String
 var toString = x => x.toString();
@@ -45,10 +45,10 @@ var divideTwoBy = function(x) {
 };
 
 // subtractOne :: Number -> Number
-var subtractOne = x => x - 1
+var subtractOne = x => x - 1;
 
 // subtractTwo :: Number -> Number
-var subtractTwo = x => x - 2
+var subtractTwo = x => x - 2;
 
 Right.of(1).map(subtractOne).map(divideTwoBy).map(console.log.bind(console));
 // Left {__value: "can't divide by zero"}
@@ -63,7 +63,7 @@ Either.prototype.join = function() {
 };
 
 // addTen :: Number -> Number
-var addTen = x => x + 10
+var addTen = x => x + 10;
 
 Right.of(1).map(subtractOne).map(divideTwoBy).join().map(addTen).map(console.log.bind(console));
 // Left {__value: "can't divide by zero"}

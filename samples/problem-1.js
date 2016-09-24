@@ -33,7 +33,8 @@ var timesThree = x => x * 3;
 var timesThreeᐟ = fmap(timesThree);
 
 // doALotOfThingsᐟ :: [Number] -> [Number]
-var doALotOfThingsᐟ = compose(addTwoᐟ,timesThreeᐟ,timesThreeᐟ,addTwoᐟ,timesThreeᐟ);
+var doALotOfThingsᐟ = compose(addTwoᐟ, timesThreeᐟ, timesThreeᐟ, addTwoᐟ, timesThreeᐟ);
 //  2 + (3 * (3 * (2 + (3 * x))))
 
 doALotOfThingsᐟ(Ⅰ_Ⅹ);
+// [47, 74, 101, 128, 155, 182, 209, 236, 263, 290]
