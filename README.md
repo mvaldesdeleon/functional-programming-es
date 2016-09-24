@@ -25,10 +25,10 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
     * ~~**Lazy promises** Implementación~~
     * ~~**Control de flujo** Implementación~~
     * ~~**Teoría de categorías** Simplificar map/compose~~
-* Preparar script
+* ~~Preparar script~~
     * ~~Draft~~
-    * Iterar
-    * Definir slides
+    * ~~Iterar~~
+    * ~~Definir slides~~
 * Preparar slides
 * Timear y ajustar contenido
 

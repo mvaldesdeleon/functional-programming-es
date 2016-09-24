@@ -17,11 +17,15 @@ Estos diagramas les encantan.
 
 Y la verdad, medio que me hinchaba un poco, ya que la sensacion era "mira, vos tenes que entender estas formulas locas y despues, creeme, te va a servir para programar mejor", y me parece que ese enfoque no va.
 
-Asi que, despues de haberme dado la cabeza contra la pared un rato y lograr decifrar algunos de esos diagramas locos, me parecio que era necesaria una charla que intente hacer lo opuesto: Encarar el tema desde el punto de vista de un programador.
+Asi que, despues de haberme dado la cabeza contra la pared un rato y lograr decifrar algunos de esos diagramas locos, me parecio que era necesaria una charla que intente hacer lo opuesto: Encarar el tema desde el punto de vista de un programador JavaScript.
+
+[JS Logo]
+
+Lo primero que quiero que sepan es que, como programadores de JavaScript en el año 2016, ya todos nosotros estamos familiarizados con muchos de los conceptos de programacion funcional, incluso los de nombre loco, formulas y diagramas.
 
 [Lambda Logo Glitch]
 
-Lo primero que quiero que sepan es que, como programadores de JavaScript en el año 2016, ya todos nosotros estamos familiarizados con muchos de los conceptos de programacion funcional, incluso los de nombre loco, formulas y diagramas. Simplemente no sabemos que tienen esos nombres, porque la verdad, no nos interesa. Lo importante para nosotros es que entendamos como usar la herramienta, no el nombre que un matematico le dio.
+Simplemente no sabemos que tienen esos nombres, porque la verdad, no nos interesa. Lo importante para nosotros es que entendamos como usar la herramienta, no el nombre que un matematico le dio.
 
 La idea de la charla es mas hacer una introspeccion en ciertos patrones de codigo que escribimos, y ver porque nos terminan resultando utiles al punto de que los hacemos aparecer una y otra vez, aun sin darnos cuenta de ello.
 
@@ -59,7 +63,9 @@ Haskell Curry.
 
 [Code: Curry]
 
-Escribamos lo que queremos: transformar una funcion de 4 argumentos en una funcion que recibe un argumento y devuelve otra funcion...
+Tenemos una funcion de 4 argumentos.
+
+Escribamos lo que queremos: transformar una funcion de 4 argumentos, en una funcion que recibe un argumento y devuelve otra funcion...
 Que recibe un argumento y devuelve otra funcion...
 Que recibe un argumento y devuelve otra funcion...
 Que finalmente devuelve el calculo con los 4 valores a la vez.
@@ -70,8 +76,16 @@ Por suerte tenemos ES6 y las arrow functions, que nos permiten escribir lo mismo
 
 En la practica, cuando querramos currificar una funcion no vamos a hacerlo a mano. Todas las librerias de programacion funcional traen una funcion `curry` que hace transforma funciones de este modo.
 
-De que nos sirve usar funciones curryficadas? Basicamente por dos motivos:
+De que nos sirve usar funciones curryficadas?
+
+Basicamente por dos motivos:
+
+[Code: Partial Application]
+
 * Podemos especializar funciones genericas, pre-asignandole valores a los primeros argumentos. Esto se llama "aplicacion parcial".
+
+[Code: Happy long composition]
+
 * Si todas las funciones reciben un argumento y devuelven un valor, no tenemos que preocuparnos por la cantidad de argumentos, o "aridad", a la hora de componer funciones.
 
 Visto y considerando sendos motivos, decreto:
@@ -80,7 +94,7 @@ Visto y considerando sendos motivos, decreto:
 
 De ahora en mas y hasta el final de los tiempos, todas las funciones han de estar currificadas.
 
-Notifiquese, archivese, etc.
+Notifiquese, comuniquese, publiquese, dese a la Dirección Nacional del Registro Oficial y archivese.
 
 Hablemos un poco ahora del segundo concepto: Composicion de funciones.
 
@@ -88,7 +102,7 @@ Hablemos un poco ahora del segundo concepto: Composicion de funciones.
 
 Perdon, habiamos dicho nada de diagramas.
 
-[let y = f(g(x));]
+[`let y = f(g(x));`]
 
 Composicion de funciones.
 
@@ -110,11 +124,11 @@ El Bajon
 
 [Blank]
 
-Aca viene la parte donde me toca hacer de vendedor de tiempos compartidos. Prometi no hablar de matematicas ni de palabras locas, pero para poder seguir adelante necesito ALGUN hilo de formalismo. Elegi el que me parecio mas conveniente a nosotros como programadores.
+Ahora viene la parte donde me toca hacer de vendedor de tiempos compartidos. Prometi no hablar de matematicas ni de palabras locas, pero para poder seguir adelante necesito ALGUN hilo de formalismo. Elegi el que me parecio mas conveniente a nosotros como programadores, y voy a tratar de pasarlo lo mas rapido posible.
 
 De ahora en mas, vamos a hacer de cuenta que JavaScript es un lenguaje fuertemente tipado. Y como vamos a estar hablando de funciones, lo que nos va a importar es definir la firma de tipos de las funciones.
 
-Veamos algunos ejemplos de los tipos que vamos a usar:
+Veamos primero algunos ejemplos de los tipos que vamos a usar:
 
 [Code: Type Examples]
 
@@ -126,7 +140,13 @@ Recordemos que siempre que hablemos de funciones vamos a asumir que estan currif
 
 Entonces, dado que JavaScript no es un lenguaje fuertemente tipado, la idea va a ser la siguiente:
 
-Si nosotros nos portamos bien y le pasamos a la funcion lo que la funcion espera, la funcion se va a portar bien y nos va a devolver lo que dice que devuelve. Y si nosotros nos portamos mal y le damos otra cosa, la funcion tiene la libertad de hacer lo que se le de la gana, y que Dios se apiade de nuestras almas.
+[Code: Obey the law]
+
+Si nosotros nos portamos bien y le pasamos a la funcion lo que la funcion espera, la funcion se va a portar bien y nos va a devolver lo que dice que devuelve.
+
+[Code: Break the law]
+
+Y si nosotros nos portamos mal y le damos otra cosa, la funcion tiene la libertad de hacer lo que se le de la gana, y que Dios se apiade de nuestras almas.
 
 Un ultimo ejemplo que tenemos que ver es el de funciones de orden superior (es decir, funciones que reciben funciones como argumentos y/o devuelven funciones como valor de retorno):
 
@@ -176,11 +196,13 @@ Tengo una funcion que transforma numeros en numeros, y un "entorno" de numeros, 
 
 Quiero poder usar estas dos cosas juntas, pero si miramos la firma de tipos, vemos que nuestra funcion que transforma numeros no sabe transformar arrays.
 
-Seguramente muchos de ustedes ya saben como resolver este problema. Como dije al principio, ya somos todos programadores funcioanles.
+Seguramente muchos de ustedes ya saben como resolver este problema. Como dije al principio, ya somos todos programadores funcionales.
 
 Como hay que hacer?
 
-Si, podriamos usar Array.prototype.map. Pero nosotros queremos algo mejor. Algo mas poderoso.
+Si, podriamos usar Array.prototype.map. Pero nosotros buscamos algo mejor. Algo mas poderoso. Algo mas generico.
+
+[Code: Problem 1]
 
 Lo que nos gustaria es tener una funcion *carita* de orden superior, que sepa agarrar nuestras funciones que transforman numeros, y transformarlas en funciones que transformen arrays de numeros.
 
@@ -201,6 +223,8 @@ Y como *carita* es molesto de escribir cada vez, vamos a llamarla `fmap`.
 Porque si.
 
 La forma mas facil de reconocer a una `fmap` es por su firma de tipos.
+
+[Code: Problem 1]
 
 Por ultimo, podemos ver que si tenemos varias funciones transformadas con `fmap`, las podemos componer entre si sin ningun problema.
 
@@ -234,7 +258,7 @@ Algo divertido de esta funcion es que si la componemos a la salida de una funcio
 
 [Code: Problem 2]
 
-Vamos a llamar a esta operacion `lift`.
+Vamos a llamar a esta funcion `lift`.
 
 Porque si.
 
@@ -276,7 +300,7 @@ Resumen
 
 [Blank]
 
-Bueno, ahi lo tienen. Esa es toda la teoria. Ese es el patron.
+Bueno, ahi lo tienen. Esa es toda la teoria. Ese es la serie de patrones.
 
 [wat]
 
