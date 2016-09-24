@@ -30,6 +30,8 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
     * ~~Iterar~~
     * ~~Definir slides~~
 * Preparar slides
+    * ~~Draft~~
+    * Iterar
 * Timear y ajustar contenido
 
 ## Indice
