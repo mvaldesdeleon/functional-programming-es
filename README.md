@@ -1,9 +1,9 @@
-# Tu código puede ser más simple y puedo demostrarlo matemáticamente
+# Tu código puede ser mejor y puedo demostrarlo matemáticamente
 
 Charla para Meetup.js Argentina sobre Programación Funcional
 
 ## Descripción
-Programación funcional. El último grito de la moda, pero solo para aquellos dispuestos a sumergirse en la terminología. No más. Sin matemática ni formulas, la programación funcional ya esta entre nosotros, y ha llegado para quedarse. Con esta charla espero sacar a la luz distintos conceptos que ya manejamos en nuestro día a día, y demostrar que detrás de las palabras raras y los diagramas se esconde una herramienta más para hacer nuestro código más simple.
+Programación funcional. El último grito de la moda, pero solo para aquellos dispuestos a sumergirse en la terminología. No más. Sin matemática ni formulas, la programación funcional ya esta entre nosotros, y ha llegado para quedarse. Con esta charla espero sacar a la luz distintos conceptos que ya manejamos en nuestro día a día, y demostrar que detrás de las palabras raras y los diagramas se esconde una herramienta más para hacer nuestro código mejor.
 
 
 Por último, también espero hacerle el camino un poco más fácil a quien quiera profundizar en los fundamentos de la teoría de categorías.
