@@ -24,6 +24,21 @@
         </script>
     </head>
     <body>
+        <div class="sources">
+            <div class="source" data-source="category"><a href="https://en.wikipedia.org/wiki/Category_(mathematics)" target="_blank">https://en.wikipedia.org/wiki/Category_(mathematics)</a></div>
+            <div class="source" data-source="functor"><a href="https://en.wikipedia.org/wiki/F-algebra" target="_blank">https://en.wikipedia.org/wiki/F-algebra</a></div>
+            <div class="source" data-source="monad"><a href="https://en.wikipedia.org/wiki/Monad_(category_theory)" target="_blank">https://en.wikipedia.org/wiki/Monad_(category_theory)</a></div>
+            <div class="source light" data-source="curry-a"><a href="https://en.wikipedia.org/wiki/Curry" target="_blank">https://en.wikipedia.org/wiki/Curry</a></div>
+            <div class="source light" data-source="curry-b"><a href="https://wiki.haskell.org/Haskell_Brooks_Curry" target="_blank">https://wiki.haskell.org/Haskell_Brooks_Curry</a></div>
+            <div class="source" data-source="composition"><a href="https://en.wikipedia.org/wiki/Category_theory" target="_blank">https://en.wikipedia.org/wiki/Category_theory</a></div>
+            <div class="source light" data-source="metaphysics"><a href="http://interfaithspirit.org/wp-content/uploads/2015/09/metaphysics.jpg" target="_blank">http://interfaithspirit.org/wp-content/uploads/2015/09/metaphysics.jpg</a></div>
+            <div class="source light" data-source="matrix"><a href="http://img.pandawhale.com/post-38723-Neo-I-know-kung-fu-gif-Imgur-bUjp.gif" target="_blank">http://img.pandawhale.com/post-38723-Neo-I-know-kung-fu-gif-Imgur-bUjp.gif</a></div>
+            <div class="source light" data-source="awesome"><a href="https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA" target="_blank">https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA</a></div>
+            <div class="source light" data-source="wat"><a href="wattp://wat:wat@wat:wat/wat#wat?wat" target="_blank">wat</a></div>
+            <div class="source light" data-source="portal"><a href="https://www.youtube.com/watch?v=g9xDhAKNcHs" target="_blank">https://www.youtube.com/watch?v=g9xDhAKNcHs</a></div>
+            <div class="source" data-source="hask"><a href="http://yannesposito.com/Scratch/en/blog/Category-Theory-Presentation/" target="_blank">http://yannesposito.com/Scratch/en/blog/Category-Theory-Presentation/</a></div>
+            <div class="source light" data-source="axioms"><a href="https://en.wikibooks.org/wiki/Haskell/Category_theory" target="_blank">https://en.wikibooks.org/wiki/Haskell/Category_theory</a></div>
+        </div>
         <div class="reveal">
             <div class="slides">
                 <section>
@@ -32,6 +47,18 @@
                 <section>
                     <h1>Tu código puede ser mejor</h1>
                     <h3>y puedo demostrarlo matemáticamente</h3>
+                </section>
+                <section>
+                    <object class="js-logo" type="image/svg+xml" data="assets/images/js.svg"></object>
+                    <div class="js-logo faux-logo">
+                        <div class="lambda" data-text="a">a</div>
+                    </div>
+                </section>
+                <section data-background-color="#ffffff" data-background-image="assets/images/diagram_category.png" data-background-size="contain" data-source="category">
+                </section>
+                <section data-background-color="#ffffff" data-background-image="assets/images/diagram_functor.png" data-background-size="contain" data-source="functor">
+                </section>
+                <section data-background-color="#ffffff" data-background-image="assets/images/diagram_monad.png" data-background-size="contain" data-source="monad">
                 </section>
                 <section id="fn-js">
                     <object class="js-logo" type="image/svg+xml" data="assets/images/js.svg"></object>
@@ -148,12 +175,16 @@ fsp.readFile(path.resolve(__dirname, 'config.json'))
                         </code></pre>
                     </section>
                 </section>
-                <section>[Motivation]</section>
-                <section>[Functions (img)]</section>
                 <section>
-                    <section>[Currying (code)]</section>
+                    <!-- This slide intentionally left blank -->
+                </section>
+                <section  data-background-image="assets/images/curry.jpg" data-background-size="contain" data-source="curry-a">
+                </section>
+                <section  data-background-image="assets/images/curry_haskell.jpg" data-background-size="contain" data-source="curry-b">
+                </section>
+                <section>
                     <section>
-                        <pre><code class="js" data-trim data-noescape data-runnable>
+                        <pre><code class="js" data-trim data-wrap data-noescape>
 function addFourNumbers(a, b, c, d) {
     return a + b + c + d;
 }
@@ -171,19 +202,723 @@ function addFourNumbers(a, b, c, d) {
 <span class="fragment">var addFourNumbersOneByOneᐟ = a => <span class="fragment">b => <span class="fragment">c => <span class="fragment">d => addFourNumbers(a, b, c, d);</span></span></span></span>
                         </code></pre>
                     </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+var addSix = addFourNumbersOneByOne(1)(2)(3);
+
+addSix(10);
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+var y = a(b(c(d(e(f(g(h(i(j(k(x)))))))))));
+                        </code></pre>
+                    </section>
                 </section>
-                <section>[Composition (code)]</section>
-                <section>[Types]</section>
-                <section>[Type signatures (code)]</section>
-                <section>[Containers]</section>
-                <section>[Problem 1 (code)]</section>
-                <section>[Problem 2 (code)]</section>
-                <section>[Problem 3 (code)]</section>
-                <section>[Parenthesis (code)]</section>
-                <section>[Promises (code)]</section>
-                <section>[Lazy promises (code)]</section>
-                <section>[Control flow (code)]</section>
-                <section>[Category theory (code)]</section>
+                <section>
+                    <h2>Decreto</h2>
+                    <blockquote>De ahora en más y hasta el final de los tiempos, todas las funciones han de estar currificadas.
+                    </blockquote>
+                </section>
+                <section data-background-color="#ffffff" data-background-image="assets/images/diagram_composition.png" data-background-size="contain" data-source="composition">
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim>
+var z = g(f(x));
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+var y = a(b(c(d(e(f(g(h(i(j(k(x)))))))))));
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+var F = compose(a, b, c, d, e, f, g, h, i, j, k);
+
+var y = F(x);
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <!-- This slide intentionally left blank -->
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+var num = 12.3; // Number
+
+<span class="fragment">var str = 'meetup.js'; // String</span>
+
+<span class="fragment">var arr = [] // Array
+             // Array[a]
+             // [a]</span>
+
+<span class="fragment">var strArr = ['hello', 'world', '!'] // Array[String]</span>
+
+<span class="fragment">var fn = function() {}; // Function</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+var fn = function() {}; // Function
+
+<span class="fragment"><span class="fragment">// add :: (Number, Number) -> Number</span>
+var add = (x,y) => x + y;</span>
+
+<span class="fragment"><span class="fragment">//  addᐟ :: Number -> Number -> Number</span>
+<span class="fragment">//  addᐟ :: Number -> (Number -> Number)</span>
+var addᐟ = x => y => x + y;</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-large>
+// addTwo :: Number -> Number
+var addTwo = x => x + 2;
+
+<span class="fragment">addTwo(3);</span>
+<span class="fragment">// 5</span>
+
+<span class="fragment">addTwo('hello');
+<span class="fragment">// "hello2"</span>
+
+addTwo([]);
+<span class="fragment">// "2"</span>
+
+addTwo({});
+<span class="fragment">// "[object Object]2"</span>
+
+addTwo(undefined);
+<span class="fragment">// NaN</span></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+<span class="fragment">// filter :: Function -> Array -> Array</span>
+<span class="fragment">// filter :: (a -> Boolean) -> [a] -> [a]</span>
+var filter = pr => xs => xs.filter(pr);
+
+<span class="fragment"><span class="fragment">// reduce :: (b -> a -> b) -> b -> [a] -> b</span>
+var reduce = fn => acc => xs => xs.reduce(fn, acc);</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="text" data-trim data-noescape>
+$ <span class="fragment">ghci</span>
+<span class="fragment">GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+Prelude> <span class="fragment">:t foldl</span></span>
+<span class="fragment">foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
+Prelude></span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <!-- This slide intentionally left blank -->
+                </section>
+                <section  data-background-image="assets/images/metaphysics.jpg" data-background-size="contain" data-source="metaphysics">
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap>
+function Environment(algo) {
+    <span class="fragment">this.__value = algo;</span>
+}
+
+<span class="fragment">var env = new Environment('Help me, I`m trapped inside an environment!');</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// addTwo :: Number -> Number
+var addTwo = x => x + 2;
+
+// [Number]
+var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+<span class="fragment">// addTwoᐟ :: [Number] -> [Number]</span>
+
+<span class="fragment">// ಠ_ಠ :: (Number -> Number) -> ([Number] -> [Number])</span>
+
+<span class="fragment">// addTwoᐟ = ಠ_ಠ(addTwo)</span>
+<span class="fragment">// addTwoᐟ(Ⅰ_Ⅹ) == ｡◕‿◕｡</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-large>
+// addTwo :: Number -> Number
+var addTwo = x => x + 2;
+
+// [Number]
+var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// ಠ_ಠ :: (Number -> Number) -> ([Number] -> [Number])
+<span class="fragment">var ಠ_ಠ = function(fn) {
+    <span class="fragment">return function(xs) {
+        <span class="fragment">return xs.map(fn);</span>
+    }</span>
+};</span>
+
+<span class="fragment">// addTwoᐟ :: [Number] -> [Number]</span>
+<span class="fragment">addTwoᐟ = ಠ_ಠ(addTwo);</span>
+
+<span class="fragment">addTwoᐟ(Ⅰ_Ⅹ);</span>
+<span class="fragment">// [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]</span>
+
+<span class="fragment">// fmap :: (Number -> Number) -> ([Number] -> [Number])
+var fmap = ಠ_ಠ;</span>
+                        </code></pre>
+                    </section>
+                    <section data-background-image="assets/images/kung_fu.gif" data-source="matrix">
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-large data-wrap>
+// addTwo :: Number -> Number
+var addTwo = x => x + 2;
+
+// timesThree :: Number -> Number
+var timesThree = x => x * 3;
+
+<span class="fragment">// addTwoᐟ :: [Number] -> [Number]
+var addTwoᐟ = fmap(addTwo);
+
+// timesThreeᐟ :: [Number] -> [Number]
+var timesThreeᐟ = fmap(timesThree);</span>
+
+<span class="fragment">// doALotOfThingsᐟ :: [Number] -> [Number]
+var doALotOfThingsᐟ = compose(addTwoᐟ, timesThreeᐟ, timesThreeᐟ, addTwoᐟ, timesThreeᐟ);</span>
+
+<span class="fragment">doALotOfThingsᐟ(Ⅰ_Ⅹ);</span>
+<span class="fragment">// [47, 74, 101, 128, 155, 182, 209, 236, 263, 290]<span class="fragment">
+                        </code></pre>
+                    </section>
+                    <section data-background-image="assets/images/awesome.gif" data-background-size="contain" data-source="awesome">
+                    </section>
+                </section>
+                <section>
+                    <!-- This slide intentionally left blank -->
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap>
+// doALotOfThingsᐟ :: [Number] -> [Number]
+var doALotOfThingsᐟ = compose(addTwoᐟ, timesThreeᐟ, timesThreeᐟ, addTwoᐟ, timesThreeᐟ);
+
+// Number
+var two = 2;
+
+<span class="fragment">doALotOfThingsᐟ(two);</span>
+<span class="fragment">// "xs.map is not a function"</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// doALotOfThingsᐟ :: [Number] -> [Number]
+var doALotOfThingsᐟ = compose(addTwoᐟ, timesThreeᐟ, timesThreeᐟ, addTwoᐟ, timesThreeᐟ);
+
+// Number
+var two = 2;
+
+<span class="fragment">// ಠ_ಠ :: Number -> [Number]</span>
+<span class="fragment">var ಠ_ಠ = x => [x];</span>
+
+<span class="fragment">doALotOfThingsᐟ(ಠ_ಠ(two));</span>
+<span class="fragment">// 74</span>
+
+<span class="fragment">// unit :: Number -> [Number]
+var unit = ಠ_ಠ;</span>
+<span class="fragment">// ʀeturn :: Number -> [Number]
+var ʀeturn = ಠ_ಠ;</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// sumArray :: [Number] -> Number
+var sumArray = reduce((acc, x) => acc + x)(0);
+
+<span class="fragment">// sumArrayᐟ :: [Number] -> [Number]</span>
+<span class="fragment">var sumArrayᐟ = compose(unit, sumArray);</span>
+
+<span class="fragment">// lift :: ([Number] -> Number) -> ([Number] -> [Number])</span>
+<span class="fragment">var lift = fn => compose(unit, fn);</span>
+
+<span class="fragment">var sumArrayᐟ = lift(sumArray);</span>
+
+<span class="fragment">// doALotOfThingsMoreᐟ :: [Number] -> [Number]
+var doALotOfThingsMoreᐟ = compose(doALotOfThingsᐟ, sumArrayᐟ);</span>
+
+<span class="fragment">doALotOfThingsMoreᐟ(Ⅰ_Ⅹ);</span>
+<span class="fragment">// [1505]</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <!-- This slide intentionally left blank -->
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// firstNthMultiples :: Number -> Number -> [Number]
+var firstNthMultiples = n => x => (Array(n).fill()).reduce((acc, _) => acc.push(x * (acc.length + 1)) && acc, []);
+
+// firstFiveMultiples :: Number -> [Number]
+var firstFiveMultiples = firstNthMultiples(5);
+
+// [Number]
+var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+<span class="fragment">// firstFiveMultiplesᐟ :: [Number] -> [[Number]]
+var firstFiveMultiplesᐟ = fmap(firstFiveMultiples)</span>
+
+<span class="fragment">firstFiveMultiplesᐟ(Ⅰ_Ⅹ);</span>
+<span class="fragment">// [[1, 2, 3, 4, 5], [2, 4, 6, 8, 10], [3, 6, 9, 12, 15], [4, 8, 12, 16, 20], [5, 10, 15, 20, 25], [6, 12, 18, 24, 30], [7, 14, 21, 28, 35], [8, 16, 24, 32, 40], [9, 18, 27, 36, 45], [10, 20, 30, 40, 50]]</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// firstFiveMultiples :: Number -> [Number]
+var firstFiveMultiples = firstNthMultiples(5);
+
+// [Number]
+var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// firstFiveMultiplesᐟ :: [Number] -> [[Number]]
+var firstFiveMultiplesᐟ = fmap(firstFiveMultiples)
+
+<span class="fragment">// ಠ_ಠ :: [[Number]] -> [Number]</span>
+<span class="fragment">var ಠ_ಠ = xss => xss.reduce((acc, xs) => acc.concat(xs), []);</span>
+
+<span class="fragment">ಠ_ಠ(firstFiveMultiplesᐟ(Ⅰ_Ⅹ));</span>
+<span class="fragment">// [1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
+
+<span class="fragment">// join :: [[Number]] -> [Number]
+var join = ಠ_ಠ;</span>
+<span class="fragment">// flatten :: [[Number]] -> [Number]
+var flatten = ಠ_ಠ;</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap>
+// firstFiveMultiples :: Number -> [Number]
+<span class="fragment">// fmap firstFiveMultiples :: [Number] -> [[Number]]</span>
+<span class="fragment">// join (fmap firstFiveMultiples) :: [Number] -> [Number]</span>
+
+<span class="fragment">// chain :: (Number -> [Number]) -> ([Number] -> [Number])
+var chain = fn => compose(join, fmap(fn));</span>
+
+<span class="fragment">chain(firstFiveMultiples)(Ⅰ_Ⅹ);</span>
+<span class="fragment">// [1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <!-- This slide intentionally left blank -->
+                </section>
+                <section>
+                    <section data-background-image="assets/images/wat.jpg" data-background-size="contain" data-source="wat">
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// fmap :: (Number -> Number) -> ([Number] -> [Number])
+var fmap = fn => xs => xs.map(fn);
+
+<span class="fragment fade-out" data-skip-next>// unit :: Number -> [Number]
+var unit = x => [x];</span>
+
+// lift :: ([Number] -> Number) -> ([Number] -> [Number])
+var lift = fn => compose(unit, fn);
+
+<span class="fragment fade-out" data-skip-prev>// join :: [[Number]] -> [Number]
+var join = xss => xss.reduce((acc, xs) => acc.concat(xs), []);</span>
+
+// chain :: (Number -> [Number]) -> ([Number] -> [Number])
+var chain = fn => compose(join, fmap(fn));
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <!-- This slide intentionally left blank -->
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// Promise[a, b] = Resolved[a] ㅣ Rejected[b]
+
+<span class="fragment">// Promise[Number, a]
+var promise = new Promise(function(res, rej) {
+  <span class="fragment">// Resolved[Number]
+  setTimeout(res.bind(null, 100), 1000);</span>
+});</span>
+
+<span class="fragment">promise.then(console.log.bind(console, 'res A'));</span>
+<span class="fragment">// "res A" 100</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+<span class="fragment">var promiseRes = x => Promise.resolve(x);</span>
+
+<span class="fragment">var promiseRej = x => Promise.reject(x);</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// addFifty :: Number -> Number
+var addFifty = x => x + 50
+
+<span class="fragment">var promiseᐟ = promise.then(addFifty);</span>
+
+<span class="fragment">promise.then(console.log.bind(console, 'res B'));
+<span class="fragment" data-skip-next>// "res B" 100</span>
+
+promiseᐟ.then(console.log.bind(console, 'res C'));
+<span class="fragment" data-skip-prev>// "res C" 150</span></span>
+
+<span class="fragment">// timesTwoDelayed :: Number -> Promise[Number, a]
+var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x * 2), 1000));</span>
+
+<span class="fragment">var promiseᐟᐟ = promise.then(addFifty).then(timesTwoDelayed);</span>
+
+<span class="fragment">promiseᐟᐟ.then(console.log.bind(console, 'res D'));</span>
+<span class="fragment">// "res D" 300</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// unit :: a -> Resolved[a]
+var unit = x => Promise.resolve(x);
+// ʀeject :: b -> Rejected[b]
+var ʀeject = x => Promise.reject(x);
+
+// Promise[Number, a]
+var promise = new Promise(function(res, rej) {
+  // Resolved[Number]
+  setTimeout(res.bind(null, 100), 1000);
+});
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// subtractFifty :: Number -> Number
+var subtractFifty = x => x - 50
+
+// timesTwoDelayed :: Number -> Promise[Number, a]
+var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x * 2), 3000));
+
+// divideTwoBy :: Number -> Promise[Number, String]
+var divideTwoBy = function(x) {
+    if (x === 0) return ʀeject("can't divide by zero");
+    else return unit(2 / x);
+};
+
+<span class="fragment">promise.then(subtractFifty).then(divideTwoBy).then(timesTwoDelayed)
+    .then(console.log.bind(console, 'res A'));</span>
+<span class="fragment">// "res A" 0.08</span>
+
+<span class="fragment">promise.then(subtractFifty).then(subtractFifty).then(divideTwoBy)
+    .then(timesTwoDelayed).then(console.log.bind(console, 'res B'));</span>
+<span class="fragment">// ლ(ಠ益ಠლ)</span>
+
+<span class="fragment">promise.then(subtractFifty).then(subtractFifty).then(divideTwoBy)
+    .then(timesTwoDelayed).then(console.log.bind(console, 'res C'), console.log.bind(console, 'rej C'));</span>
+<span class="fragment">// "rej C" "can't divide by zero"</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <!-- This slide intentionally left blank -->
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+2+2;
+<span class="fragment">// 4</span>
+
+<span class="fragment">var four = 2 + 2;</span>
+
+<span class="fragment">four;</span>
+<span class="fragment">// 4</span>
+
+<span class="fragment">var four = function() {
+    return 2 + 2;
+};</span>
+
+<span class="fragment">four();</span>
+<span class="fragment">// 4</span>
+
+<span class="fragment">function thunk() {
+    return new Promise((res, rej) => setTimeout(res.bind(null, 100), 3000));
+}</span>
+
+<span class="fragment">thunk().then(console.log.bind(console, 'res A'));</span>
+<span class="fragment">// "res A" 300</span>
+
+<span class="fragment">thunk().then(console.log.bind(console, 'res B'));</span>
+<span class="fragment">// "res B" 300</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+<span class="fragment">function Lazy(x) { this.__value = x; };</span>
+
+<span class="fragment">// unit :: (a -> Promise[b, x]) -> Lazy[a -> Promise[b, x]]</span>
+<span class="fragment">Lazy.of = x => new Lazy(x);</span>
+
+<span class="fragment">// map :: Lazy[a -> Promise[b, x]] -> (b -> c) -> Lazy[a -> Promise[c, x]]
+// map :: Lazy[a -> Promise[b, x]] -> (b -> Promise[c, y]) -> Lazy[a -> Promise[c, y]]</span>
+<span class="fragment">Lazy.prototype.map = function(fn) {
+    return Lazy.of((x) => this.__value(x).then(fn));
+};</span>
+
+<span class="fragment">// do :: Lazy[a -> Promise[b, z]] -> a -> Promise[b, z]</span>
+<span class="fragment">Lazy.prototype.do = function(x) {
+    return this.__value(x);
+};</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// thunk :: Number -> Promise[Number, a]
+function thunk(n) {
+    return new Promise((res, rej) => setTimeout(res.bind(null, 100 * n), 1500 * n));
+};
+
+// addFifty :: Number -> Number
+var addFifty = x => x + 50
+
+// timesTwoDelayed :: Number -> Promise[Number, a]
+var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x * 2), 1000));
+
+<span class="fragment">var lazy = Lazy.of(thunk).map(addFifty).map(timesTwoDelayed);</span>
+
+<span class="fragment">lazy.do(1).then(console.log.bind(console, 'res A'));</span>
+<span class="fragment">// res A 300</span>
+<span class="fragment">lazy.do(2).then(console.log.bind(console, 'res B'));</span>
+<span class="fragment">// res B 500</span>
+<span class="fragment">lazy.do(3).then(console.log.bind(console, 'res C'));</span>
+<span class="fragment">// res C 700</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <!-- This slide intentionally left blank -->
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-large>
+// Either[a, b] = Left[a] ㅣ Right[b]
+
+<span class="fragment">function Either(x) { this.__value = x; };</span>
+
+<span class="fragment">function Left(...args) { Either.call(this, ...args); };
+Left.prototype = Object.create(Either.prototype);</span>
+
+<span class="fragment">function Right(...args) { Either.call(this, ...args); };
+Right.prototype = Object.create(Either.prototype);</span>
+
+<span class="fragment">// ʟeft :: a -> Left[a]</span>
+<span class="fragment">Left.of = x => new Left(x);</span>
+<span class="fragment">// ʀight :: b -> Right[b]</span>
+<span class="fragment">Right.of = x => new Right(x);</span>
+
+<span class="fragment">// map :: Either[a, x] -> (a -> b) -> Either[b, x]</span>
+<span class="fragment">Either.prototype.map = function(fn) {
+    if (this instanceof Right)
+        return Right.of(fn(this.__value));
+    else
+        return this;
+};</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// plusOne :: Number -> Number
+var plusOne = x => x + 1
+
+// timesTwo :: Number -> Number
+var timesTwo = x => x * 2
+
+// toString :: Number -> String
+var toString = x => x.toString();
+
+<span class="fragment">Right.of(0).map(plusOne).map(timesTwo).map(toString);</span>
+<span class="fragment">// Right {__value: "2"}</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-large>
+// divideTwoBy :: Number -> Eiter[Number, String]
+<span class="fragment">var divideTwoBy = function(x) {
+    if (x === 0) return Left.of("can't divide by zero");
+    else return Right.of(2 / x);
+};</span>
+
+<span class="fragment">// subtractOne :: Number -> Number
+var subtractOne = x => x - 1
+
+// subtractTwo :: Number -> Number
+var subtractTwo = x => x - 2</span>
+
+<span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy)
+    .map(console.log.bind(console, 'res'));</span>
+<span class="fragment">// res Left {__value: "can't divide by zero"}</span>
+<span class="fragment">// Right {__value: undefined}</span>
+
+<span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy);</span>
+<span class="fragment">// Right {__value: Left}</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// join :: Either[Either[a, x], y] -> Either[a, x]
+<span class="fragment">Either.prototype.join = function() {
+    return this.__value;
+};</span>
+
+<span class="fragment">// addTen :: Number -> Number
+var addTen = x => x + 10;</span>
+
+<span class="fragment">Right.of(1).map(subtractTwo).map(divideTwoBy).join()
+    .map(addTen).map(console.log.bind(console, 'res B'));</span>
+<span class="fragment">// res B 8</span>
+<span class="fragment">// Right {__value: undefined}</span>
+
+<span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy).join()
+    .map(addTen).map(console.log.bind(console, 'res A'));</span>
+<span class="fragment">// Left {__value: "can't divide by zero"}</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// chain :: Either[a, x] -> (a -> Either[b, y]) -> Either[b, y]
+<span class="fragment">Either.prototype.chain = function(fn) {
+    return this.map(fn).join();
+};</span>
+
+<span class="fragment">// unit :: b -> Right[b]</span>
+<span class="fragment">Either.of = x => new Right(x);</span>
+
+<span class="fragment">Either.of(1).map(subtractTwo).chain(divideTwoBy).map(addTen)
+    .map(toString);</span>
+<span class="fragment">// Right {__value: "8"}</span>
+<span class="fragment">Either.of(1).map(subtractOne).chain(divideTwoBy).map(addTen)
+    .map(toString);</span>
+<span class="fragment">// Left {__value: "can't divide by zero"}</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// do :: Either[a, b] -> (a -> x) -> (b -> x) -> x
+<span class="fragment">Either.prototype.do = function(l, r) {
+    if (this instanceof Right)
+        return r(this.__value);
+    else
+        return l(this.__value);
+};</span>
+
+<span class="fragment">// either :: [(a -> x), (b -> x)] -> Either[a, b] -> x</span>
+<span class="fragment">var either = (l, r) => e => e instanceof Left ? l(e.__value) : r(e.__value);</span>
+
+<span class="fragment">var a = Either.of(1).map(subtractOne).chain(divideTwoBy).map(addTen)
+    .map(toString);</span>
+<span class="fragment">var b = Either.of(1).map(subtractTwo).chain(divideTwoBy).map(addTen)
+    .map(toString);</span>
+<span class="fragment">var e = either(console.log.bind(console,'this is a left!'), console.log.bind(console, 'this is a right!'));</span>
+
+<span class="fragment">e(a);</span>
+<span class="fragment">// this is a left! can't divide by zero</span>
+<span class="fragment">e(b);</span>
+<span class="fragment">// this is a right! 8</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <!-- This slide intentionally left blank -->
+                </section>
+                <section data-background-image="assets/images/portal_cake.jpg" data-source="portal">
+                </section>
+                <section>
+                    <!-- This slide intentionally left blank -->
+                </section>
+                <section data-background-color="#ffffff" data-background-image="assets/images/diagram_category.png" data-background-size="contain" data-source="category">
+                </section>
+                <section data-background-color="#ffffff" data-background-image="assets/images/diagram_hask.png" data-background-size="50%" data-source="hask">
+                </section>
+                <section data-source="axioms">
+                    <h6>Categorías</h6>
+                    <img class="formula" src="assets/images/laws_category_assoc.svg">
+                    <img class="formula" src="assets/images/laws_category_id.svg">
+                    <img class="formula" src="assets/images/laws_category_id2.svg">
+                    <div class="fragment"><h6>Functores</h6>
+                    <img class="formula" src="assets/images/laws_functor_id.svg">
+                    <img class="formula" src="assets/images/laws_functor_composition.svg"></div>
+                    <div class="fragment"><h6>Mónadas</h6>
+                    <img class="formula" src="assets/images/laws_monad_1.svg">
+                    <img class="formula" src="assets/images/laws_monad_2.svg">
+                    <img class="formula" src="assets/images/laws_monad_3.svg">
+                    <img class="formula" src="assets/images/laws_monad_4.svg"></div>
+                </section>
+                <section>
+                    <h1>Tu código puede ser mejor</h1>
+                    <h3>y puedo demostrarlo matemáticamente</h3>
+                </section>
+                <section>
+                    <section>
+                        <img class="formula center" src="assets/images/laws_functor_composition.svg">
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim >
+fmap(compose(g, f)) ==== compose(fmap(g), fmap(f));
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// firstNthMultiples :: Number -> Number -> [Number]
+
+// flip :: (a -> b -> c) -> b -> a -> c
+var flip = fn => x => y => fn(y)(x);
+
+// firstNthNaturals :: Number -> [Number]
+var firstNthNaturals = flip(firstNthMultiples)(1);
+
+// [Number]
+var Ⅰ_ⅯⅯ = firstNthNaturals(1000000); // [1, 2, ... , 999999, 1000000]
+
+<span class="fragment">// addTwo :: Number -> Number
+var addTwo = x => x + 2;
+
+// timesThree :: Number -> Number
+var timesThree = x => x * 3;</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+<span class="fragment">var t0 = performance.now();
+compose(fmap(addTwo), fmap(timesThree))(Ⅰ_ⅯⅯ);
+var t1 = performance.now();</span>
+
+<span class="fragment">var t2 = performance.now();
+fmap(compose(addTwo, timesThree))(Ⅰ_ⅯⅯ);
+var t3 = performance.now();</span>
+
+<span class="fragment">console.log('compose(fmap(g), fmap(f))', t1 - t0, 'ms');</span>
+<span class="fragment">// "compose(fmap(g), fmap(f))" 225.44499999999994 "ms"</span>
+
+<span class="fragment">console.log('fmap(compose(g, f))', t3 - t2, 'ms');</span>
+<span class="fragment">// "fmap(compose(g,f))" 134.97500000000002 "ms"</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h2>Preguntas?</h2>
+                </section>
                 <section data-markdown>
                     <script type="text/template">
 ## Referencias
@@ -193,6 +928,7 @@ function addFourNumbers(a, b, c, d) {
 * **HS** [You Could Have Invented Monads! (And Maybe You Already Have.)](http://blog.sigfpe.com/2006/08/you-could-have-invented-monads-and.html) by Dan Piponi
 * **HS** [Functors are Containers](https://bartoszmilewski.com/2014/01/14/functors-are-containers/) by Bartosz Milewsk
 * **JS** [Faster JavaScript Through Category Theory](http://johnbender.us/2012/02/29/faster-javascript-through-category-theory/) by John Bender
+* Y [más...](https://github.com/mvaldesdeleon/functional-programming-es/blob/master/README.md#referencias)
                     </script>
                 </section>
                 <section>
@@ -232,6 +968,44 @@ function addFourNumbers(a, b, c, d) {
                 snippets.forEach(function(snippet) {
                     evil(snippet.textContent);
                 });
+            }
+
+            Reveal.addEventListener('slidechanged', checkSources);
+
+            function checkSources(event) {
+                var slide = event.currentSlide,
+                    source = slide.getAttribute('data-source');
+
+                document.querySelectorAll('.sources .source.active').forEach(function(source) {
+                    source.classList.remove('active');
+                });
+
+                if (source) {
+                    document.querySelectorAll('.sources .source[data-source="' + source + '"]').forEach(function(source) {
+                        source.classList.add('active');
+                    });
+                }
+            }
+
+            Reveal.addEventListener('fragmentshown', skipFragmentsNext);
+            Reveal.addEventListener('fragmenthidden', skipFragmentsPrev);
+
+            function skipFragmentsNext(event) {
+                var fragment = event.fragment,
+                    skip = fragment.hasAttribute('data-skip-next');
+
+                if (skip) {
+                    Reveal.nextFragment();
+                }
+            }
+
+            function skipFragmentsPrev(event) {
+                var fragment = event.fragment,
+                    skip = fragment.hasAttribute('data-skip-prev');
+
+                if (skip) {
+                    Reveal.prevFragment();
+                }
             }
         </script>
     </body>
