@@ -108,13 +108,13 @@ Composicion de funciones.
 
 Por que algo tan sencillo como llamar a una funcion con el resultado de otra merece tener nombre y apellido (en este caso, no literalmente)?
 
+[Code: Long composition]
+
 Porque lo que queremos es una forma generica de componer funciones, muchas, sin tener que andar escribiendo todos esos parentesis, donde seguro en algun lado nos vamos a olvidar alguno.
 
-[Don't panic]
+[Code: Compose function]
 
 Como en el caso de `curry`, cualquier libreria de programacion funcional va a traer una funcion `compose`, que recibe una lista de funciones (o un array de funciones) y nos devuelve una nueva funcion que recibe un argumento y que las llama a todas en orden (Ojo! De derecha a izquierda, como los matematicos!), pasandole a cada funcion el resultado de la anterior, y devolviendo lo que la ultima devuelva.
-
-[Code: Function Composition]
 
 Si a alguien le interesa, en los ejemplos del repo hay una funcion `curry` y una funcion `compose` genericas escritas a manopla con comentarios, para que vean que no hay ninguna magia negra detras.
 
@@ -140,17 +140,17 @@ Recordemos que siempre que hablemos de funciones vamos a asumir que estan currif
 
 Entonces, dado que JavaScript no es un lenguaje fuertemente tipado, la idea va a ser la siguiente:
 
-[Code: Obey the law]
+[Code: Obey the law & break the law]
 
 Si nosotros nos portamos bien y le pasamos a la funcion lo que la funcion espera, la funcion se va a portar bien y nos va a devolver lo que dice que devuelve.
-
-[Code: Break the law]
 
 Y si nosotros nos portamos mal y le damos otra cosa, la funcion tiene la libertad de hacer lo que se le de la gana, y que Dios se apiade de nuestras almas.
 
 Un ultimo ejemplo que tenemos que ver es el de funciones de orden superior (es decir, funciones que reciben funciones como argumentos y/o devuelven funciones como valor de retorno):
 
 [Code: Type Signatures, H.O.F.]
+
+[Code: Haskell `:t foldl`]
 
 Bueno, listo. Eso es todo lo que vamos a necesitar.
 
@@ -204,15 +204,13 @@ Si, podriamos usar Array.prototype.map. Pero nosotros buscamos algo mejor. Algo 
 
 [Code: Problem 1]
 
-Lo que nos gustaria es tener una funcion *carita* de orden superior, que sepa agarrar nuestras funciones que transforman numeros, y transformarlas en funciones que transformen arrays de numeros.
+Lo que nos gustaria en el fondo es tener una nueva funcion que sepa hacer lo mismo que la funcion que ya tenemos, pero sobre arrays.
 
 [Code: Problem 1]
 
-Es decir, una funcion que pueda agarrar CUALQUIER funcion, y magicamente darle el poder de operar sobre "entornos".
+Y no solo eso: Lo que *realmente* buscamos es tener una funcion generica *carita* de orden superior, que sepa agarrar nuestras funciones que transforman numeros, y transformarlas en funciones que transformen arrays de numeros.
 
-[Matrix - I know kung-fu]
-
-Bueno, vamos a escribirla. Empecemos por su firma de tipos: Recibe una funcion de numero a numero y devuelve una funcion de array de numeros a array de numeros.
+Vamos a escribirla. Empecemos por su firma de tipos: Recibe una funcion de numero a numero y devuelve una funcion de array de numeros a array de numeros.
 
 [Code: Problem 1]
 
@@ -224,6 +222,10 @@ Porque si.
 
 La forma mas facil de reconocer a una `fmap` es por su firma de tipos.
 
+El poder de `fmap` es que puede agarrar CUALQUIER funcion que pueda operar sobre los "algos", y magicamente imbuirla con el conocimiento necesario para operar sobre "entornos".
+
+[Matrix - I know kung-fu]
+
 [Code: Problem 1]
 
 Por ultimo, podemos ver que si tenemos varias funciones transformadas con `fmap`, las podemos componer entre si sin ningun problema.
@@ -232,6 +234,7 @@ Por ultimo, podemos ver que si tenemos varias funciones transformadas con `fmap`
 
 [Awesome!]
 
+[Blank]
 
 Problema 2
 ==========
@@ -264,17 +267,18 @@ Porque si.
 
 De esta manera, podemos componer todo felizmente, ya que todas nuestras funciones transforman de array en array.
 
+[Blank]
 
 Problema 3
 ==========
 
-[Code: Problem 2]
+[Code: Problem 3]
 
 El ultimo problema que tenemos que resolver es como hacemos si tenemos una funcion que transforma numeros en arrays de numeros.
 
 Dado que la funcion opera sobre numeros, nuestro primer instinto deberia ser intentar transformarla con `fmap`.
 
-[Code: Problem 2]
+[Code: Problem 3]
 
 El problema es que obtenemos un array de arrays.
 
@@ -316,15 +320,9 @@ Y si miramos la firma de tipos de la funcion que aceptan como argument, vemos qu
 
 Gracias a `fmap`, `lift` y `chain`, podemos componer los 4 tipos de funciones posibles desde y hacia numeros y arrays, y despreocuparnos por si estamos trabajando con numeros, o con arrays.
 
-[Focus]
-
 `fmap` nos permite despreocuparnos por el "entorno" y concentrarnos exclusivamente en el "algo".
 
-[Wrap]
-
 `lift`/`unit` nos permiten imbuir a un "algo" de un "entorno".
-
-[Recursive]
 
 Y `chain`/`join` nos permiten despreocuparnos por tener "entornos" anidados (ya que nada impide que un "algo" sea a su vez un "entorno").
 
@@ -347,8 +345,6 @@ En el caso de las Promises, el "algo" es cualquier cosa que podamos guardar en u
 
 Y el "entorno" le otorga dos clases de significados: En primer lugar, imbue a nuestro "algo" de un contexto temporal, ya que la Promise representa valores en el futuro. En segundo lugar, imbue a nuestro "algo" de un contexto binario "positivo"/"negativo", ya que la Promise puede ser resuelta, o bien rechazada.
 
-[Not bad]
-
 Al igual que array, lo que nosotros vamos a querer es poder operar sobre el "algo" sin preocuparnos del "entorno".
 
 Eso quiere decir que vamos a necesitar alguna de las funciones que inventamos antes.
@@ -368,6 +364,8 @@ Siguiente pregunta: Como operamos sobre el "algo" adentro de una Promise?
 Bam! Tenemos `fmap`. O tenemos `chain`?
 
 En realidad, `then` es algo a mitad de camino. Puede comportarse tanto como `fmap` como como `chain`, con una salvedad: Nunca va a generar Promises anidadas.
+
+Al que le interese profundizar, en el repo hay unos ejemplos que entran mas en detalle con esto, o podemos verlo despues de la charla.
 
 [Code: Promises]
 
@@ -515,13 +513,13 @@ Si aplicamos `map` por cada transformada, vamos a recorrer el array n veces. Si,
 
 Lo que acabamos de hacer es refactorear nuestro codigo basandonos unicamente en una expresion matematica. Y este es otro de los beneficios de aplicar este patron.
 
-[Referencias]
-
 A los que les interese, los invito a revisar las referencias, y consultar los demas axiomas, a ver que mejoras se les puede ocurrir en base a ellos.
 
 [Preguntas]
 
 Preguntas?
+
+[Referencias]
 
 [Gracias]
 
