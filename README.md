@@ -29,9 +29,9 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
     * ~~Draft~~
     * ~~Iterar~~
     * ~~Definir slides~~
-* Preparar slides
+* ~~Preparar slides~~
     * ~~Draft~~
-    * Iterar
+    * ~~Iterar~~
 * Timear y ajustar contenido
 
 ## Indice
