@@ -805,7 +805,7 @@ var addTen = x => x + 10;</span>
         return l(this.__value);
 };</span>
 
-<span class="fragment">// either :: [(a -> x), (b -> x)] -> Either[a, b] -> x</span>
+<span class="fragment">// either :: ((a -> x), (b -> x)) -> Either[a, b] -> x</span>
 <span class="fragment">var either = (l, r) => e => e instanceof Left ? l(e.__value) : r(e.__value);</span>
 
 <span class="fragment">var a = Either.of(1).map(subtractOne).chain(divideTwoBy).map(addTen)
@@ -813,7 +813,7 @@ var addTen = x => x + 10;</span>
 <span class="fragment">var b = Either.of(1).map(subtractTwo).chain(divideTwoBy).map(addTen)
     .map(toString);</span>
 
-<span class="fragment">var e = either(console.log.bind(console,'this is a left!'), console.log.bind(console, 'this is a right!'));</span>
+<span class="fragment">var e = either(console.log.bind(console, 'this is a left!'), console.log.bind(console, 'this is a right!'));</span>
 
 <span class="fragment">e(a);</span>
 <span class="fragment">// "this is a left!" "can't divide by zero"</span>
