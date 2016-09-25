@@ -24,26 +24,8 @@
         </script>
     </head>
     <body>
-        <div class="sources">
-            <div class="source" data-source="category"><a href="https://en.wikipedia.org/wiki/Category_(mathematics)" target="_blank">https://en.wikipedia.org/wiki/Category_(mathematics)</a></div>
-            <div class="source" data-source="functor"><a href="https://en.wikipedia.org/wiki/F-algebra" target="_blank">https://en.wikipedia.org/wiki/F-algebra</a></div>
-            <div class="source" data-source="monad"><a href="https://en.wikipedia.org/wiki/Monad_(category_theory)" target="_blank">https://en.wikipedia.org/wiki/Monad_(category_theory)</a></div>
-            <div class="source light" data-source="curry-a"><a href="https://en.wikipedia.org/wiki/Curry" target="_blank">https://en.wikipedia.org/wiki/Curry</a></div>
-            <div class="source light" data-source="curry-b"><a href="https://wiki.haskell.org/Haskell_Brooks_Curry" target="_blank">https://wiki.haskell.org/Haskell_Brooks_Curry</a></div>
-            <div class="source" data-source="composition"><a href="https://en.wikipedia.org/wiki/Category_theory" target="_blank">https://en.wikipedia.org/wiki/Category_theory</a></div>
-            <div class="source light" data-source="metaphysics"><a href="http://interfaithspirit.org/wp-content/uploads/2015/09/metaphysics.jpg" target="_blank">http://interfaithspirit.org/wp-content/uploads/2015/09/metaphysics.jpg</a></div>
-            <div class="source light" data-source="matrix"><a href="http://img.pandawhale.com/post-38723-Neo-I-know-kung-fu-gif-Imgur-bUjp.gif" target="_blank">http://img.pandawhale.com/post-38723-Neo-I-know-kung-fu-gif-Imgur-bUjp.gif</a></div>
-            <div class="source light" data-source="awesome"><a href="https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA" target="_blank">https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA</a></div>
-            <div class="source light" data-source="wat"><a href="wattp://wat:wat@wat:wat/wat#wat?wat" target="_blank">wat</a></div>
-            <div class="source light" data-source="portal"><a href="https://www.youtube.com/watch?v=g9xDhAKNcHs" target="_blank">https://www.youtube.com/watch?v=g9xDhAKNcHs</a></div>
-            <div class="source" data-source="hask"><a href="http://yannesposito.com/Scratch/en/blog/Category-Theory-Presentation/" target="_blank">http://yannesposito.com/Scratch/en/blog/Category-Theory-Presentation/</a></div>
-            <div class="source light" data-source="axioms"><a href="https://en.wikibooks.org/wiki/Haskell/Category_theory" target="_blank">https://en.wikibooks.org/wiki/Haskell/Category_theory</a></div>
-        </div>
         <div class="reveal">
             <div class="slides">
-                <section>
-                    <!-- This slide intentionally left blank -->
-                </section>
                 <section>
                     <h1>Tu código puede ser mejor</h1>
                     <h3>y puedo demostrarlo matemáticamente</h3>
@@ -68,51 +50,51 @@
                 </section>
                 <section>
                     <section>
-                        <pre><code class="js" data-trim data-large data-wrap>
+                        <pre><code class="js" data-trim data-large data-wrap data-noescape>
 var li = document.getElementsByTagName('li');
 
-var filtered = [];
+<span class="fragment">var filtered = [];
 for (let i = 0; i < li.length; i++) {
-    if (li[i].classList.contains('item')) {
-        filtered.push(li[i]);
-    }
-}
+    <span class="fragment">if (li[i].classList.contains('item')) {
+        <span class="fragment">filtered.push(li[i]);</span>
+    }</span>
+}</span>
 
-for (let i = 0; i < filtered.length; i++) {
-    for (let j = 0; j < filtered[i].children.length; j++) {
-        let div = document.createElement('div');
+<span class="fragment">for (let i = 0; i < filtered.length; i++) {
+    <span class="fragment">for (let j = 0; j < filtered[i].children.length; j++) {
+        <span class="fragment">let div = document.createElement('div');
 
         div.classList.add('title');
         div.innerHTML = 'Hello!';
-        filtered[i].children[j].insertAdjacentElement('afterbegin', div);
-    }
-}
+        filtered[i].children[j].insertAdjacentElement('afterbegin', div);</span>
+    }</span>
+}</span>
                         </code></pre>
                     </section>
                     <section>
-                        <pre><code class="js" data-trim>
+                        <pre><code class="js" data-trim data-noescape>
 $('li')
-    .filter('.item')
-    .children()
-        .prepend(
-            $('&lt;div&gt;')
+    <span class="fragment">.filter('.item')
+    <span class="fragment">.children()
+        <span class="fragment">.prepend(
+            <span class="fragment">$('&lt;div&gt;')
                 .addClass('title')
-                .html('Hello!')
-        );
+                .html('Hello!')</span>
+        );</span></span></span>
                         </code></pre>
                     </section>
                     <section>
-                        <pre><code class="js" data-trim data-large>
+                        <pre><code class="js" data-trim data-large data-noescape>
 var filtered = [];
 for (let i = 0; i < list.length; i++) {
-    if (list[i].age >= 18) {
-        filtered.push(list[i]);
-    }
+    <span class="fragment">if (list[i].age >= 18) {
+        <span class="fragment">filtered.push(list[i]);</span>
+    }</span>
 }
 
-var sorted = [];
+<span class="fragment">var sorted = [];
 for (let i = 0; i < filtered.length; i++) {
-    let max = i;
+    <span class="fragment">let max = i;
     for (let j = i; j < filtered.length; j++) {
         if (filtered[j].age > filtered[max].age) {
             max = j;
@@ -120,62 +102,62 @@ for (let i = 0; i < filtered.length; i++) {
 
     }
     sorted[i] = filtered[max];
-    filtered[max] = filtered[i];
-}
+    filtered[max] = filtered[i];</span>
+}</span>
 
-var uppercaseNames = [];
+<span class="fragment">var uppercaseNames = [];
 for (let i = 0; i < sorted.length; i++) {
-    uppercaseNames[i] = sorted[i].name.toUpperCase();
-}
+    <span class="fragment">uppercaseNames[i] = sorted[i].name.toUpperCase();</span>
+}</span>
                         </code></pre>
                     </section>
                     <section>
-                        <pre><code class="js" data-trim>
+                        <pre><code class="js" data-trim data-noescape>
 list
-    .filter(x => x.age >= 18)
-    .sort((a, b) => b.age - a.age)
-    .map(x => x.name.toUpperCase());
+    <span class="fragment">.filter(x => x.age >= 18)</span>
+    <span class="fragment">.sort((a, b) => b.age - a.age)</span>
+    <span class="fragment">.map(x => x.name.toUpperCase());</span>
                         </code></pre>
                     </section>
                     <section>
-                        <pre><code class="js" data-trim data-large data-wrap>
+                        <pre><code class="js" data-trim data-large data-wrap data-noescape>
 fs.readFile(path.resolve(__dirname, 'config.json'), function(err, data) {
-    if (err) {
-        console.log('Something went wrong', err);
-        return;
-    }
+    <span class="fragment">if (err) {
+        <span class="fragment">console.log('Something went wrong', err);
+        return;</span>
+    }</span>
 
-    var config = JSON.parse(data);
+    <span class="fragment">var config = JSON.parse(data);</span>
 
-    request(config.targetUrl, function(err, response, body) {
-        if (err) {
-            console.log('Something went wrong', err);
-            return;
-        }
+    <span class="fragment">request(config.targetUrl, function(err, response, body) {
+        <span class="fragment">if (err) {
+            <span class="fragment">console.log('Something went wrong', err);
+            return;</span>
+        }</span>
 
-        fs.writeFile(path.resolve(__dirname, 'target.txt'), body, function(err) {
-            if (err) {
-                console.log('Something went wrong', err);
-                return;
-            }
+        <span class="fragment">fs.writeFile(path.resolve(__dirname, 'target.txt'), body, function(err) {
+            <span class="fragment">if (err) {
+                <span class="fragment">console.log('Something went wrong', err);
+                return;</span>
+            }</span>
 
-            console.log('Success');
-        });
-    });
+            <span class="fragment">console.log('Success');</span>
+        });</span>
+    });</span>
 });
                         </code></pre>
                     </section>
                     <section>
-                        <pre><code class="js" data-trim data-wrap>
+                        <pre><code class="js" data-trim data-wrap data-noescape>
 fsp.readFile(path.resolve(__dirname, 'config.json'))
-    .then(x => JSON.parse(x))
-    .then(x => requestp(x.targetUrl))
-    .then(x => fsp.writeFile(path.resolve(__dirname, 'target.txt'), x))
-    .then(() => console.log.bind(console, 'Success'), (err) => console.log.bind(console, 'Something went wrong', err));
+    <span class="fragment">.then(x => JSON.parse(x))</span>
+    <span class="fragment">.then(x => requestp(x.targetUrl))</span>
+    <span class="fragment">.then(x => fsp.writeFile(path.resolve(__dirname, 'target.txt'), x))</span>
+    <span class="fragment">.then(() => console.log.bind(console, 'Success')<span class="fragment"> ,(err) => console.log.bind(console, 'Something went wrong', err)</span>);</span>
                         </code></pre>
                     </section>
                 </section>
-                <section>
+                <section data-blank>
                     <!-- This slide intentionally left blank -->
                 </section>
                 <section  data-background-image="assets/images/curry.jpg" data-background-size="contain" data-source="curry-a">
@@ -241,7 +223,7 @@ var y = F(x);
                         </code></pre>
                     </section>
                 </section>
-                <section>
+                <section data-blank>
                     <!-- This slide intentionally left blank -->
                 </section>
                 <section>
@@ -313,7 +295,7 @@ Prelude></span>
                         </code></pre>
                     </section>
                 </section>
-                <section>
+                <section data-blank>
                     <!-- This slide intentionally left blank -->
                 </section>
                 <section  data-background-image="assets/images/metaphysics.jpg" data-background-size="contain" data-source="metaphysics">
@@ -396,13 +378,13 @@ var timesThreeᐟ = fmap(timesThree);</span>
 var doALotOfThingsᐟ = compose(addTwoᐟ, timesThreeᐟ, timesThreeᐟ, addTwoᐟ, timesThreeᐟ);</span>
 
 <span class="fragment">doALotOfThingsᐟ(Ⅰ_Ⅹ);</span>
-<span class="fragment">// [47, 74, 101, 128, 155, 182, 209, 236, 263, 290]<span class="fragment">
+<span class="fragment">// [47, 74, 101, 128, 155, 182, 209, 236, 263, 290]</span>
                         </code></pre>
                     </section>
                     <section data-background-image="assets/images/awesome.gif" data-background-size="contain" data-source="awesome">
                     </section>
                 </section>
-                <section>
+                <section data-blank>
                     <!-- This slide intentionally left blank -->
                 </section>
                 <section>
@@ -459,7 +441,7 @@ var doALotOfThingsMoreᐟ = compose(doALotOfThingsᐟ, sumArrayᐟ);</span>
                         </code></pre>
                     </section>
                 </section>
-                <section>
+                <section data-blank>
                     <!-- This slide intentionally left blank -->
                 </section>
                 <section>
@@ -518,7 +500,7 @@ var chain = fn => compose(join, fmap(fn));</span>
                         </code></pre>
                     </section>
                 </section>
-                <section>
+                <section data-blank>
                     <!-- This slide intentionally left blank -->
                 </section>
                 <section>
@@ -543,7 +525,7 @@ var chain = fn => compose(join, fmap(fn));
                         </code></pre>
                     </section>
                 </section>
-                <section>
+                <section data-blank>
                     <!-- This slide intentionally left blank -->
                 </section>
                 <section>
@@ -597,11 +579,11 @@ var unit = x => Promise.resolve(x);
 // ʀeject :: b -> Rejected[b]
 var ʀeject = x => Promise.reject(x);
 
-// Promise[Number, a]
+<span class="fragment">// Promise[Number, a]
 var promise = new Promise(function(res, rej) {
   // Resolved[Number]
   setTimeout(res.bind(null, 100), 1000);
-});
+});</span>
                         </code></pre>
                     </section>
                     <section>
@@ -609,14 +591,14 @@ var promise = new Promise(function(res, rej) {
 // subtractFifty :: Number -> Number
 var subtractFifty = x => x - 50
 
-// timesTwoDelayed :: Number -> Promise[Number, a]
-var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x * 2), 3000));
+<span class="fragment">// timesTwoDelayed :: Number -> Promise[Number, a]
+var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x * 2), 3000));</span>
 
-// divideTwoBy :: Number -> Promise[Number, String]
+<span class="fragment">// divideTwoBy :: Number -> Promise[Number, String]
 var divideTwoBy = function(x) {
     if (x === 0) return ʀeject("can't divide by zero");
     else return unit(2 / x);
-};
+};</span>
 
 <span class="fragment">promise.then(subtractFifty).then(divideTwoBy).then(timesTwoDelayed)
     .then(console.log.bind(console, 'res A'));</span>
@@ -632,7 +614,7 @@ var divideTwoBy = function(x) {
                         </code></pre>
                     </section>
                 </section>
-                <section>
+                <section data-blank>
                     <!-- This slide intentionally left blank -->
                 </section>
                 <section>
@@ -671,8 +653,8 @@ var divideTwoBy = function(x) {
 <span class="fragment">// unit :: (a -> Promise[b, x]) -> Lazy[a -> Promise[b, x]]</span>
 <span class="fragment">Lazy.of = x => new Lazy(x);</span>
 
-<span class="fragment">// map :: Lazy[a -> Promise[b, x]] -> (b -> c) -> Lazy[a -> Promise[c, x]]
-// map :: Lazy[a -> Promise[b, x]] -> (b -> Promise[c, y]) -> Lazy[a -> Promise[c, y]]</span>
+<span class="fragment">// map :: Lazy[a -> Promise[b, x]] -> (b -> c) -> Lazy[a -> Promise[c, x]]</span>
+<span class="fragment">// map :: Lazy[a -> Promise[b, x]] -> (b -> Promise[c, y]) -> Lazy[a -> Promise[c, y]]</span>
 <span class="fragment">Lazy.prototype.map = function(fn) {
     return Lazy.of((x) => this.__value(x).then(fn));
 };</span>
@@ -690,24 +672,24 @@ function thunk(n) {
     return new Promise((res, rej) => setTimeout(res.bind(null, 100 * n), 1500 * n));
 };
 
-// addFifty :: Number -> Number
-var addFifty = x => x + 50
+<span class="fragment">// addFifty :: Number -> Number
+var addFifty = x => x + 50;</span>
 
-// timesTwoDelayed :: Number -> Promise[Number, a]
-var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x * 2), 1000));
+<span class="fragment">// timesTwoDelayed :: Number -> Promise[Number, a]
+var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x * 2), 1000));</span>
 
 <span class="fragment">var lazy = Lazy.of(thunk).map(addFifty).map(timesTwoDelayed);</span>
 
 <span class="fragment">lazy.do(1).then(console.log.bind(console, 'res A'));</span>
-<span class="fragment">// res A 300</span>
+<span class="fragment">// "res A" 300</span>
 <span class="fragment">lazy.do(2).then(console.log.bind(console, 'res B'));</span>
-<span class="fragment">// res B 500</span>
+<span class="fragment">// "res B" 500</span>
 <span class="fragment">lazy.do(3).then(console.log.bind(console, 'res C'));</span>
-<span class="fragment">// res C 700</span>
+<span class="fragment">// "res C" 700</span>
                         </code></pre>
                     </section>
                 </section>
-                <section>
+                <section data-blank>
                     <!-- This slide intentionally left blank -->
                 </section>
                 <section>
@@ -768,7 +750,7 @@ var subtractTwo = x => x - 2</span>
 
 <span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy)
     .map(console.log.bind(console, 'res'));</span>
-<span class="fragment">// res Left {__value: "can't divide by zero"}</span>
+<span class="fragment">// "res" Left {__value: "can't divide by zero"}</span>
 <span class="fragment">// Right {__value: undefined}</span>
 
 <span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy);</span>
@@ -787,7 +769,7 @@ var addTen = x => x + 10;</span>
 
 <span class="fragment">Right.of(1).map(subtractTwo).map(divideTwoBy).join()
     .map(addTen).map(console.log.bind(console, 'res B'));</span>
-<span class="fragment">// res B 8</span>
+<span class="fragment">// "res B" 8</span>
 <span class="fragment">// Right {__value: undefined}</span>
 
 <span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy).join()
@@ -830,21 +812,22 @@ var addTen = x => x + 10;</span>
     .map(toString);</span>
 <span class="fragment">var b = Either.of(1).map(subtractTwo).chain(divideTwoBy).map(addTen)
     .map(toString);</span>
+
 <span class="fragment">var e = either(console.log.bind(console,'this is a left!'), console.log.bind(console, 'this is a right!'));</span>
 
 <span class="fragment">e(a);</span>
-<span class="fragment">// this is a left! can't divide by zero</span>
+<span class="fragment">// "this is a left!" "can't divide by zero"</span>
 <span class="fragment">e(b);</span>
-<span class="fragment">// this is a right! 8</span>
+<span class="fragment">// "this is a right!" "8"</span>
                         </code></pre>
                     </section>
                 </section>
-                <section>
+                <section data-blank>
                     <!-- This slide intentionally left blank -->
                 </section>
                 <section data-background-image="assets/images/portal_cake.jpg" data-source="portal">
                 </section>
-                <section>
+                <section data-blank>
                     <!-- This slide intentionally left blank -->
                 </section>
                 <section data-background-color="#ffffff" data-background-image="assets/images/diagram_category.png" data-background-size="contain" data-source="category">
@@ -936,6 +919,24 @@ var t3 = performance.now();</span>
                 </section>
             </div>
         </div>
+        <div class="sources">
+            <div class="source" data-source="category"><a href="https://en.wikipedia.org/wiki/Category_(mathematics)" target="_blank">https://en.wikipedia.org/wiki/Category_(mathematics)</a></div>
+            <div class="source" data-source="functor"><a href="https://en.wikipedia.org/wiki/F-algebra" target="_blank">https://en.wikipedia.org/wiki/F-algebra</a></div>
+            <div class="source" data-source="monad"><a href="https://en.wikipedia.org/wiki/Monad_(category_theory)" target="_blank">https://en.wikipedia.org/wiki/Monad_(category_theory)</a></div>
+            <div class="source light" data-source="curry-a"><a href="https://en.wikipedia.org/wiki/Curry" target="_blank">https://en.wikipedia.org/wiki/Curry</a></div>
+            <div class="source light" data-source="curry-b"><a href="https://wiki.haskell.org/Haskell_Brooks_Curry" target="_blank">https://wiki.haskell.org/Haskell_Brooks_Curry</a></div>
+            <div class="source" data-source="composition"><a href="https://en.wikipedia.org/wiki/Category_theory" target="_blank">https://en.wikipedia.org/wiki/Category_theory</a></div>
+            <div class="source light" data-source="metaphysics"><a href="http://interfaithspirit.org/wp-content/uploads/2015/09/metaphysics.jpg" target="_blank">http://interfaithspirit.org/wp-content/uploads/2015/09/metaphysics.jpg</a></div>
+            <div class="source light" data-source="matrix"><a href="http://img.pandawhale.com/post-38723-Neo-I-know-kung-fu-gif-Imgur-bUjp.gif" target="_blank">http://img.pandawhale.com/post-38723-Neo-I-know-kung-fu-gif-Imgur-bUjp.gif</a></div>
+            <div class="source light" data-source="awesome"><a href="https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA" target="_blank">https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA</a></div>
+            <div class="source light" data-source="wat"><a href="wattp://wat:wat@wat:wat/wat#wat?wat" target="_blank">wat</a></div>
+            <div class="source light" data-source="portal"><a href="https://www.youtube.com/watch?v=g9xDhAKNcHs" target="_blank">https://www.youtube.com/watch?v=g9xDhAKNcHs</a></div>
+            <div class="source" data-source="hask"><a href="http://yannesposito.com/Scratch/en/blog/Category-Theory-Presentation/" target="_blank">http://yannesposito.com/Scratch/en/blog/Category-Theory-Presentation/</a></div>
+            <div class="source light" data-source="axioms"><a href="https://en.wikibooks.org/wiki/Haskell/Category_theory" target="_blank">https://en.wikibooks.org/wiki/Haskell/Category_theory</a></div>
+        </div>
+        <div class="blank">
+            <div class="text">This slide intentionally left blank</div>
+        </div>
 
         <script src="lib/js/head.min.js"></script>
         <script src="js/reveal.js"></script>
@@ -1005,6 +1006,19 @@ var t3 = performance.now();</span>
 
                 if (skip) {
                     Reveal.prevFragment();
+                }
+            }
+
+            Reveal.addEventListener('slidechanged', checkBlanks);
+
+            function checkBlanks(event) {
+                var slide = event.currentSlide,
+                    blank = slide.hasAttribute('data-blank');
+
+                if (blank) {
+                    document.querySelector('.blank .text').classList.add('active');
+                } else {
+                    document.querySelector('.blank .text').classList.remove('active');
                 }
             }
         </script>

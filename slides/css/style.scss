@@ -1,49 +1,12 @@
 @import 'fonts';
-@import 'glitch';
-@import 'flicker';
 
 $js-yellow: #f7df1e;
 $js-gray: #2e2e2e;
 $background-color: #222;
 $logo-size: 200px;
 
-$source-padding: 30px;
-
-.sources {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    font-family: "Source Sans Pro", Helvetica, sans-serif;
-    font-size: 24px;
-
-    .source {
-        display: none;
-        position: absolute;
-        bottom: $source-padding;
-        left: $source-padding;
-
-        &.active {
-            display: block;
-        }
-
-        a {
-            color: black;
-
-            &:link, &:visited, &:hover, &:active {
-                color: inherit;
-            }
-        }
-
-        &.light {
-            a {
-                color: white;
-            }
-        }
-    }
-}
+@import 'glitch';
+@import 'flicker';
 
 .slides {
     .lambda {
@@ -109,6 +72,68 @@ $source-padding: 30px;
 
         &.center {
             margin: 0 auto;
+        }
+    }
+}
+
+.sources {
+    $source-padding: 30px;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 24px;
+
+    .source {
+        display: none;
+        position: absolute;
+        bottom: $source-padding;
+        left: $source-padding;
+
+        &.active {
+            display: block;
+        }
+
+        a {
+            color: black;
+
+            &:link, &:visited, &:hover, &:active {
+                color: inherit;
+            }
+        }
+
+        &.light {
+            a {
+                color: white;
+            }
+        }
+    }
+}
+
+.blank {
+    $blank-padding: 30px;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 24px;
+
+    .text {
+        display: none;
+        padding-top: $blank-padding;
+        text-align: center;
+        color: #555;
+
+        &.active {
+            display: block;
         }
     }
 }
