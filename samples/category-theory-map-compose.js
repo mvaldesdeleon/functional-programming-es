@@ -20,9 +20,9 @@ var timesThree = x => x * 3;
 // flip :: (a -> b -> c) -> b -> a -> c
 var flip = fn => x => y => fn(y)(x);
 
-// firstNthMultiples :: Number -> Number -> [Number]
-var firstNthMultiples = n => x => (Array(n).fill()).reduce((acc, _) => acc.push(x * (acc.length + 1)) && acc, []);
-var firstNthNaturals = flip(firstNthMultiples)(1);
+// firstNthMultiplesOf :: Number -> Number -> [Number]
+var firstNthMultiplesOf = n => x => (Array(n).fill()).reduce((acc, _) => acc.push(x * (acc.length + 1)) && acc, []);
+var firstNthNaturals = flip(firstNthMultiplesOf)(1);
 
 var Ⅰ_ⅯⅯ = firstNthNaturals(1000000);
 

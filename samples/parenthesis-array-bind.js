@@ -32,17 +32,17 @@ var flatmap = bind;
 
 var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-// firstNthMultiples :: Number -> Number -> [Number]
-var firstNthMultiples = n => x => (Array(n).fill()).reduce((acc, _) => acc.push(x * (acc.length + 1)) && acc, []);
+// firstNthMultiplesOf :: Number -> Number -> [Number]
+var firstNthMultiplesOf = n => x => (Array(n).fill()).reduce((acc, _) => acc.push(x * (acc.length + 1)) && acc, []);
 
-// firstFiveMultiples :: Number -> [Number]
-var firstFiveMultiples = firstNthMultiples(5);
+// firstFiveMultiplesOf :: Number -> [Number]
+var firstFiveMultiplesOf = firstNthMultiplesOf(5);
 
-chain(firstFiveMultiples)(Ⅰ_Ⅹ);
+chain(firstFiveMultiplesOf)(Ⅰ_Ⅹ);
 // [1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]
 
-bind(Ⅰ_Ⅹ)(firstFiveMultiples);
+bind(Ⅰ_Ⅹ)(firstFiveMultiplesOf);
 // [1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]
 
-bindᐟᐟ(Ⅰ_Ⅹ)(firstFiveMultiples);
+bindᐟᐟ(Ⅰ_Ⅹ)(firstFiveMultiplesOf);
 // [1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]

@@ -447,37 +447,37 @@ var doALotOfThingsMoreᐟ = compose(doALotOfThingsᐟ, sumArrayᐟ);</span>
                 <section>
                     <section>
                         <pre><code class="js" data-trim data-noescape data-wrap data-large>
-// firstNthMultiples :: Number -> Number -> [Number]
-var firstNthMultiples = n => x => (Array(n).fill()).reduce((acc, _) => acc.push(x * (acc.length + 1)) && acc, []);
+// firstNthMultiplesOf :: Number -> Number -> [Number]
+var firstNthMultiplesOf = n => x => (Array(n).fill()).reduce((acc, _) => acc.push(x * (acc.length + 1)) && acc, []);
 
-// firstFiveMultiples :: Number -> [Number]
-var firstFiveMultiples = firstNthMultiples(5);
+// firstFiveMultiplesOf :: Number -> [Number]
+var firstFiveMultiplesOf = firstNthMultiplesOf(5);
 
 // [Number]
 var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-<span class="fragment">// firstFiveMultiplesᐟ :: [Number] -> [[Number]]
-var firstFiveMultiplesᐟ = fmap(firstFiveMultiples)</span>
+<span class="fragment">// firstFiveMultiplesOfᐟ :: [Number] -> [[Number]]
+var firstFiveMultiplesOfᐟ = fmap(firstFiveMultiplesOf)</span>
 
-<span class="fragment">firstFiveMultiplesᐟ(Ⅰ_Ⅹ);</span>
+<span class="fragment">firstFiveMultiplesOfᐟ(Ⅰ_Ⅹ);</span>
 <span class="fragment">// [[1, 2, 3, 4, 5], [2, 4, 6, 8, 10], [3, 6, 9, 12, 15], [4, 8, 12, 16, 20], [5, 10, 15, 20, 25], [6, 12, 18, 24, 30], [7, 14, 21, 28, 35], [8, 16, 24, 32, 40], [9, 18, 27, 36, 45], [10, 20, 30, 40, 50]]</span>
                         </code></pre>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape data-wrap data-large>
-// firstFiveMultiples :: Number -> [Number]
-var firstFiveMultiples = firstNthMultiples(5);
+// firstFiveMultiplesOf :: Number -> [Number]
+var firstFiveMultiplesOf = firstNthMultiplesOf(5);
 
 // [Number]
 var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-// firstFiveMultiplesᐟ :: [Number] -> [[Number]]
-var firstFiveMultiplesᐟ = fmap(firstFiveMultiples)
+// firstFiveMultiplesOfᐟ :: [Number] -> [[Number]]
+var firstFiveMultiplesOfᐟ = fmap(firstFiveMultiplesOf)
 
 <span class="fragment">// ಠ_ಠ :: [[Number]] -> [Number]</span>
 <span class="fragment">var ಠ_ಠ = xss => xss.reduce((acc, xs) => acc.concat(xs), []);</span>
 
-<span class="fragment">ಠ_ಠ(firstFiveMultiplesᐟ(Ⅰ_Ⅹ));</span>
+<span class="fragment">ಠ_ಠ(firstFiveMultiplesOfᐟ(Ⅰ_Ⅹ));</span>
 <span class="fragment">// [1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
 
 <span class="fragment">// join :: [[Number]] -> [Number]
@@ -488,14 +488,14 @@ var flatten = ಠ_ಠ;</span>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape data-wrap>
-// firstFiveMultiples :: Number -> [Number]
-<span class="fragment">// fmap firstFiveMultiples :: [Number] -> [[Number]]</span>
-<span class="fragment">// join (fmap firstFiveMultiples) :: [Number] -> [Number]</span>
+// firstFiveMultiplesOf :: Number -> [Number]
+<span class="fragment">// fmap firstFiveMultiplesOf :: [Number] -> [[Number]]</span>
+<span class="fragment">// join (fmap firstFiveMultiplesOf) :: [Number] -> [Number]</span>
 
 <span class="fragment">// chain :: (Number -> [Number]) -> ([Number] -> [Number])
 var chain = fn => compose(join, fmap(fn));</span>
 
-<span class="fragment">chain(firstFiveMultiples)(Ⅰ_Ⅹ);</span>
+<span class="fragment">chain(firstFiveMultiplesOf)(Ⅰ_Ⅹ);</span>
 <span class="fragment">// [1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
                         </code></pre>
                     </section>
@@ -863,13 +863,13 @@ fmap(compose(g, f)) ==== compose(fmap(g), fmap(f));
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape data-wrap data-large>
-// firstNthMultiples :: Number -> Number -> [Number]
+// firstNthMultiplesOf :: Number -> Number -> [Number]
 
 // flip :: (a -> b -> c) -> b -> a -> c
 var flip = fn => x => y => fn(y)(x);
 
 // firstNthNaturals :: Number -> [Number]
-var firstNthNaturals = flip(firstNthMultiples)(1);
+var firstNthNaturals = flip(firstNthMultiplesOf)(1);
 
 // [Number]
 var Ⅰ_ⅯⅯ = firstNthNaturals(1000000); // [1, 2, ... , 999999, 1000000]
