@@ -291,6 +291,10 @@ Prelude> <span class="fragment">:t foldl</span></span>
 <span class="fragment">foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
 Prelude></span>
                         </code></pre>
+                        <pre class="fragment"><code class="js" data-trim data-noescape>
+// reduce :: (b -> a -> b) -> b -> [a] -> b
+var reduce = fn => acc => xs => xs.reduce(fn, acc);
+                        </code></pre>
                     </section>
                 </section>
                 <section data-blank>
