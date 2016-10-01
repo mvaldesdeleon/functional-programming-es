@@ -1027,6 +1027,18 @@ fmap(compose(addTwo, timesThree))(Ⅰ_ⅯⅯ);
                     document.querySelector('.blank .text').classList.remove('active');
                 }
             }
+
+            document.addEventListener('keydown', function(event) {
+                var indices = Reveal.getIndices();
+
+                if (event.shiftKey) {
+                    if (event.key === 'ArrowUp') {
+                        Reveal.slide(indices.h, indices.v - 1, -1);
+                    } else if (event.key === 'ArrowDown') {
+                        Reveal.slide(indices.h, indices.v + 1, -1);
+                    }
+                }
+            });
         </script>
     </body>
 </html>
