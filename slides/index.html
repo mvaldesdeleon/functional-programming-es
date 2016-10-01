@@ -731,11 +731,6 @@ var subtractOne = x => x - 1
 // subtractTwo :: Number -> Number
 var subtractTwo = x => x - 2</span>
 
-<span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy)
-    .map(console.log.bind(console, 'res'));</span>
-<span class="fragment">// "res" Left {__value: "can't divide by zero"}</span>
-<span class="fragment">// Right {__value: undefined}</span>
-
 <span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy);</span>
 <span class="fragment">// Right {__value: Left}</span>
                         </code></pre>
