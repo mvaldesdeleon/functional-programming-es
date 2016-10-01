@@ -110,11 +110,25 @@ $logo-size: 200px;
         }
     }
 
+    section[data-code-title] {
+        > pre {
+            font-size: 2em;
+        }
+    }
+
+    section[data-image-title] {
+        > img {
+            height: 10vh;
+        }
+    }
+
     .formula {
-        display: block;
+        height: 4vh;
+        margin-right: 1vw;
         background-color: white;
 
         &.center {
+            display: block;
             margin: 0 auto;
         }
     }
