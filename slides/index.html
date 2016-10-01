@@ -255,19 +255,19 @@ var addᐟ = x => y => x + y;</span>
 var addTwo = x => x + 2;
 
 <span class="fragment">addTwo(3);</span>
-<span class="fragment">// 5</span>
+<span class="fragment output">5</span>
 
 <span class="fragment">addTwo('hello');
-<span class="fragment">// "hello2"</span>
+<span class="fragment output">"hello2"</span>
 
 addTwo([]);
-<span class="fragment">// "2"</span>
+<span class="fragment output">"2"</span>
 
 addTwo({});
-<span class="fragment">// "[object Object]2"</span>
+<span class="fragment output">"[object Object]2"</span>
 
 addTwo(undefined);
-<span class="fragment">// NaN</span></span>
+<span class="fragment output">NaN</span></span>
                         </code></pre>
                     </section>
                     <section>
@@ -349,7 +349,7 @@ var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 <span class="fragment">addTwoᐟ = ಠ_ಠ(addTwo);</span>
 
 <span class="fragment">addTwoᐟ(Ⅰ_Ⅹ);</span>
-<span class="fragment">// [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]</span>
+<span class="fragment output">[3, 4, 5, 6, 7, 8, 9, 10, 11, 12]</span>
 
 <span class="fragment">// fmap :: (Number -> Number) -> ([Number] -> [Number])
 var fmap = ಠ_ಠ;</span>
@@ -375,7 +375,7 @@ var timesThreeᐟ = fmap(timesThree);</span>
 var doALotOfThingsᐟ = compose(addTwoᐟ, timesThreeᐟ, timesThreeᐟ, addTwoᐟ, timesThreeᐟ);</span>
 
 <span class="fragment">doALotOfThingsᐟ(Ⅰ_Ⅹ);</span>
-<span class="fragment">// [47, 74, 101, 128, 155, 182, 209, 236, 263, 290]</span>
+<span class="fragment output">[47, 74, 101, 128, 155, 182, 209, 236, 263, 290]</span>
                         </code></pre>
                     </section>
                 </section>
@@ -395,7 +395,7 @@ var two = 2;
 <span class="fragment">var ಠ_ಠ = x => [x];</span>
 
 <span class="fragment">doALotOfThingsᐟ(ಠ_ಠ(two));</span>
-<span class="fragment">// 74</span>
+<span class="fragment output">74</span>
 
 <span class="fragment">// unit :: Number -> [Number]
 var unit = ಠ_ಠ;</span>
@@ -420,7 +420,7 @@ var sumArray = reduce((acc, x) => acc + x)(0);
 var doALotOfThingsMoreᐟ = compose(doALotOfThingsᐟ, sumArrayᐟ);</span>
 
 <span class="fragment">doALotOfThingsMoreᐟ(Ⅰ_Ⅹ);</span>
-<span class="fragment">// [1505]</span>
+<span class="fragment output">[1505]</span>
                         </code></pre>
                     </section>
                 </section>
@@ -443,7 +443,7 @@ var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var firstFiveMultiplesOfᐟ = fmap(firstFiveMultiplesOf)</span>
 
 <span class="fragment">firstFiveMultiplesOfᐟ(Ⅰ_Ⅹ);</span>
-<span class="fragment">// [[1, 2, 3, 4, 5], [2, 4, 6, 8, 10], [3, 6, 9, 12, 15], [4, 8, 12, 16, 20], [5, 10, 15, 20, 25], [6, 12, 18, 24, 30], [7, 14, 21, 28, 35], [8, 16, 24, 32, 40], [9, 18, 27, 36, 45], [10, 20, 30, 40, 50]]</span>
+<span class="fragment output">[[1, 2, 3, 4, 5], [2, 4, 6, 8, 10], [3, 6, 9, 12, 15], [4, 8, 12, 16, 20], [5, 10, 15, 20, 25], [6, 12, 18, 24, 30], [7, 14, 21, 28, 35], [8, 16, 24, 32, 40], [9, 18, 27, 36, 45], [10, 20, 30, 40, 50]]</span>
                         </code></pre>
                     </section>
                     <section>
@@ -461,7 +461,7 @@ var firstFiveMultiplesOfᐟ = fmap(firstFiveMultiplesOf)
 <span class="fragment">var ಠ_ಠ = xss => xss.reduce((acc, xs) => acc.concat(xs), []);</span>
 
 <span class="fragment">ಠ_ಠ(firstFiveMultiplesOfᐟ(Ⅰ_Ⅹ));</span>
-<span class="fragment">// [1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
+<span class="fragment output">[1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
 
 <span class="fragment">// join :: [[Number]] -> [Number]
 var join = ಠ_ಠ;</span>
@@ -479,7 +479,7 @@ var flatten = ಠ_ಠ;</span>
 var chain = fn => compose(join, fmap(fn));</span>
 
 <span class="fragment">chain(firstFiveMultiplesOf)(Ⅰ_Ⅹ);</span>
-<span class="fragment">// [1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
+<span class="fragment output">[1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
                         </code></pre>
                     </section>
                 </section>
@@ -522,7 +522,7 @@ var promise = new Promise(function(res, rej) {
 });</span>
 
 <span class="fragment">promise.then(console.log.bind(console, 'res A'));</span>
-<span class="fragment">// "res A" 100</span>
+<span class="fragment output console-log">"res A" 100</span>
                         </code></pre>
                     </section>
                     <section>
@@ -540,10 +540,10 @@ var addFifty = x => x + 50
 <span class="fragment">var promiseᐟ = promise.then(addFifty);</span>
 
 <span class="fragment">promise.then(console.log.bind(console, 'res B'));
-<span class="fragment" data-skip-next>// "res B" 100</span>
+<span class="fragment output console-log" data-skip-next>"res B" 100</span>
 
 promiseᐟ.then(console.log.bind(console, 'res C'));
-<span class="fragment" data-skip-prev>// "res C" 150</span></span>
+<span class="fragment output console-log" data-skip-prev>"res C" 150</span></span>
 
 <span class="fragment">// timesTwoDelayed :: Number -> Promise[Number, a]
 var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x * 2), 1000));</span>
@@ -551,7 +551,7 @@ var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x
 <span class="fragment">var promiseᐟᐟ = promise.then(addFifty).then(timesTwoDelayed);</span>
 
 <span class="fragment">promiseᐟᐟ.then(console.log.bind(console, 'res D'));</span>
-<span class="fragment">// "res D" 300</span>
+<span class="fragment output console-log">"res D" 300</span>
                         </code></pre>
                     </section>
                     <section>
@@ -584,7 +584,7 @@ var divideTwoBy = function(x) {
 
 <span class="fragment">promise.then(subtractFifty).then(divideTwoBy).then(timesTwoDelayed)
     .then(console.log.bind(console, 'res A'));</span>
-<span class="fragment">// "res A" 0.08</span>
+<span class="fragment output console-log">"res A" 0.08</span>
 
 <span class="fragment">promise.then(subtractFifty).then(subtractFifty).then(divideTwoBy)
     .then(timesTwoDelayed).then(console.log.bind(console, 'res B'));</span>
@@ -592,7 +592,7 @@ var divideTwoBy = function(x) {
 
 <span class="fragment">promise.then(subtractFifty).then(subtractFifty).then(divideTwoBy)
     .then(timesTwoDelayed).then(console.log.bind(console, 'res C'), console.log.bind(console, 'rej C'));</span>
-<span class="fragment">// "rej C" "can't divide by zero"</span>
+<span class="fragment output console-log">"rej C" "can't divide by zero"</span>
                         </code></pre>
                     </section>
                 </section>
@@ -603,29 +603,29 @@ var divideTwoBy = function(x) {
                     <section>
                         <pre><code class="js" data-trim data-noescape data-wrap data-large>
 2+2;
-<span class="fragment">// 4</span>
+<span class="fragment output">4</span>
 
 <span class="fragment">var four = 2 + 2;</span>
 
 <span class="fragment">four;</span>
-<span class="fragment">// 4</span>
+<span class="fragment output">4</span>
 
 <span class="fragment">var four = function() {
     return 2 + 2;
 };</span>
 
 <span class="fragment">four();</span>
-<span class="fragment">// 4</span>
+<span class="fragment output">4</span>
 
 <span class="fragment">function thunk() {
     return new Promise((res, rej) => setTimeout(res.bind(null, 100), 3000));
 }</span>
 
 <span class="fragment">thunk().then(console.log.bind(console, 'res A'));</span>
-<span class="fragment">// "res A" 300</span>
+<span class="fragment output console-log">"res A" 300</span>
 
 <span class="fragment">thunk().then(console.log.bind(console, 'res B'));</span>
-<span class="fragment">// "res B" 300</span>
+<span class="fragment output console-log">"res B" 300</span>
                         </code></pre>
                     </section>
                     <section>
@@ -664,11 +664,11 @@ var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x
 <span class="fragment">var lazy = Lazy.of(thunk).map(addFifty).map(timesTwoDelayed);</span>
 
 <span class="fragment">lazy.do(1).then(console.log.bind(console, 'res A'));</span>
-<span class="fragment">// "res A" 300</span>
+<span class="fragment output console-log">"res A" 300</span>
 <span class="fragment">lazy.do(2).then(console.log.bind(console, 'res B'));</span>
-<span class="fragment">// "res B" 500</span>
+<span class="fragment output console-log">"res B" 500</span>
 <span class="fragment">lazy.do(3).then(console.log.bind(console, 'res C'));</span>
-<span class="fragment">// "res C" 700</span>
+<span class="fragment output console-log">"res C" 700</span>
                         </code></pre>
                     </section>
                 </section>
@@ -714,7 +714,7 @@ var timesTwo = x => x * 2
 var toString = x => x.toString();
 
 <span class="fragment">Right.of(0).map(plusOne).map(timesTwo).map(toString);</span>
-<span class="fragment">// Right {__value: "2"}</span>
+<span class="fragment output">Right {__value: "2"}</span>
                         </code></pre>
                     </section>
                     <section>
@@ -732,7 +732,7 @@ var subtractOne = x => x - 1
 var subtractTwo = x => x - 2</span>
 
 <span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy);</span>
-<span class="fragment">// Right {__value: Left}</span>
+<span class="fragment output">Right {__value: Left {__value: "can't divide by zero"}}</span>
                         </code></pre>
                     </section>
                     <section>
@@ -747,12 +747,12 @@ var addTen = x => x + 10;</span>
 
 <span class="fragment">Right.of(1).map(subtractTwo).map(divideTwoBy).join()
     .map(addTen).map(console.log.bind(console, 'res B'));</span>
-<span class="fragment">// "res B" 8</span>
-<span class="fragment">// Right {__value: undefined}</span>
+<span class="fragment output console-log">"res B" 8</span>
+<span class="fragment output">Right {__value: undefined}</span>
 
 <span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy).join()
     .map(addTen).map(console.log.bind(console, 'res A'));</span>
-<span class="fragment">// Left {__value: "can't divide by zero"}</span>
+<span class="fragment output">Left {__value: "can't divide by zero"}</span>
                         </code></pre>
                     </section>
                     <section>
@@ -767,10 +767,11 @@ var addTen = x => x + 10;</span>
 
 <span class="fragment">Either.of(1).map(subtractTwo).chain(divideTwoBy).map(addTen)
     .map(toString);</span>
-<span class="fragment">// Right {__value: "8"}</span>
+<span class="fragment output">Right {__value: "8"}</span>
+
 <span class="fragment">Either.of(1).map(subtractOne).chain(divideTwoBy).map(addTen)
     .map(toString);</span>
-<span class="fragment">// Left {__value: "can't divide by zero"}</span>
+<span class="fragment output">Left {__value: "can't divide by zero"}</span>
                         </code></pre>
                     </section>
                     <section>
@@ -794,9 +795,10 @@ var addTen = x => x + 10;</span>
 <span class="fragment">var e = either(console.log.bind(console, 'this is a left!'), console.log.bind(console, 'this is a right!'));</span>
 
 <span class="fragment">e(a);</span>
-<span class="fragment">// "this is a left!" "can't divide by zero"</span>
+<span class="fragment output console-log">"this is a left!" "can't divide by zero"</span>
+
 <span class="fragment">e(b);</span>
-<span class="fragment">// "this is a right!" "8"</span>
+<span class="fragment output console-log">"this is a right!" "8"</span>
                         </code></pre>
                     </section>
                 </section>
@@ -856,19 +858,19 @@ var timesThree = x => x * 3;</span>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape>
-<span class="fragment"><span class="fragment" data-skip-next>var t0 = performance.now();</span>
+<span class="fragment" data-skip-next>var t0 = performance.now();</span>
 compose(fmap(addTwo), fmap(timesThree))(Ⅰ_ⅯⅯ);
 <span class="fragment" data-skip-next data-skip-prev>var t1 = performance.now();</span>
 
 <span class="fragment" data-skip-next data-skip-prev>var t2 = performance.now();</span>
 fmap(compose(addTwo, timesThree))(Ⅰ_ⅯⅯ);
-<span class="fragment" data-skip-prev>var t3 = performance.now();</span></span>
+<span class="fragment" data-skip-prev>var t3 = performance.now();</span>
 
-<span class="fragment">console.log('compose(fmap(g), fmap(f))', t1 - t0, 'ms');</span>
-<span class="fragment">// "compose(fmap(g), fmap(f))" 225.44499999999994 "ms"</span>
+<span class="fragment">console.log('compose(fmap(g), fmap(f))', t1 - t0, 'ms');
+<span class="fragment output console-log">"compose(fmap(g), fmap(f))" 225.44499999999994 "ms"</span>
 
-<span class="fragment">console.log('fmap(compose(g, f))', t3 - t2, 'ms');</span>
-<span class="fragment">// "fmap(compose(g,f))" 134.97500000000002 "ms"</span>
+console.log('fmap(compose(g, f))', t3 - t2, 'ms');</span>
+<span class="fragment output console-log">"fmap(compose(g,f))" 134.97500000000002 "ms"</span></span>
                         </code></pre>
                     </section>
                     <section data-background-image="assets/images/awesome.gif" data-background-size="contain" data-source="awesome">

@@ -71,6 +71,21 @@ $logo-size: 200px;
             background-color: #0f0f0f;
         }
 
+        &.hljs.js {
+            .output {
+                &::before {
+                    content: '>> ';
+                    color: #765b45;
+                }
+
+                &.console-log {
+                    &::before {
+                        content: '>> [log] '
+                    }
+                }
+            }
+        }
+
         & .fragment.highlight-current {
             opacity: 1;
             visibility: visible;

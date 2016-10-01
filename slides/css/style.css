@@ -78,51 +78,51 @@
 
 @keyframes glitch-anim-1 {
   0% {
-    clip: rect(118px, 200px, 50px, 0); }
+    clip: rect(145px, 200px, 85px, 0); }
   10% {
-    clip: rect(125px, 200px, 32px, 0); }
+    clip: rect(67px, 200px, 154px, 0); }
   20% {
-    clip: rect(116px, 200px, 88px, 0); }
+    clip: rect(59px, 200px, 161px, 0); }
   30% {
-    clip: rect(87px, 200px, 113px, 0); }
+    clip: rect(158px, 200px, 87px, 0); }
   40% {
-    clip: rect(66px, 200px, 34px, 0); }
+    clip: rect(32px, 200px, 188px, 0); }
   50% {
-    clip: rect(77px, 200px, 120px, 0); }
+    clip: rect(45px, 200px, 179px, 0); }
   60% {
-    clip: rect(18px, 200px, 170px, 0); }
+    clip: rect(118px, 200px, 82px, 0); }
   70% {
-    clip: rect(124px, 200px, 81px, 0); }
+    clip: rect(37px, 200px, 199px, 0); }
   80% {
-    clip: rect(67px, 200px, 188px, 0); }
+    clip: rect(170px, 200px, 195px, 0); }
   90% {
-    clip: rect(109px, 200px, 179px, 0); }
+    clip: rect(112px, 200px, 142px, 0); }
   100% {
-    clip: rect(61px, 200px, 105px, 0); } }
+    clip: rect(193px, 200px, 190px, 0); } }
 
 @keyframes glitch-anim-2 {
   0% {
-    clip: rect(31px, 200px, 152px, 0); }
+    clip: rect(74px, 200px, 77px, 0); }
   10% {
-    clip: rect(5px, 200px, 156px, 0); }
+    clip: rect(80px, 200px, 53px, 0); }
   20% {
-    clip: rect(182px, 200px, 181px, 0); }
+    clip: rect(50px, 200px, 113px, 0); }
   30% {
-    clip: rect(151px, 200px, 109px, 0); }
+    clip: rect(193px, 200px, 106px, 0); }
   40% {
-    clip: rect(177px, 200px, 156px, 0); }
+    clip: rect(121px, 200px, 48px, 0); }
   50% {
-    clip: rect(75px, 200px, 144px, 0); }
+    clip: rect(64px, 200px, 62px, 0); }
   60% {
-    clip: rect(177px, 200px, 29px, 0); }
+    clip: rect(78px, 200px, 152px, 0); }
   70% {
-    clip: rect(73px, 200px, 66px, 0); }
+    clip: rect(119px, 200px, 83px, 0); }
   80% {
-    clip: rect(200px, 200px, 180px, 0); }
+    clip: rect(96px, 200px, 134px, 0); }
   90% {
-    clip: rect(29px, 200px, 39px, 0); }
+    clip: rect(84px, 200px, 98px, 0); }
   100% {
-    clip: rect(130px, 200px, 182px, 0); } }
+    clip: rect(11px, 200px, 190px, 0); } }
 
 .slides .js-logo {
   width: 200px;
@@ -156,6 +156,13 @@
 
 .slides pre > code.hljs.bash {
   background-color: #0f0f0f; }
+
+.slides pre > code.hljs.js .output::before {
+  content: '>> ';
+  color: #765b45; }
+
+.slides pre > code.hljs.js .output.console-log::before {
+  content: '>> [log] '; }
 
 .slides pre > code .fragment.highlight-current {
   opacity: 1;
