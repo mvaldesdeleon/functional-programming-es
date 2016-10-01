@@ -51,109 +51,115 @@
                 <section>
                     <section>
                         <pre><code class="js" data-trim data-large data-wrap data-noescape>
-var li = document.getElementsByTagName('li');
+<span class="fragment highlight-current">var li = document.getElementsByTagName('li');</span>
 
-<span class="fragment">var filtered = [];
-for (let i = 0; i < li.length; i++) {
-    <span class="fragment">if (li[i].classList.contains('item')) {
-        <span class="fragment">filtered.push(li[i]);</span>
-    }</span>
-}</span>
+var filtered = [];
+<span class="fragment highlight-current">for (let i = 0; i < li.length; i++) {</span>
+    <span class="fragment highlight-current">if (li[i].classList.contains('item')) {</span>
+        <span class="fragment highlight-current">filtered.push(li[i]);</span>
+    }
+}
 
-<span class="fragment">for (let i = 0; i < filtered.length; i++) {
-    <span class="fragment">for (let j = 0; j < filtered[i].children.length; j++) {
-        <span class="fragment">let div = document.createElement('div');
+<span class="fragment highlight-current">for (let i = 0; i < filtered.length; i++) {</span>
+    <span class="fragment highlight-current">for (let j = 0; j < filtered[i].children.length; j++) {</span>
+        <span class="fragment highlight-current">let div = document.createElement('div');</span>
 
-        div.classList.add('title');
-        div.innerHTML = 'Hello!';
-        filtered[i].children[j].insertAdjacentElement('afterbegin', div);</span>
-    }</span>
-}</span>
+        <span class="fragment highlight-current">div.classList.add('title');</span>
+        <span class="fragment highlight-current">div.innerHTML = 'Hello!';</span>
+        <span class="fragment highlight-current">filtered[i].children[j].insertAdjacentElement('afterbegin', div);</span>
+    }
+}
+<span class="fragment"></span>
                         </code></pre>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape>
-$('li')
-    <span class="fragment">.filter('.item')
-    <span class="fragment">.children()
-        <span class="fragment">.prepend(
-            <span class="fragment">$('&lt;div&gt;')
-                .addClass('title')
-                .html('Hello!')</span>
-        );</span></span></span>
+<span class="fragment highlight-current">$('li')</span>
+    <span class="fragment highlight-current">.filter('.item')</span>
+    <span class="fragment highlight-current">.children()</span>
+        <span class="fragment highlight-current">.prepend</span>(
+            <span class="fragment highlight-current">$('&lt;div&gt;')</span>
+                <span class="fragment highlight-current">.addClass('title')</span>
+                <span class="fragment highlight-current">.html('Hello!')</span>
+        );
+<span class="fragment"></span>
                         </code></pre>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-large data-noescape>
 var filtered = [];
-for (let i = 0; i < list.length; i++) {
-    <span class="fragment">if (list[i].age >= 18) {
-        <span class="fragment">filtered.push(list[i]);</span>
-    }</span>
+<span class="fragment highlight-current">for (let i = 0; i < list.length; i++) {</span>
+    <span class="fragment highlight-current">if (list[i].age >= 18) {</span>
+        <span class="fragment highlight-current">filtered.push(list[i]);</span>
+    }
 }
 
-<span class="fragment">var sorted = [];
-for (let i = 0; i < filtered.length; i++) {
-    <span class="fragment">let max = i;
-    for (let j = i; j < filtered.length; j++) {
-        if (filtered[j].age > filtered[max].age) {
-            max = j;
+var sorted = [];
+<span class="fragment highlight-current">for (let i = 0; i < filtered.length; i++) {</span>
+    <span class="fragment highlight-current">let max = i;</span>
+    <span class="fragment highlight-current">for (let j = i; j < filtered.length; j++) {</span>
+        <span class="fragment highlight-current">if (filtered[j].age > filtered[max].age) {</span>
+            <span class="fragment highlight-current">max = j;</span>
         }
 
     }
-    sorted[i] = filtered[max];
-    filtered[max] = filtered[i];</span>
-}</span>
+    <span class="fragment highlight-current">sorted[i] = filtered[max];</span>
+    <span class="fragment highlight-current">filtered[max] = filtered[i];</span>
+}
 
-<span class="fragment">var uppercaseNames = [];
-for (let i = 0; i < sorted.length; i++) {
-    <span class="fragment">uppercaseNames[i] = sorted[i].name.toUpperCase();</span>
-}</span>
+var uppercaseNames = [];
+<span class="fragment highlight-current">for (let i = 0; i < sorted.length; i++) {</span>
+    <span class="fragment highlight-current">uppercaseNames[i] = sorted[i].name.toUpperCase();</span>
+}
+<span class="fragment"></span>
                         </code></pre>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape>
 list
-    <span class="fragment">.filter(x => x.age >= 18)</span>
-    <span class="fragment">.sort((a, b) => b.age - a.age)</span>
-    <span class="fragment">.map(x => x.name.toUpperCase());</span>
+    <span class="fragment highlight-current">.filter(x => x.age >= 18)</span>
+    <span class="fragment highlight-current">.sort((a, b) => b.age - a.age)</span>
+    <span class="fragment highlight-current">.map(x => x.name.toUpperCase());</span>
+<span class="fragment"></span>
                         </code></pre>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-large data-wrap data-noescape>
-fs.readFile(path.resolve(__dirname, 'config.json'), function(err, data) {
-    <span class="fragment">if (err) {
-        <span class="fragment">console.log('Something went wrong', err);
+<span class="fragment highlight-current">fs.readFile(path.resolve(__dirname, 'config.json'), function(err, data) {</span>
+    <span class="fragment highlight-current">if (err) {</span>
+        <span class="fragment highlight-current">console.log('Something went wrong', err);
         return;</span>
-    }</span>
+    }
 
-    <span class="fragment">var config = JSON.parse(data);</span>
+    <span class="fragment highlight-current">var config = JSON.parse(data);</span>
 
-    <span class="fragment">request(config.targetUrl, function(err, response, body) {
-        <span class="fragment">if (err) {
-            <span class="fragment">console.log('Something went wrong', err);
+    <span class="fragment highlight-current">request(config.targetUrl, function(err, response, body) {</span>
+        <span class="fragment highlight-current">if (err) {</span>
+            <span class="fragment highlight-current">console.log('Something went wrong', err);
             return;</span>
-        }</span>
+        }
 
-        <span class="fragment">fs.writeFile(path.resolve(__dirname, 'target.txt'), body, function(err) {
-            <span class="fragment">if (err) {
-                <span class="fragment">console.log('Something went wrong', err);
+        <span class="fragment highlight-current">fs.writeFile(path.resolve(__dirname, 'target.txt'), body, function(err) {</span>
+            <span class="fragment highlight-current">if (err) {</span>
+                <span class="fragment highlight-current">console.log('Something went wrong', err);
                 return;</span>
-            }</span>
+            }
 
-            <span class="fragment">console.log('Success');</span>
-        });</span>
-    });</span>
+            <span class="fragment highlight-current">console.log('Success');</span>
+        });
+    });
 });
+<span class="fragment"></span>
                         </code></pre>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-wrap data-noescape>
-fsp.readFile(path.resolve(__dirname, 'config.json'))
-    <span class="fragment">.then(x => JSON.parse(x))</span>
-    <span class="fragment">.then(x => requestp(x.targetUrl))</span>
-    <span class="fragment">.then(x => fsp.writeFile(path.resolve(__dirname, 'target.txt'), x))</span>
-    <span class="fragment">.then(() => console.log.bind(console, 'Success')<span class="fragment"> ,(err) => console.log.bind(console, 'Something went wrong', err)</span>);</span>
+<span class="fragment highlight-current">fsp.readFile(path.resolve(__dirname, 'config.json'))</span>
+    <span class="fragment highlight-current">.then(x => JSON.parse(x))</span>
+    <span class="fragment highlight-current">.then(x => requestp(x.targetUrl))</span>
+    <span class="fragment highlight-current">.then(x => fsp.writeFile(path.resolve(__dirname, 'target.txt'), x))</span>
+    .then(<span class="fragment highlight-current">() => console.log.bind(console, 'Success')</span> ,<span class="fragment highlight-current">(err) => console.log.bind(console, 'Something went wrong', err)</span>);
+<span class="fragment"></span>
                         </code></pre>
                     </section>
                 </section>

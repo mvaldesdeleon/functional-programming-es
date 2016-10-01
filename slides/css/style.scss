@@ -66,6 +66,19 @@ $logo-size: 200px;
         white-space: pre-wrap;
     }
 
+    pre > code .fragment.highlight-current {
+        opacity: 1;
+        visibility: visible;
+
+        &.current-fragment {
+            color: #17ff2e !important;
+
+            span {
+                color: #17ff2e !important;
+            }
+        }
+    }
+
     .formula {
         display: block;
         background-color: white;
