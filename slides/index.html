@@ -630,6 +630,7 @@ var divideTwoBy = function(x) {
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// Lazy[a -> Promise[b, x]]
 <span class="fragment">function Lazy(x) { this.__value = x; };</span>
 
 <span class="fragment">// unit :: (a -> Promise[b, x]) -> Lazy[a -> Promise[b, x]]</span>
