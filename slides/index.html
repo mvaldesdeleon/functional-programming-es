@@ -883,13 +883,13 @@ var timesThree = x => x * 3;</span>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape>
-<span class="fragment">var t0 = performance.now();
+<span class="fragment"><span class="fragment" data-skip-next>var t0 = performance.now();</span>
 compose(fmap(addTwo), fmap(timesThree))(Ⅰ_ⅯⅯ);
-var t1 = performance.now();</span>
+<span class="fragment" data-skip-next data-skip-prev>var t1 = performance.now();</span>
 
-<span class="fragment">var t2 = performance.now();
+<span class="fragment" data-skip-next data-skip-prev>var t2 = performance.now();</span>
 fmap(compose(addTwo, timesThree))(Ⅰ_ⅯⅯ);
-var t3 = performance.now();</span>
+<span class="fragment" data-skip-prev>var t3 = performance.now();</span></span>
 
 <span class="fragment">console.log('compose(fmap(g), fmap(f))', t1 - t0, 'ms');</span>
 <span class="fragment">// "compose(fmap(g), fmap(f))" 225.44499999999994 "ms"</span>
