@@ -66,6 +66,10 @@ $logo-size: 200px;
         white-space: pre-wrap;
     }
 
+    pre > code.hljs.bash {
+        background-color: #0f0f0f;
+    }
+
     pre > code .fragment.highlight-current {
         opacity: 1;
         visibility: visible;
