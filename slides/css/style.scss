@@ -58,27 +58,58 @@ $logo-size: 200px;
         }
     }
 
-    pre > code[data-large] {
-        max-height: initial;
-    }
+    pre > code {
+        &[data-large] {
+            max-height: initial;
+        }
 
-    pre > code[data-wrap] {
-        white-space: pre-wrap;
-    }
+        &[data-wrap] {
+            white-space: pre-wrap;
+        }
 
-    pre > code.hljs.bash {
-        background-color: #0f0f0f;
-    }
+        &.hljs.bash {
+            background-color: #0f0f0f;
+        }
 
-    pre > code .fragment.highlight-current {
-        opacity: 1;
-        visibility: visible;
+        & .fragment.highlight-current {
+            opacity: 1;
+            visibility: visible;
 
-        &.current-fragment {
-            color: #17ff2e !important;
-
-            span {
+            &.current-fragment {
                 color: #17ff2e !important;
+
+                span {
+                    color: #17ff2e !important;
+                }
+            }
+        }
+
+        & .fragment.always-visible {
+            opacity: 1;
+            visibility: visible;
+
+            &.first {
+                > .second {
+                    .first, .second {
+                        transition: all .2s ease;
+                    }
+                }
+
+                &.visible {
+                    > .second:not(.visible) {
+                        .second {
+                            opacity: 0;
+                            visibility: hidden;
+                        }
+                    }
+
+                    > .second.visible {
+                        .first {
+                            opacity: 0;
+                            visibility: hidden;
+                        }
+                    }
+                }
             }
         }
     }

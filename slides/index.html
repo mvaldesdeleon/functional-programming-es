@@ -496,17 +496,17 @@ var chain = fn => compose(join, fmap(fn));</span>
 // fmap :: (Number -> Number) -> ([Number] -> [Number])
 var fmap = fn => xs => xs.map(fn);
 
-<span class="fragment fade-out" data-skip-next>// unit :: Number -> [Number]
+<span class="fragment always-visible first"><span class="fragment always-visible second"><span class="first">// unit :: Number -> [Number]
 var unit = x => [x];</span>
 
-// lift :: ([Number] -> Number) -> ([Number] -> [Number])
-var lift = fn => compose(unit, fn);
+<span class="second">// lift :: ([Number] -> Number) -> ([Number] -> [Number])
+var lift = fn => compose(unit, fn);</span>
 
-<span class="fragment fade-out" data-skip-prev>// join :: [[Number]] -> [Number]
+<span class="first">// join :: [[Number]] -> [Number]
 var join = xss => xss.reduce((acc, xs) => acc.concat(xs), []);</span>
 
-// chain :: (Number -> [Number]) -> ([Number] -> [Number])
-var chain = fn => compose(join, fmap(fn));
+<span class="second">// chain :: (Number -> [Number]) -> ([Number] -> [Number])
+var chain = fn => compose(join, fmap(fn));</span></span></span>
                         </code></pre>
                     </section>
                 </section>
