@@ -127,22 +127,22 @@ list
                         <pre><code class="js" data-trim data-large data-wrap data-noescape>
 <span class="fragment highlight-current">fs.readFile(path.resolve(__dirname, 'config.json'), function(err, data) {</span>
     <span class="fragment highlight-current">if (err) {</span>
-        <span class="fragment highlight-current">console.log('Something went wrong', err);
-        return;</span>
+        <span class="fragment highlight-current">console.log('Something went wrong', err);</span>
+        return;
     }
 
     <span class="fragment highlight-current">var config = JSON.parse(data);</span>
 
     <span class="fragment highlight-current">request(config.targetUrl, function(err, response, body) {</span>
         <span class="fragment highlight-current">if (err) {</span>
-            <span class="fragment highlight-current">console.log('Something went wrong', err);
-            return;</span>
+            <span class="fragment highlight-current">console.log('Something went wrong', err);</span>
+            return;
         }
 
         <span class="fragment highlight-current">fs.writeFile(path.resolve(__dirname, 'target.txt'), body, function(err) {</span>
             <span class="fragment highlight-current">if (err) {</span>
-                <span class="fragment highlight-current">console.log('Something went wrong', err);
-                return;</span>
+                <span class="fragment highlight-current">console.log('Something went wrong', err);</span>
+                return;
             }
 
             <span class="fragment highlight-current">console.log('Success');</span>

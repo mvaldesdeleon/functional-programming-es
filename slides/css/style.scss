@@ -76,11 +76,7 @@ $logo-size: 200px;
             visibility: visible;
 
             &.current-fragment {
-                color: #17ff2e !important;
-
-                span {
-                    color: #17ff2e !important;
-                }
+                background-color: #6c6c6c;
             }
         }
 
