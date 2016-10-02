@@ -330,7 +330,8 @@ var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 <span class="fragment">// addTwoᐟ :: [Number] -> [Number]</span>
 <span class="fragment">// addTwoᐟ = <span class="fragment" data-skip-next>ಠ_ಠ(</span>addTwo<span class="fragment" data-skip-prev>)</span></span>
 
-<span class="fragment">// ಠ_ಠ :: (Number -> Number) -> ([Number] -> [Number])</span>
+<span class="fragment">// ಠ_ಠ :: (<span class="fragment highlight-current">Number -> Number</span>) -> (<span class="fragment highlight-current">[Number] -> [Number]</span>)</span>
+<span class="fragment"></span>
                         </code></pre>
                     </section>
                     <section>
@@ -341,15 +342,15 @@ var addTwo = x => x + 2;
 // [Number]
 var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-// ಠ_ಠ :: (Number -> Number) -> ([Number] -> [Number])
-<span class="fragment">var ಠ_ಠ = function(fn) {
-    <span class="fragment">return function(xs) {
-        <span class="fragment">return xs.map(fn);</span>
+// ಠ_ಠ :: (<span data-highlight="case1-1">Number -> Number</span>) -> (<span data-highlight="case1-2">[Number]</span> -> <span data-highlight="case1-3">[Number]</span>)
+<span class="fragment">var ಠ_ಠ = function(<span data-highlight="case1-1">fn</span>) {
+    <span class="fragment">return function(<span data-highlight="case1-2">xs</span>) {
+        <span class="fragment">return <span data-highlight="case1-3">xs.map(fn)</span>;</span>
     }</span>
-};</span>
+};</span><span class="fragment" data-highlight="case1-1"></span><span class="fragment" data-highlight="case1-2"></span><span class="fragment" data-highlight="case1-3"></span>
 
-<span class="fragment">// addTwoᐟ :: [Number] -> [Number]</span>
-<span class="fragment">addTwoᐟ = ಠ_ಠ(addTwo);</span>
+<span class="fragment">// addTwoᐟ :: [Number] -> [Number]
+addTwoᐟ = ಠ_ಠ(addTwo);</span>
 
 <span class="fragment">addTwoᐟ(Ⅰ_Ⅹ);</span>
 <span class="fragment output">[3, 4, 5, 6, 7, 8, 9, 10, 11, 12]</span>
@@ -401,8 +402,8 @@ var two = 2;
 <span class="fragment output">74</span>
 
 <span class="fragment">// unit :: Number -> [Number]
-var unit = ಠ_ಠ;</span>
-<span class="fragment">// ʀeturn :: Number -> [Number]
+var unit = ಠ_ಠ;
+// ʀeturn :: Number -> [Number]
 var ʀeturn = ಠ_ಠ;</span>
                         </code></pre>
                     </section>
@@ -414,7 +415,7 @@ var sumArray = reduce((acc, x) => acc + x)(0);
 <span class="fragment">// sumArrayᐟ :: [Number] -> [Number]</span>
 <span class="fragment">var sumArrayᐟ = compose(unit, sumArray);</span>
 
-<span class="fragment">// lift :: ([Number] -> Number) -> ([Number] -> [Number])</span>
+<span class="fragment">// lift :: (<span class="fragment highlight-current">[Number] -> Number</span>) -> (<span class="fragment highlight-current">[Number] -> [Number]</span>)</span>
 <span class="fragment">var lift = fn => compose(unit, fn);</span>
 
 <span class="fragment">var sumArrayᐟ = lift(sumArray);</span>
@@ -467,8 +468,8 @@ var firstFiveMultiplesOfᐟ = fmap(firstFiveMultiplesOf)
 <span class="fragment output">[1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
 
 <span class="fragment">// join :: [[Number]] -> [Number]
-var join = ಠ_ಠ;</span>
-<span class="fragment">// flatten :: [[Number]] -> [Number]
+var join = ಠ_ಠ;
+// flatten :: [[Number]] -> [Number]
 var flatten = ಠ_ಠ;</span>
                         </code></pre>
                     </section>
@@ -478,8 +479,8 @@ var flatten = ಠ_ಠ;</span>
 <span class="fragment">// fmap firstFiveMultiplesOf :: [Number] -> [[Number]]</span>
 <span class="fragment">// join (fmap firstFiveMultiplesOf) :: [Number] -> [Number]</span>
 
-<span class="fragment">// chain :: (Number -> [Number]) -> ([Number] -> [Number])
-var chain = fn => compose(join, fmap(fn));</span>
+<span class="fragment">// chain :: (<span class="fragment highlight-current">Number -> [Number]</span>) -> (<span class="fragment highlight-current">[Number] -> [Number]</span>)</span>
+<span class="fragment">var chain = fn => compose(join, fmap(fn));</span>
 
 <span class="fragment">chain(firstFiveMultiplesOf)(Ⅰ_Ⅹ);</span>
 <span class="fragment output">[1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
@@ -691,18 +692,19 @@ Left.prototype = Object.create(Either.prototype);</span>
 <span class="fragment">function Right(...args) { Either.call(this, ...args); };
 Right.prototype = Object.create(Either.prototype);</span>
 
-<span class="fragment">// ʟeft :: a -> Left[a]</span>
-<span class="fragment">Left.of = x => new Left(x);</span>
-<span class="fragment">// ʀight :: b -> Right[b]</span>
-<span class="fragment">Right.of = x => new Right(x);</span>
+<span class="fragment">// ʟeft :: a -> Left[a]
+Left.of = x => new Left(x);</span>
+<span class="fragment">// ʀight :: b -> Right[b]
+Right.of = x => new Right(x);</span>
 
-<span class="fragment">// map :: Either[a, x] -> (a -> b) -> Either[b, x]</span>
-<span class="fragment">Either.prototype.map = function(fn) {
-    if (this instanceof Right)
-        return Right.of(fn(this.__value));
+<span class="fragment">// map :: <span class="fragment highlight-current" data-highlight="either-1">Either[a, x]</span> -> <span class="fragment highlight-current" data-highlight="either-2">(a -> b)</span> -> <span class="fragment highlight-current" data-highlight="either-3">Either[b, x]</span>
+Either.prototype.map = function(<span data-highlight="either-2">fn</span>) {
+    if (<span data-highlight="either-1">this</span> instanceof Right)
+        return <span data-highlight="either-3">Right.of(<span data-highlight="either-2">fn</span>(<span data-highlight="either-1">this</span>.__value))</span>;
     else
-        return this;
+        return <span data-highlight="either-3">this</span>;
 };</span>
+<span class="fragment"></span>
                         </code></pre>
                     </section>
                     <section>
