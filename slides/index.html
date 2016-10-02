@@ -750,6 +750,10 @@ var either = (<span data-highlight="either-15">l</span>, <span data-highlight="e
                         </code></pre>
                     </section>
                 </section>
+                <section data-blank data-bach>
+                    <!-- This slide intentionally left blank -->
+                    <span class="fragment"></span>
+                </section>
                 <section data-title>
                     <h2>Teoría de categorías</h2>
                 </section>
@@ -858,6 +862,29 @@ console.log('fmap(compose(g, f))', t3 - t2, 'ms');</span>
         <div class="blank">
             <div class="text">This slide intentionally left blank</div>
         </div>
+        <div id="player"></div>
+        <script>
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            function onYouTubeIframeAPIReady() {
+                window.Bach = new YT.Player('player', {
+                    height: '0',
+                    width: '0',
+                    videoId: 'aDVuo7dHtoc',
+                    events: {
+                        'onReady': onPlayerReady
+                    }
+                });
+
+                function onPlayerReady(event) {
+                    event.target.seekTo(50, true);
+                    event.target.pauseVideo();
+                }
+            }
+        </script>
 
         <script src="lib/js/head.min.js"></script>
         <script src="js/reveal.js"></script>
@@ -958,6 +985,22 @@ console.log('fmap(compose(g, f))', t3 - t2, 'ms');</span>
                     document.querySelector('.blank .text').classList.add('active');
                 } else {
                     document.querySelector('.blank .text').classList.remove('active');
+                }
+            }
+
+            Reveal.addEventListener('slidechanged', checkBach);
+            Reveal.addEventListener('fragmentshown', checkBach);
+
+            function checkBach(event) {
+                var slide = event.currentSlide,
+                    bach = slide && slide.hasAttribute('data-bach'),
+                    played = slide && slide.classList.contains('played');
+
+                if (bach && !played) {
+                    slide.classList.add('played');
+                    if (Bach) Bach.playVideo();
+                } else {
+                    if (Bach && Bach.getPlayerState() === 1) Bach.pauseVideo();
                 }
             }
 
