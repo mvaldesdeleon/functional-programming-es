@@ -58,70 +58,74 @@ $logo-size: 200px;
         }
     }
 
-    pre > code {
-        &[data-large] {
-            max-height: initial;
-        }
+    pre {
+        width: 100%;
 
-        &[data-wrap] {
-            white-space: pre-wrap;
-        }
+        > code {
+            &[data-large] {
+                max-height: initial;
+            }
 
-        &.hljs.bash {
-            background-color: #0f0f0f;
-        }
+            &[data-wrap] {
+                white-space: pre-wrap;
+            }
 
-        &.hljs.js {
-            .output {
-                &::before {
-                    content: '>> ';
-                    color: #765b45;
-                }
+            &.hljs.bash {
+                background-color: #0f0f0f;
+            }
 
-                &.console-log {
+            &.hljs.js {
+                .output {
                     &::before {
-                        content: '>> [log] '
+                        content: '>> ';
+                        color: #765b45;
                     }
-                }
-            }
 
-            .highlight {
-                background-color: #6c6c6c;
-            }
-        }
-
-        & .fragment.highlight-current {
-            opacity: 1;
-            visibility: visible;
-
-            &.current-fragment {
-                background-color: #6c6c6c;
-            }
-        }
-
-        & .fragment.always-visible {
-            opacity: 1;
-            visibility: visible;
-
-            &.first {
-                > .second {
-                    .first, .second {
-                        transition: all .2s ease;
+                    &.console-log {
+                        &::before {
+                            content: '>> [log] '
+                        }
                     }
                 }
 
-                &.visible {
-                    > .second:not(.visible) {
-                        .second {
-                            opacity: 0;
-                            visibility: hidden;
+                .highlight {
+                    background-color: #6c6c6c;
+                }
+            }
+
+            & .fragment.highlight-current {
+                opacity: 1;
+                visibility: visible;
+
+                &.current-fragment {
+                    background-color: #6c6c6c;
+                }
+            }
+
+            & .fragment.always-visible {
+                opacity: 1;
+                visibility: visible;
+
+                &.first {
+                    > .second {
+                        .first, .second {
+                            transition: all .2s ease;
                         }
                     }
 
-                    > .second.visible {
-                        .first {
-                            opacity: 0;
-                            visibility: hidden;
+                    &.visible {
+                        > .second:not(.visible) {
+                            .second {
+                                opacity: 0;
+                                visibility: hidden;
+                            }
+                        }
+
+                        > .second.visible {
+                            .first {
+                                opacity: 0;
+                                visibility: hidden;
+                            }
                         }
                     }
                 }
