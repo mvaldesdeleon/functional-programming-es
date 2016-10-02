@@ -749,12 +749,11 @@ var subtractTwo = x => x - 2</span>
 var addTen = x => x + 10;</span>
 
 <span class="fragment">Right.of(1).map(subtractTwo).map(divideTwoBy).join()
-    .map(addTen).map(console.log.bind(console, 'res B'));</span>
-<span class="fragment output console-log">"res B" 8</span>
-<span class="fragment output">Right {__value: undefined}</span>
+    .map(addTen).map(toString);</span>
+<span class="fragment output">Right {__value: "8"}</span>
 
 <span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy).join()
-    .map(addTen).map(console.log.bind(console, 'res A'));</span>
+    .map(addTen).map(toString);</span>
 <span class="fragment output">Left {__value: "can't divide by zero"}</span>
                         </code></pre>
                     </section>
