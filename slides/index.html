@@ -434,11 +434,8 @@ var doALotOfThingsMoreᐟ = compose(doALotOfThingsᐟ, sumArrayᐟ);</span>
                 <section>
                     <section>
                         <pre><code class="js" data-trim data-noescape data-wrap data-large>
-// firstNthMultiplesOf :: Number -> Number -> [Number]
-var firstNthMultiplesOf = n => x => (Array(n).fill()).reduce((acc, _) => acc.push(x * (acc.length + 1)) && acc, []);
-
 // firstFiveMultiplesOf :: Number -> [Number]
-var firstFiveMultiplesOf = firstNthMultiplesOf(5);
+var firstFiveMultiplesOf = x => [1, 2, 3, 4, 5].map(n => x * n);
 
 // [Number]
 var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
