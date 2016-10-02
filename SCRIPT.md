@@ -1,11 +1,9 @@
-Introduccion
-============
-
 [Titulo]
 
-Esta es una charla de programacion funcional.
+Motivacion
+==========
 
-[Lambda Logo Static]
+Esta es una charla de programacion funcional.
 
 Durante varios meses estuve viendo otras charlas sobre el tema, y leyendo articulos y blog posts, y algo que note es que en general a todos parece costarles mucho explicar ciertos conceptos sin caer inmediatamente en palabras raras, definiciones salidas de la nada, y diagramas locos sacados de algun libro de algebra.
 
@@ -42,10 +40,8 @@ Discusion
 * Por que?
 
 
-Generalidades
-=============
-
-[Blank]
+Lo Basico
+=========
 
 Para empezar, hay dos conceptos que vamos a necesitar ponerles nombre y apellido (en un caso literalmente), ya que son herramientas basicas en el mundo de la programacion funcional.
 
@@ -84,19 +80,9 @@ Basicamente por dos motivos:
 
 * Podemos especializar funciones genericas, pre-asignandole valores a los primeros argumentos. Esto se llama "aplicacion parcial".
 
-[Code: Happy long composition]
-
 * Si todas las funciones reciben un argumento y devuelven un valor, no tenemos que preocuparnos por la cantidad de argumentos, o "aridad", a la hora de componer funciones.
 
-Visto y considerando sendos motivos, decreto:
-
-[Decreto: Curry]
-
-De ahora en mas y hasta el final de los tiempos, todas las funciones han de estar currificadas.
-
-Notifiquese, comuniquese, publiquese, dese a la Dirección Nacional del Registro Oficial y archivese.
-
-Hablemos un poco ahora del segundo concepto: Composicion de funciones.
+Veamos que es esto de la composicion de funciones.
 
 [Diagrama: Composicion de funciones]
 
@@ -119,10 +105,8 @@ Como en el caso de `curry`, cualquier libreria de programacion funcional va a tr
 Si a alguien le interesa, en los ejemplos del repo hay una funcion `curry` y una funcion `compose` genericas escritas a manopla con comentarios, para que vean que no hay ninguna magia negra detras.
 
 
-El Bajon
-========
-
-[Blank]
+Tipos
+=====
 
 Ahora viene la parte donde me toca hacer de vendedor de tiempos compartidos. Prometi no hablar de matematicas ni de palabras locas, pero para poder seguir adelante necesito ALGUN hilo de formalismo. Elegi el que me parecio mas conveniente a nosotros como programadores, y voy a tratar de pasarlo lo mas rapido posible.
 
@@ -157,10 +141,8 @@ Bueno, listo. Eso es todo lo que vamos a necesitar.
 La idea entonces va a ser tratar de usar los tipos como herramienta para sacar a la luz una serie de patrones de diseño, estudiando tres situaciones distintas a resolver programando.
 
 
-El Entorno
-==========
-
-[Blank]
+Entornos
+========
 
 Nuestra serie de patrones comienza con una abstraccion: Un entorno.
 
@@ -187,8 +169,8 @@ Vamos a hacer nuestro estudio inicial usando un tipo de "entorno" con el que ya 
 Estamos hablando, señores, de un array.
 
 
-Problema 1
-==========
+Caso 1
+======
 
 [Code: Problem 1]
 
@@ -232,12 +214,9 @@ Por ultimo, podemos ver que si tenemos varias funciones transformadas con `fmap`
 
 `fmap` nos permite utilizar funciones que operan sobre un tipo, en un "entorno" de "algo" de dicho tipo.
 
-[Awesome!]
 
-[Blank]
-
-Problema 2
-==========
+Caso 2
+======
 
 [Code: Problem 2]
 
@@ -267,10 +246,8 @@ Porque si.
 
 De esta manera, podemos componer todo felizmente, ya que todas nuestras funciones transforman de array en array.
 
-[Blank]
-
-Problema 3
-==========
+Caso 3
+======
 
 [Code: Problem 3]
 
@@ -302,9 +279,9 @@ Porque si.
 Resumen
 =======
 
-[Blank]
+[Cake Portal]
 
-Bueno, ahi lo tienen. Esa es toda la teoria. Ese es la serie de patrones.
+Y si hasta aca lograron seguir la charla, entonces, felicitaciones, ya saben lo basico sobre categorias, functores y monadas, y no tuve que mencionar estas palabras ni una sola vez.
 
 [wat]
 
@@ -325,8 +302,6 @@ Gracias a `fmap`, `lift` y `chain`, podemos componer los 4 tipos de funciones po
 `lift`/`unit` nos permiten imbuir a un "algo" de un "entorno".
 
 Y `chain`/`join` nos permiten despreocuparnos por tener "entornos" anidados (ya que nada impide que un "algo" sea a su vez un "entorno").
-
-[Blank]
 
 Por completitud, si alguien va a leer mas sobre el tema puede encontrarse con otros nombres arbitrarios. En Haskell por ejemplo no hay `chain` pero hay `bind`. En ReactiveX existe `flatmap`. Es todo lo mismo. Y si, los *reactive streams* son "entornos" tambien. Pero esa es otra charla.
 
@@ -377,8 +352,6 @@ En la practica, esto no solo nos resuelve el *callback hell*, sino que nos ahorr
 Lazy Promises
 =============
 
-[Blank]
-
 Bueno, basta de mirar lo que ya tenemos. Tratemos de armar algo nuevo.
 
 Dos de las criticas mas frecuentes que reciben las Promises es que son *eager*, y que no se pueden repetir.
@@ -406,10 +379,8 @@ Y eso es todo. Como se ve, toda la "gracia" esta en la implementacion de `map`. 
 Al que le interese leer mas, este tipo particular de "entorno" aparece bajo el nombre de `IO`, y (los demas olvidense lo que voy a decir) permite escribir codigo puro sin privarnos de los deliciosos side effects.
 
 
-Control de Flujo Sincronico
-===========================
-
-[Blank]
+Control de Flujo
+================
 
 Vamos con otro ejemplo. Vamos a armar un "entorno" que represente el concepto de bifurcacion logica que implementa Promises con resueltas y rechazadas.
 
@@ -445,23 +416,15 @@ Como se ve, logramos capturar la misma esencia de control de flujo de promesas, 
 Resumen 2
 =========
 
-[Blank]
-
 Todos estos ejemplos que vimos, aun cuando por afuera parecen ser cosas totalmente distintas, estan implementando la misma abstraccion, que se basa en nuestro concepto de "entorno".
 
 Y lo que nosotros como programadores tenemos que notar, es que cada vez que aparecen, las cosas se hacen mas faciles.
 
 Eso no es una casualidad. Y es algo que tenemos que empezar a explotar concientemente.
 
-[Cake Portal]
-
-Y si hasta aca lograron seguir la charla, entonces, felicitaciones, ya saben lo basico sobre categorias, functores y monadas, y no tuve que mencionar estas palabras ni una sola vez.
-
 
 Teoria de Categorias
 ====================
-
-[Blank]
 
 Todas las cosas que fuimos viendo tienen una contraparte matematica dentro de lo que se denomina "Teoria de Categorias".
 
@@ -512,6 +475,8 @@ Si aplicamos `map` por cada transformada, vamos a recorrer el array n veces. Si,
 [Code: Category Theory]
 
 Lo que acabamos de hacer es refactorear nuestro codigo basandonos unicamente en una expresion matematica. Y este es otro de los beneficios de aplicar este patron.
+
+[Awesome!]
 
 A los que les interese, los invito a revisar las referencias, y consultar los demas axiomas, a ver que mejoras se les puede ocurrir en base a ellos.
 
