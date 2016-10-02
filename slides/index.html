@@ -239,12 +239,13 @@ var num = 12.3; // Number
                         <pre><code class="js" data-trim data-noescape>
 var fn = function() {}; // Function
 
-<span class="fragment"><span class="fragment">// add :: (Number, Number) -> Number</span>
-var add = (x,y) => x + y;</span>
+<span class="fragment"><span class="fragment">// add :: <span class="fragment highlight-current" data-highlight="add-1">(Number, Number)</span> -> <span class="fragment highlight-current" data-highlight="add-2">Number</span></span>
+var add = <span data-highlight="add-1">(x,y)</span> => <span data-highlight="add-2">x + y</span>;</span>
 
-<span class="fragment"><span class="fragment">//  addᐟ :: Number -> Number -> Number</span>
-<span class="fragment">//  addᐟ :: Number -> (Number -> Number)</span>
-var addᐟ = x => y => x + y;</span>
+<span class="fragment"><span class="fragment">//  addᐟ :: <span class="fragment highlight-current" data-highlight="add-3">Number</span> -> <span class="fragment highlight-current" data-highlight="add-4">Number</span> -> <span class="fragment highlight-current" data-highlight="add-5">Number</span></span>
+<span class="fragment">//  addᐟ :: <span class="fragment highlight-current" data-highlight="add-3">Number</span> -> <span class="fragment highlight-current" data-highlight="add-6">(Number -> Number)</span></span>
+var addᐟ = <span data-highlight="add-3">x</span> => <span data-highlight="add-6"><span data-highlight="add-4">y</span> => <span data-highlight="add-5">x + y</span></span>;</span>
+<span class="fragment"></span>
                         </code></pre>
                     </section>
                     <section>
@@ -270,12 +271,13 @@ addTwo(undefined);
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape>
-<span class="fragment">// filter :: Function -> Array -> Array</span>
-<span class="fragment">// filter :: (a -> Boolean) -> [a] -> [a]</span>
-var filter = pr => xs => xs.filter(pr);
+<span class="fragment">// filter :: <span class="fragment highlight-current" data-highlight="filter-1">Function</span> -> <span class="fragment highlight-current" data-highlight="filter-2">Array</span> -> <span class="fragment highlight-current" data-highlight="filter-3">Array</span></span>
+<span class="fragment">// filter :: <span class="fragment highlight-current" data-highlight="filter-1">(a -> Boolean)</span> -> <span class="fragment highlight-current" data-highlight="filter-2">[a]</span> -> <span class="fragment highlight-current" data-highlight="filter-3">[a]</span></span>
+var filter = <span data-highlight="filter-1">pr</span> => <span data-highlight="filter-2">xs</span> => <span data-highlight="filter-3">xs.filter(pr)</span>;
 
-<span class="fragment"><span class="fragment">// reduce :: (b -> a -> b) -> b -> [a] -> b</span>
-var reduce = fn => acc => xs => xs.reduce(fn, acc);</span>
+<span class="fragment"><span class="fragment">// reduce :: <span class="fragment highlight-current" data-highlight="reduce-1">(b -> a -> b)</span> -> <span class="fragment highlight-current" data-highlight="reduce-2">b</span> -> <span class="fragment highlight-current" data-highlight="reduce-3">[a]</span> -> <span class="fragment highlight-current" data-highlight="reduce-4">b</span></span>
+var reduce = <span data-highlight="reduce-1">fn</span> => <span data-highlight="reduce-2">acc</span> => <span data-highlight="reduce-3">xs</span> => <span data-highlight="reduce-4">xs.reduce(fn, acc);</span></span>
+<span class="fragment"></span>
                         </code></pre>
                     </section>
                     <section>
@@ -985,6 +987,24 @@ console.log('fmap(compose(g, f))', t3 - t2, 'ms');</span>
 
                 if (skip) {
                     Reveal.prevFragment();
+                }
+            }
+
+            Reveal.addEventListener('fragmentshown', checkHighlight);
+            Reveal.addEventListener('fragmenthidden', checkHighlight);
+
+            function checkHighlight(event) {
+                var fragment = document.querySelector('.current-fragment'),
+                    highlight = fragment.getAttribute('data-highlight');
+
+                document.querySelectorAll('[data-highlight]:not(.fragment)').forEach(function(element) {
+                    element.classList.remove('highlight');
+                });
+
+                if (highlight) {
+                    document.querySelectorAll('[data-highlight="' + highlight + '"]:not(.fragment)').forEach(function(element) {
+                        element.classList.add('highlight');
+                    });
                 }
             }
 
