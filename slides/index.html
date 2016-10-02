@@ -519,84 +519,33 @@ var chain = fn => compose(join, fmap(fn));</span></span></span>
                         <pre><code class="js" data-trim data-noescape>
 // Promise[a, b] = Pending | Resolved[a] ㅣ Rejected[b]
 
-<span class="fragment">// Promise[Number, a]
-var promise = new Promise(function(res, rej) {
-  <span class="fragment">// Resolved[Number]
-  setTimeout(() => res(100), 1000);</span>
-});</span>
+<span class="fragment">// unit :: a -> Resolved[a]
+var unit = x => Promise.resolve(x);</span>
 
-<span class="fragment">promise.then(value => console.log('resolved', value));</span>
-<span class="fragment output console-log">"resolved" 100</span>
-                        </code></pre>
-                    </section>
-                    <section>
-                        <pre><code class="js" data-trim data-noescape>
-<span class="fragment">var promiseRes = x => Promise.resolve(x);</span>
+<span class="fragment">// ʀeject :: b -> Rejected[b]
+var ʀeject = x => Promise.reject(x);</span>
 
-<span class="fragment">var promiseRej = x => Promise.reject(x);</span>
-                        </code></pre>
-                    </section>
-                    <section>
-                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
-// addFifty :: Number -> Number
-var addFifty = x => x + 50
+<span class="fragment">// fmap :: <span class="fragment highlight-current" data-highlight="promise-1">(a -> c)</span> -> (<span class="fragment highlight-current" data-highlight="promise-2">Promise[a, b]</span> -> <span class="fragment highlight-current" data-highlight="promise-3">Promise[c, b]</span>)
+var fmap = <span data-highlight="promise-1">fn</span> => <span data-highlight="promise-2">pr</span> => <span data-highlight="promise-3">pr.then(fn);</span></span>
 
-<span class="fragment">var promiseᐟ = promise.then(addFifty);</span>
-
-<span class="fragment">promise.then(value => console.log('resolved A', value));
-<span class="fragment output console-log" data-skip-next>"resolved A" 100</span>
-
-promiseᐟ.then(value => console.log('resolved B', value));
-<span class="fragment output console-log" data-skip-prev>"resolved B" 150</span></span>
-
-<span class="fragment">// timesTwoDelayed :: Number -> Promise[Number, a]
-var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(() => res(x * 2), 1000));</span>
-
-<span class="fragment">var promiseᐟᐟ = promise.then(addFifty).then(timesTwoDelayed);</span>
-
-<span class="fragment">promiseᐟᐟ.then(value => console.log('resolved C', value));</span>
-<span class="fragment output console-log">"resolved C" 300</span>
-                        </code></pre>
-                    </section>
-                    <section>
-                        <pre><code class="js" data-trim data-noescape>
-// unit :: a -> Resolved[a]
-var unit = x => Promise.resolve(x);
-// ʀeject :: b -> Rejected[b]
-var ʀeject = x => Promise.reject(x);
-
-<span class="fragment">// Promise[Number, a]
-var promise = new Promise(function(res, rej) {
-  // Resolved[Number]
-  setTimeout(() => res(100), 1000);
-});</span>
+<span class="fragment">// chain :: <span class="fragment highlight-current" data-highlight="promise-4">(a -> Promise[c, b])</span> -> (<span class="fragment highlight-current" data-highlight="promise-5">Promise[a, b]</span> -> <span class="fragment highlight-current" data-highlight="promise-6">Promise[c, b]</span>)
+var chain = <span data-highlight="promise-4">fn</span> => <span data-highlight="promise-5">pr</span> => <span data-highlight="promise-6">pr.then(fn);</span></span>
+<span class="fragment"></span>
                         </code></pre>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape data-wrap data-large>
-// subtractFifty :: Number -> Number
-var subtractFifty = x => x - 50
-
-<span class="fragment">// timesTwoDelayed :: Number -> Promise[Number, a]
-var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(() => res(x * 2), 3000));</span>
-
-<span class="fragment">// divideTwoBy :: Number -> Promise[Number, String]
-var divideTwoBy = function(x) {
-    if (x === 0) return ʀeject("can't divide by zero");
-    else return unit(2 / x);
+<span class="fragment" data-skip-next></span>// divideTwoBy :: <span class="fragment highlight-current" data-highlight="promise-7">Number</span> -> <span class="fragment highlight-current" data-highlight="promise-8">Promise[Number, String]</span>
+var divideTwoBy = function(<span data-highlight="promise-7">x</span>) {
+    if (<span data-highlight="promise-7">x</span> === 0) return <span data-highlight="promise-8">Promise.reject("can't divide by zero")</span>;
+    else return <span data-highlight="promise-8">Promise.resolve(2 / <span data-highlight="promise-7">x</span>)</span>;
 };</span>
 
-<span class="fragment">promise.then(subtractFifty).then(divideTwoBy).then(timesTwoDelayed)
-    .then(value => console.log('resolved A', value));</span>
-<span class="fragment output console-log">"resolved A" 0.08</span>
+<span class="fragment">Promise.resolve(0).then(divideTwoBy).then(value => console.log('resolved', value), value => console.log('rejected', value));</span>
+<span class="fragment output console-log">"rejected" "can't divide by zero"</span>
 
-<span class="fragment">promise.then(subtractFifty).then(subtractFifty).then(divideTwoBy)
-    .then(timesTwoDelayed).then(value => console.log('resolved B', value));</span>
-<span class="fragment">// ლ(ಠ益ಠლ)</span>
-
-<span class="fragment">promise.then(subtractFifty).then(subtractFifty).then(divideTwoBy)
-    .then(timesTwoDelayed).catch(value => console.log('rejected C', value));</span>
-<span class="fragment output console-log">"rejected C" "can't divide by zero"</span>
+<span class="fragment">Promise.resolve(0).then(divideTwoBy).catch(value => console.log('rejected', value));</span>
+<span class="fragment output console-log">"rejected" "can't divide by zero"</span>
                         </code></pre>
                     </section>
                 </section>
