@@ -787,13 +787,8 @@ compose(fmap(g), fmap(f))
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape data-large>
-// firstNthMultiplesOf :: Number -> Number -> [Number]
-
-// flip :: (a -> b -> c) -> b -> a -> c
-var flip = fn => x => y => fn(y)(x);
-
 // firstNthNaturals :: Number -> [Number]
-var firstNthNaturals = flip(firstNthMultiplesOf)(1);
+var firstNthNaturals = n => Array(n).fill().map((_, idx) => idx + 1);
 
 // [Number]
 var Ⅰ_ⅯⅯ = firstNthNaturals(1000000); // [1, 2, ... , 999999, 1000000]
@@ -940,7 +935,7 @@ console.log('fmap(compose(g, f))', t3 - t2, 'ms');</span>
 
             function checkHighlight(event) {
                 var fragment = document.querySelector('.current-fragment'),
-                    highlight = fragment.getAttribute('data-highlight');
+                    highlight = fragment && fragment.getAttribute('data-highlight');
 
                 document.querySelectorAll('[data-highlight]:not(.fragment)').forEach(function(element) {
                     element.classList.remove('highlight');
