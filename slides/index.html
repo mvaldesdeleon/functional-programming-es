@@ -517,7 +517,7 @@ var chain = fn => compose(join, fmap(fn));</span></span></span>
                 <section>
                     <section>
                         <pre><code class="js" data-trim data-noescape>
-// Promise[a, b] = Resolved[a] ㅣ Rejected[b]
+// Promise[a, b] = Pending | Resolved[a] ㅣ Rejected[b]
 
 <span class="fragment">// Promise[Number, a]
 var promise = new Promise(function(res, rej) {
