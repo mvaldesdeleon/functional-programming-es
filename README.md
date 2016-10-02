@@ -11,6 +11,9 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 ## Slides
 [http://fun.ction.al/es](http://fun.ction.al/es)
 
+##### Archivo
+* [v0.1.0](http://fun.ction.al/es/archive/0.1.0/)
+
 ## TODO
 * ~~Preparar ejemplos (código)~~
     * ~~**Introducción** Comparación jquery/arrays/promises~~
