@@ -459,7 +459,7 @@ var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var firstFiveMultiplesOfᐟ = fmap(firstFiveMultiplesOf)
 
 <span class="fragment">// ಠ_ಠ :: [[Number]] -> [Number]</span>
-<span class="fragment">var ಠ_ಠ = xss => xss.reduce((acc, xs) => acc.concat(xs), []);</span>
+<span class="fragment">var ಠ_ಠ = xss => <span data-highlight="case3-1">xss.reduce</span>(<span data-highlight="case3-2">(acc, xs) => acc.concat(xs)</span>, <span data-highlight="case3-3">[]</span>);</span><span class="fragment" data-highlight="case3-1"></span><span class="fragment" data-highlight="case3-2"></span><span class="fragment" data-highlight="case3-3"></span>
 
 <span class="fragment">ಠ_ಠ(firstFiveMultiplesOfᐟ(Ⅰ_Ⅹ));</span>
 <span class="fragment output">[1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
@@ -517,10 +517,10 @@ var chain = fn => compose(join, fmap(fn));</span></span></span>
 // Promise[a, b] = Pending | Resolved[a] ㅣ Rejected[b]
 
 <span class="fragment">// unit :: a -> Resolved[a]
-var unit = x => Promise.resolve(x);</span>
+var unit = a => Promise.resolve(a);</span>
 
 <span class="fragment">// ʀeject :: b -> Rejected[b]
-var ʀeject = x => Promise.reject(x);</span>
+var ʀeject = b => Promise.reject(b);</span>
 
 <span class="fragment">// fmap :: <span class="fragment highlight-current" data-highlight="promise-1">(a -> c)</span> -> (<span class="fragment highlight-current" data-highlight="promise-2">Promise[a, b]</span> -> <span class="fragment highlight-current" data-highlight="promise-3">Promise[c, b]</span>)
 var fmap = <span data-highlight="promise-1">fn</span> => <span data-highlight="promise-2">pr</span> => <span data-highlight="promise-3">pr.then(fn);</span></span>
@@ -581,21 +581,22 @@ var divideTwoBy = function(<span data-highlight="promise-7">x</span>) {
                     <section>
                         <pre><code class="js" data-trim data-noescape data-wrap data-large>
 // Lazy[a -> Promise[b, x]]
-<span class="fragment">function Lazy(x) { this.__value = x; };</span>
+<span class="fragment">function Lazy(fn) { this.__value = fn; };</span>
 
-<span class="fragment">// unit :: (a -> Promise[b, x]) -> Lazy[a -> Promise[b, x]]</span>
-<span class="fragment">Lazy.of = x => new Lazy(x);</span>
+<span class="fragment">// unit :: (<span class="fragment highlight-current">a -> Promise[b, x]</span>) -> <span class="fragment highlight-current">Lazy[a -> Promise[b, x]]</span></span>
+<span class="fragment">Lazy.of = fn => new Lazy(fn);</span>
 
-<span class="fragment">// map :: Lazy[a -> Promise[b, x]] -> (b -> c) -> Lazy[a -> Promise[c, x]]</span>
-<span class="fragment">// map :: Lazy[a -> Promise[b, x]] -> (b -> Promise[c, y]) -> Lazy[a -> Promise[c, y]]</span>
-<span class="fragment">Lazy.prototype.map = function(fn) {
-    return Lazy.of((x) => this.__value(x).then(fn));
-};</span>
+<span class="fragment">// map :: <span class="fragment highlight-current"><span data-highlight="lazy-1">Lazy[a -> Promise[b, x]]</span></span> -> (<span class="fragment highlight-current"><span data-highlight="lazy-2">b -> c</span></span>) -> <span class="fragment highlight-current"><span data-highlight="lazy-3">Lazy[a -> Promise[c, x]]</span></span></span>
+<span class="fragment">// map :: <span class="fragment highlight-current">Lazy[a -> Promise[b, x]]</span> -> (<span class="fragment highlight-current">b -> Promise[c, y]</span>) -> <span class="fragment highlight-current">Lazy[a -> Promise[c, y]]</span></span>
+<span class="fragment">Lazy.prototype.map = function(<span data-highlight="lazy-2">fn</span>) {
+    return <span data-highlight="lazy-3">Lazy.of((a) => <span data-highlight="lazy-1">this</span>.__value(a).then(<span data-highlight="lazy-2">fn</span>))</span>;
+};</span><span class="fragment" data-highlight="lazy-1"></span><span class="fragment" data-highlight="lazy-2"></span><span class="fragment" data-highlight="lazy-3"></span>
 
-<span class="fragment">// do :: Lazy[a -> Promise[b, z]] -> a -> Promise[b, z]</span>
-<span class="fragment">Lazy.prototype.do = function(x) {
-    return this.__value(x);
-};</span>
+<span class="fragment">// do :: <span data-highlight="lazy-4">Lazy[a -> Promise[b, z]]</span> -> <span data-highlight="lazy-5">a</span> -> <span data-highlight="lazy-6">Promise[b, z]</span></span>
+<span class="fragment">Lazy.prototype.do = function(<span data-highlight="lazy-5">a</span>) {
+    return <span data-highlight="lazy-6"><span data-highlight="lazy-4">this</span>.__value(<span data-highlight="lazy-5">a</span>)</span>;
+};</span><span class="fragment" data-highlight="lazy-4"></span><span class="fragment" data-highlight="lazy-5"></span><span class="fragment" data-highlight="lazy-6"></span>
+<span class="fragment"></span>
                         </code></pre>
                     </section>
                     <section>
@@ -648,7 +649,7 @@ Either.prototype.map = function(<span data-highlight="either-2">fn</span>) {
     if (<span data-highlight="either-1">this</span> instanceof Right)
         return <span data-highlight="either-3">Right.of(<span data-highlight="either-2">fn</span>(<span data-highlight="either-1">this</span>.__value))</span>;
     else
-        return <span data-highlight="either-3">this</span>;
+        return <span data-highlight="either-3"><span data-highlight="either-1">this</span></span>;
 };</span>
 <span class="fragment"></span>
                         </code></pre>
@@ -664,23 +665,20 @@ var timesTwo = x => x * 2
 // toString :: Number -> String
 var toString = x => x.toString();
 
-<span class="fragment">Right.of(0).map(plusOne).map(timesTwo).map(toString);</span>
-<span class="fragment output">Right {__value: "2"}</span>
+<span class="fragment">Right.of(1).map(plusOne).map(timesTwo).map(toString);</span>
+<span class="fragment output">Right {__value: "4"}</span>
                         </code></pre>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape data-large>
-// divideTwoBy :: Number -> Eiter[Number, String]
-<span class="fragment">var divideTwoBy = function(x) {
-    if (x === 0) return Left.of("can't divide by zero");
-    else return Right.of(2 / x);
-};</span>
+<span class="fragment" data-skip-next></span>// divideTwoBy :: <span class="fragment highlight-current" data-highlight="either-4">Number</span> -> <span class="fragment highlight-current" data-highlight="either-5">Either[Number, String]</span>
+var divideTwoBy = function(<span data-highlight="either-4">x</span>) {
+    if (<span data-highlight="either-4">x</span> === 0) return <span data-highlight="either-5">Left.of("can't divide by zero")</span>;
+    else return <span data-highlight="either-5">Right.of(2 / <span data-highlight="either-4">x</span>)</span>;
+};
 
 <span class="fragment">// subtractOne :: Number -> Number
-var subtractOne = x => x - 1
-
-// subtractTwo :: Number -> Number
-var subtractTwo = x => x - 2</span>
+var subtractOne = x => x - 1</span>
 
 <span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy);</span>
 <span class="fragment output">Right {__value: Left {__value: "can't divide by zero"}}</span>
@@ -688,10 +686,10 @@ var subtractTwo = x => x - 2</span>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape>
-// join :: Either[Either[a, x], y] -> Either[a, x]
-<span class="fragment">Either.prototype.join = function() {
-    return this.__value;
-};</span>
+// join :: <span class="fragment highlight-current" data-highlight="either-6">Either[Either[a, x], y]</span> -> <span class="fragment highlight-current" data-highlight="either-7">Either[a, x]</span>
+Either.prototype.join = function() {
+    return <span data-highlight="either-7"><span data-highlight="either-6">this</span>.__value</span>;
+};
 
 <span class="fragment">// addTen :: Number -> Number
 var addTen = x => x + 10;</span>
@@ -702,18 +700,18 @@ var addTen = x => x + 10;</span>
 
 <span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy).join()
     .map(addTen).map(toString);</span>
-<span class="fragment output">Left {__value: "can't divide by zero"}</span>
+<span class="fragment output">Left {__value: "can't divide by zero"}x
                         </code></pre>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape>
-// chain :: Either[a, x] -> (a -> Either[b, y]) -> Either[b, y]
-<span class="fragment">Either.prototype.chain = function(fn) {
-    return this.map(fn).join();
-};</span>
+// chain :: <span class="fragment highlight-current" data-highlight="either-8">Either[a, x]</span> -> (<span class="fragment highlight-current" data-highlight="either-9">a -> Either[b, y]</span>) -> <span class="fragment highlight-current" data-highlight="either-10">Either[b, y]</span>
+Either.prototype.chain = function(<span data-highlight="either-9">fn</span>) {
+    return <span data-highlight="either-10"><span data-highlight="either-8">this</span>.map(<span data-highlight="either-9">fn</span>).join()</span>;
+};
 
-<span class="fragment">// unit :: b -> Right[b]</span>
-<span class="fragment">Either.of = x => new Right(x);</span>
+<span class="fragment">// unit :: b -> Right[b]
+Either.of = x => new Right(x);</span>
 
 <span class="fragment">Either.of(1).map(subtractTwo).chain(divideTwoBy).map(addTen)
     .map(toString);</span>
@@ -726,16 +724,16 @@ var addTen = x => x + 10;</span>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape data-wrap data-large>
-// do :: Either[a, b] -> (a -> x) -> (b -> x) -> x
-<span class="fragment">Either.prototype.do = function(l, r) {
-    if (this instanceof Right)
-        return r(this.__value);
+// do :: <span class="fragment highlight-current" data-highlight="either-11">Either[a, b]</span> -> <span class="fragment highlight-current" data-highlight="either-12">(a -> x)</span> -> <span class="fragment highlight-current" data-highlight="either-13">(b -> x)</span> -> <span class="fragment highlight-current" data-highlight="either-14">x</span>
+Either.prototype.do = function(<span data-highlight="either-12">l</span>, <span data-highlight="either-13">r</span>) {
+    if (<span data-highlight="either-11">this</span> instanceof Right)
+        return <span data-highlight="either-14"><span data-highlight="either-13">r</span>(<span data-highlight="either-11">this</span>.__value)</span>;
     else
-        return l(this.__value);
-};</span>
+        return <span data-highlight="either-14"><span data-highlight="either-12">l</span>(<span data-highlight="either-11">this</span>.__value)</span>;
+};
 
-<span class="fragment">// either :: ((a -> x), (b -> x)) -> Either[a, b] -> x</span>
-<span class="fragment">var either = (l, r) => e => e instanceof Left ? l(e.__value) : r(e.__value);</span>
+<span class="fragment">// either :: (<span class="fragment highlight-current" data-highlight="either-15">(a -> x)</span>, <span class="fragment highlight-current" data-highlight="either-16">(b -> x)</span>) -> <span class="fragment highlight-current" data-highlight="either-17">Either[a, b]</span> -> <span class="fragment highlight-current" data-highlight="either-18">x</span>
+var either = (<span data-highlight="either-15">l</span>, <span data-highlight="either-16">r</span>) => <span data-highlight="either-17">e</span> => <span data-highlight="either-17">e</span> instanceof Left ? <span data-highlight="either-18"><span data-highlight="either-15">l</span>(<span data-highlight="either-17">e</span>.__value)</span> : <span data-highlight="either-18"><span data-highlight="either-16">r</span>(<span data-highlight="either-17">e</span>.__value)</span>;</span>
 
 <span class="fragment">var a = Either.of(1).map(subtractOne).chain(divideTwoBy).map(addTen)
     .map(toString);</span>
