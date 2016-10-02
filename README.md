@@ -35,47 +35,56 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 * ~~Preparar slides~~
     * ~~Draft~~
     * ~~Iterar~~
+* Incorporar feedback
+    * ~~Ajustar slides~~
+    * ~~Ajustar readme~~
+    * Ajustar script
 * Timear y ajustar contenido
 
 ## Indice
-##### Introducción
-* Comparación visual. jQuery/Arrays/Promises.
+##### Motivación
 * Programación funcional ➞ Conceptos matemáticos ➞ Wikipedia ➞ Fracaso
+* Comparación visual. jQuery/Arrays/Promises.
 
-##### Generalidades
+##### Lo Básico
 * Funciones. Currying.
 * Composición de funciones
+
+##### Tipos
 * Tipos. Tipos primitivos.
 * Type signature.
 
-##### Cajas/Contenedores/Contextos
+##### Entornos
+* Descripción
 * Ejemplo: Array
 * ⟹ Son tipos ellos mismos
-* Tipos derivados. Polimórficos/monomórficos.
+* ~~Tipos derivados. Polimórficos/monomórficos.~~
 
-##### Problema 1
-* Usar funciones de elementos sobre las cajas
-* Array ➞ map. fmap. currying.
+##### Caso 1
+* Usar funciones de elementos sobre los entornos
+* Array ➞ map. fmap.
 
-##### Problema 2
+##### Caso 2
 * Iniciar el calculo a partir de un elemento (o usar ```f: [ x ] ➞ x```)
 * Constructor/return/unit.
 
-##### Problema 3
+##### Caso 3
 * Usar ```f: x ➞ [ x ]``` sobre listas
 * Flatten/join
 
-##### Paréntesis
-* Listar operaciones. bind. ```[ x ] ➞ (x ➞ [ x ]) ➞ [ x ]```
-* ```bind f = join (fmap f)``` [=flatmap]
+##### Resumen
 * De que nos sirvió todo esto?
+* Listar operaciones.
+* ~~bind. ```[ x ] ➞ (x ➞ [ x ]) ➞ [ x ]```~~
+* ~~```bind f = join (fmap f)``` [=flatmap]~~
+
 
 ##### Promises
 * Que representan
-* Que queremos hacer sobre ellas
-* then. Expresar como función estática. curry. fmap o chain?
-* "Extras" de Promise (lift return values)
-* Promesas de Promesas? No existencia de join? then = chain!
+* Listar operaciones.
+* ~~then. Expresar como función estática. curry. fmap o chain?~~
+* ~~"Extras" de Promise (lift return values)~~
+* ~~Promesas de Promesas? No existencia de join? then = chain!~~
 * Control de flujo Reject/Resolve. Manejo de errores. Comparación con callbacks.
 
 ##### Lazy Promises
@@ -92,13 +101,13 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 * do/either
 
 ##### Teoría de Categorías
-* Categoría, definición.
-* Categoría de tipos y funciones tipadas en JS
-* Categoría de tipos array y funciones sobre tipos array en JS
-* Subcategoría
-* Functor
-* (Pointed Functor)
-* Monad
+* ~~Categoría, definición.~~
+* ~~Categoría de tipos y funciones tipadas en JS~~
+* ~~Categoría de tipos array y funciones sobre tipos array en JS~~
+* ~~Subcategoría~~
+* ~~Functor~~
+* ~~(Pointed Functor)~~
+* ~~Monad
 * Axiomas/Leyes
 * Simplificar map/compose
 
