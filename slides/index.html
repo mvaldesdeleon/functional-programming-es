@@ -826,12 +826,13 @@ var addTen = x => x + 10;</span>
                     <h3>y puedo demostrarlo matemáticamente</h3>
                 </section>
                 <section>
-                    <section data-image-title>
+                    <section data-image-title data-code-subtitle>
                         <img class="formula center" src="assets/images/laws_functor_composition.svg">
-                    </section>
-                    <section>
-                        <pre><code class="js" data-trim >
-fmap(compose(g, f)) ==== compose(fmap(g), fmap(f));
+                        <pre class="fragment"><code class="js" data-trim>
+fmap(compose(g, f))
+                        </code></pre>
+                        <pre class="fragment"><code class="js" data-trim>
+compose(fmap(g), fmap(f))
                         </code></pre>
                     </section>
                     <section>

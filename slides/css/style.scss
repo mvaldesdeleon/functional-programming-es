@@ -131,6 +131,12 @@ $logo-size: 200px;
         }
     }
 
+    section[data-code-subtitle] {
+        > pre {
+            font-size: 1.5em;
+        }
+    }
+
     section[data-image-title] {
         > img {
             height: 10vh;
