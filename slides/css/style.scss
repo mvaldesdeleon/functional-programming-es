@@ -217,6 +217,7 @@ $logo-size: 200px;
     z-index: 1;
     font-family: "Source Sans Pro", Helvetica, sans-serif;
     font-size: 24px;
+    pointer-events: none;
 
     .text {
         display: none;

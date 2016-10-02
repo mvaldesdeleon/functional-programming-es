@@ -78,51 +78,51 @@
 
 @keyframes glitch-anim-1 {
   0% {
-    clip: rect(173px, 200px, 37px, 0); }
+    clip: rect(84px, 200px, 99px, 0); }
   10% {
-    clip: rect(65px, 200px, 24px, 0); }
+    clip: rect(72px, 200px, 83px, 0); }
   20% {
-    clip: rect(86px, 200px, 165px, 0); }
+    clip: rect(3px, 200px, 21px, 0); }
   30% {
-    clip: rect(101px, 200px, 85px, 0); }
+    clip: rect(169px, 200px, 113px, 0); }
   40% {
-    clip: rect(137px, 200px, 74px, 0); }
+    clip: rect(123px, 200px, 15px, 0); }
   50% {
-    clip: rect(23px, 200px, 7px, 0); }
+    clip: rect(32px, 200px, 157px, 0); }
   60% {
-    clip: rect(187px, 200px, 52px, 0); }
+    clip: rect(127px, 200px, 112px, 0); }
   70% {
-    clip: rect(122px, 200px, 54px, 0); }
+    clip: rect(171px, 200px, 165px, 0); }
   80% {
-    clip: rect(53px, 200px, 37px, 0); }
+    clip: rect(9px, 200px, 128px, 0); }
   90% {
-    clip: rect(32px, 200px, 76px, 0); }
+    clip: rect(175px, 200px, 128px, 0); }
   100% {
-    clip: rect(19px, 200px, 175px, 0); } }
+    clip: rect(139px, 200px, 1px, 0); } }
 
 @keyframes glitch-anim-2 {
   0% {
-    clip: rect(158px, 200px, 98px, 0); }
+    clip: rect(119px, 200px, 200px, 0); }
   10% {
-    clip: rect(97px, 200px, 126px, 0); }
+    clip: rect(115px, 200px, 194px, 0); }
   20% {
-    clip: rect(115px, 200px, 155px, 0); }
+    clip: rect(110px, 200px, 91px, 0); }
   30% {
-    clip: rect(108px, 200px, 53px, 0); }
+    clip: rect(152px, 200px, 21px, 0); }
   40% {
-    clip: rect(32px, 200px, 12px, 0); }
+    clip: rect(93px, 200px, 66px, 0); }
   50% {
-    clip: rect(9px, 200px, 189px, 0); }
+    clip: rect(178px, 200px, 8px, 0); }
   60% {
-    clip: rect(55px, 200px, 156px, 0); }
+    clip: rect(152px, 200px, 47px, 0); }
   70% {
-    clip: rect(184px, 200px, 108px, 0); }
+    clip: rect(174px, 200px, 160px, 0); }
   80% {
-    clip: rect(86px, 200px, 100px, 0); }
+    clip: rect(77px, 200px, 186px, 0); }
   90% {
-    clip: rect(45px, 200px, 169px, 0); }
+    clip: rect(111px, 200px, 66px, 0); }
   100% {
-    clip: rect(18px, 200px, 175px, 0); } }
+    clip: rect(98px, 200px, 46px, 0); } }
 
 .slides .js-logo {
   width: 200px;
@@ -228,7 +228,8 @@
   right: 0;
   z-index: 1;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
-  font-size: 24px; }
+  font-size: 24px;
+  pointer-events: none; }
   .blank .text {
     display: none;
     padding-top: 30px;
