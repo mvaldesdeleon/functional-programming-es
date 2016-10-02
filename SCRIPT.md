@@ -281,11 +281,15 @@ Resumen
 
 [Cake Portal]
 
-Y si hasta aca lograron seguir la charla, entonces, felicitaciones, ya saben lo basico sobre categorias, functores y monadas, y no tuve que mencionar estas palabras ni una sola vez.
+Y eso es todo. Felicitaciones, ya saben lo basico sobre categorias, functores y monadas, y no tuve que mencionar estas palabras ni una sola vez.
 
 [wat]
 
-El secreto para entender que hicimos, esta en mirar las firmas de tipos de tres de las funciones que nos inventamos para resolver los problemas: `fmap`, `lift` y `chain`.
+Tratemos de entender que fue lo que hicimos. En el fondo, construimo 5 funciones para ayudarnos con los tres casos. Las 5 funciones todas juntas para mi no dicen mucho, pero agrupadas de cierta forma el mensaje es un poco mas claro.
+
+Veamos estas tres: `fmap`, `unit` y `join`. `fmap` permite aplicar funciones sobre los valores dentro de los entornos, y nos abstrae de toda la logica interna al entorno mismo. `unit` nos permite meter valores en un entorno *default*. Y `join` nos permite desempaquetar entornos anidados.
+
+Otra forma de verlas es mirar estas tres: `fmap`, `lift` y `chain`.
 
 [Code: Parenthesis]
 
@@ -314,11 +318,11 @@ Vamos a ver ahora otro ejemplo distinto.
 Promises
 ========
 
-[Code: Promises]
-
 En el caso de las Promises, el "algo" es cualquier cosa que podamos guardar en una variable.
 
 Y el "entorno" le otorga dos clases de significados: En primer lugar, imbue a nuestro "algo" de un contexto temporal, ya que la Promise representa valores en el futuro. En segundo lugar, imbue a nuestro "algo" de un contexto binario "positivo"/"negativo", ya que la Promise puede ser resuelta, o bien rechazada.
+
+[Code: Promises]
 
 Al igual que array, lo que nosotros vamos a querer es poder operar sobre el "algo" sin preocuparnos del "entorno".
 
@@ -347,6 +351,8 @@ Al que le interese profundizar, en el repo hay unos ejemplos que entran mas en d
 Tambien es interesante notar como `then` nos permite abstraernos por completo del "entorno". No solo del hecho de que los valores son valores futuros, sino tambien del hecho de que la Promise puede estar resuelta o rechazada.
 
 En la practica, esto no solo nos resuelve el *callback hell*, sino que nos ahorra de chequear `err` dentro de cada funcion. El "entorno" se encarga de eso por nosotros.
+
+Por ultimo, ademas de comportarse como `fmap`/`chain`, `then` nos ofrece una forma de bifurcar el flujo de la aplicacion, ya que acepta dos funciones, no solo una, y las ejecuta condicionalmente en funcion de si la promesa es resuelta o rechazada. Esto mismo podemos hacerlo directamente con `catch`.
 
 
 Lazy Promises

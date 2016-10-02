@@ -35,10 +35,10 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 * ~~Preparar slides~~
     * ~~Draft~~
     * ~~Iterar~~
-* Incorporar feedback
+* ~~Incorporar feedback~~
     * ~~Ajustar slides~~
     * ~~Ajustar readme~~
-    * Ajustar script
+    * ~~Ajustar script~~
 * Timear y ajustar contenido
 
 ## Indice
