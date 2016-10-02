@@ -155,7 +155,7 @@ list
     <span class="fragment highlight-current">.then(x => JSON.parse(x))</span>
     <span class="fragment highlight-current">.then(x => requestp(x.targetUrl))</span>
     <span class="fragment highlight-current">.then(x => fsp.writeFile(path.resolve(__dirname, 'target.txt'), x))</span>
-    .then(<span class="fragment highlight-current">() => console.log.bind(console, 'Success')</span> ,<span class="fragment highlight-current">(err) => console.log.bind(console, 'Something went wrong', err)</span>);
+    .then(<span class="fragment highlight-current">() => console.log('Success')</span> ,<span class="fragment highlight-current">(err) => console.log('Something went wrong', err)</span>);
 <span class="fragment"></span>
                         </code></pre>
                     </section>
@@ -522,11 +522,11 @@ var chain = fn => compose(join, fmap(fn));</span></span></span>
 <span class="fragment">// Promise[Number, a]
 var promise = new Promise(function(res, rej) {
   <span class="fragment">// Resolved[Number]
-  setTimeout(res.bind(null, 100), 1000);</span>
+  setTimeout(() => res(100), 1000);</span>
 });</span>
 
-<span class="fragment">promise.then(console.log.bind(console, 'res A'));</span>
-<span class="fragment output console-log">"res A" 100</span>
+<span class="fragment">promise.then(value => console.log('resolved', value));</span>
+<span class="fragment output console-log">"resolved" 100</span>
                         </code></pre>
                     </section>
                     <section>
@@ -543,19 +543,19 @@ var addFifty = x => x + 50
 
 <span class="fragment">var promiseᐟ = promise.then(addFifty);</span>
 
-<span class="fragment">promise.then(console.log.bind(console, 'res B'));
-<span class="fragment output console-log" data-skip-next>"res B" 100</span>
+<span class="fragment">promise.then(value => console.log('resolved A', value));
+<span class="fragment output console-log" data-skip-next>"resolved A" 100</span>
 
-promiseᐟ.then(console.log.bind(console, 'res C'));
-<span class="fragment output console-log" data-skip-prev>"res C" 150</span></span>
+promiseᐟ.then(value => console.log('resolved B', value));
+<span class="fragment output console-log" data-skip-prev>"resolved B" 150</span></span>
 
 <span class="fragment">// timesTwoDelayed :: Number -> Promise[Number, a]
-var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x * 2), 1000));</span>
+var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(() => res(x * 2), 1000));</span>
 
 <span class="fragment">var promiseᐟᐟ = promise.then(addFifty).then(timesTwoDelayed);</span>
 
-<span class="fragment">promiseᐟᐟ.then(console.log.bind(console, 'res D'));</span>
-<span class="fragment output console-log">"res D" 300</span>
+<span class="fragment">promiseᐟᐟ.then(value => console.log('resolved C', value));</span>
+<span class="fragment output console-log">"resolved C" 300</span>
                         </code></pre>
                     </section>
                     <section>
@@ -568,7 +568,7 @@ var ʀeject = x => Promise.reject(x);
 <span class="fragment">// Promise[Number, a]
 var promise = new Promise(function(res, rej) {
   // Resolved[Number]
-  setTimeout(res.bind(null, 100), 1000);
+  setTimeout(() => res(100), 1000);
 });</span>
                         </code></pre>
                     </section>
@@ -578,7 +578,7 @@ var promise = new Promise(function(res, rej) {
 var subtractFifty = x => x - 50
 
 <span class="fragment">// timesTwoDelayed :: Number -> Promise[Number, a]
-var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x * 2), 3000));</span>
+var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(() => res(x * 2), 3000));</span>
 
 <span class="fragment">// divideTwoBy :: Number -> Promise[Number, String]
 var divideTwoBy = function(x) {
@@ -587,16 +587,16 @@ var divideTwoBy = function(x) {
 };</span>
 
 <span class="fragment">promise.then(subtractFifty).then(divideTwoBy).then(timesTwoDelayed)
-    .then(console.log.bind(console, 'res A'));</span>
-<span class="fragment output console-log">"res A" 0.08</span>
+    .then(value => console.log('resolved A', value));</span>
+<span class="fragment output console-log">"resolved A" 0.08</span>
 
 <span class="fragment">promise.then(subtractFifty).then(subtractFifty).then(divideTwoBy)
-    .then(timesTwoDelayed).then(console.log.bind(console, 'res B'));</span>
+    .then(timesTwoDelayed).then(value => console.log('resolved B', value));</span>
 <span class="fragment">// ლ(ಠ益ಠლ)</span>
 
 <span class="fragment">promise.then(subtractFifty).then(subtractFifty).then(divideTwoBy)
-    .then(timesTwoDelayed).then(console.log.bind(console, 'res C'), console.log.bind(console, 'rej C'));</span>
-<span class="fragment output console-log">"rej C" "can't divide by zero"</span>
+    .then(timesTwoDelayed).catch(value => console.log('rejected C', value));</span>
+<span class="fragment output console-log">"rejected C" "can't divide by zero"</span>
                         </code></pre>
                     </section>
                 </section>
@@ -622,14 +622,14 @@ var divideTwoBy = function(x) {
 <span class="fragment output">4</span>
 
 <span class="fragment">function thunk() {
-    return new Promise((res, rej) => setTimeout(res.bind(null, 100), 3000));
+    return new Promise((res, rej) => setTimeout(() => res(100), 3000));
 }</span>
 
-<span class="fragment">thunk().then(console.log.bind(console, 'res A'));</span>
-<span class="fragment output console-log">"res A" 300</span>
+<span class="fragment">thunk().then(value => console.log('resolved A', value));</span>
+<span class="fragment output console-log">"resolved A" 300</span>
 
-<span class="fragment">thunk().then(console.log.bind(console, 'res B'));</span>
-<span class="fragment output console-log">"res B" 300</span>
+<span class="fragment">thunk().then(value => console.log('resolved B', value));</span>
+<span class="fragment output console-log">"resolved B" 300</span>
                         </code></pre>
                     </section>
                     <section>
@@ -656,23 +656,23 @@ var divideTwoBy = function(x) {
                         <pre><code class="js" data-trim data-noescape data-wrap data-large>
 // thunk :: Number -> Promise[Number, a]
 function thunk(n) {
-    return new Promise((res, rej) => setTimeout(res.bind(null, 100 * n), 1500 * n));
+    return new Promise((res, rej) => setTimeout(() => res(100 * n), 1500 * n));
 };
 
 <span class="fragment">// addFifty :: Number -> Number
 var addFifty = x => x + 50;</span>
 
 <span class="fragment">// timesTwoDelayed :: Number -> Promise[Number, a]
-var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(res.bind(null, x * 2), 1000));</span>
+var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(() => res(x * 2), 1000));</span>
 
 <span class="fragment">var lazy = Lazy.of(thunk).map(addFifty).map(timesTwoDelayed);</span>
 
-<span class="fragment">lazy.do(1).then(console.log.bind(console, 'res A'));</span>
-<span class="fragment output console-log">"res A" 300</span>
-<span class="fragment">lazy.do(2).then(console.log.bind(console, 'res B'));</span>
-<span class="fragment output console-log">"res B" 500</span>
-<span class="fragment">lazy.do(3).then(console.log.bind(console, 'res C'));</span>
-<span class="fragment output console-log">"res C" 700</span>
+<span class="fragment">lazy.do(1).then(value => console.log('resolved A', value));</span>
+<span class="fragment output console-log">"resolved A" 300</span>
+<span class="fragment">lazy.do(2).then(value => console.log('resolved B', value));</span>
+<span class="fragment output console-log">"resolved B" 500</span>
+<span class="fragment">lazy.do(3).then(value => console.log('resolved C', value));</span>
+<span class="fragment output console-log">"resolved C" 700</span>
                         </code></pre>
                     </section>
                 </section>
@@ -796,7 +796,7 @@ var addTen = x => x + 10;</span>
 <span class="fragment">var b = Either.of(1).map(subtractTwo).chain(divideTwoBy).map(addTen)
     .map(toString);</span>
 
-<span class="fragment">var e = either(console.log.bind(console, 'this is a left!'), console.log.bind(console, 'this is a right!'));</span>
+<span class="fragment">var e = either(value => console.log('this is a left!', value), value => console.log('this is a right!', value));</span>
 
 <span class="fragment">e(a);</span>
 <span class="fragment output console-log">"this is a left!" "can't divide by zero"</span>
