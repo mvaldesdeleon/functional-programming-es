@@ -125,6 +125,11 @@ $logo-size: 200px;
         }
     }
 
+    section[data-title] {
+        > h2 {
+        }
+    }
+
     section[data-code-title] {
         > pre {
             font-size: 2em;
