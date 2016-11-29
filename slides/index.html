@@ -778,7 +778,7 @@ console.log('fmap(compose(g, f))', t3 - t2, 'ms');</span>
                     <section data-background-image="assets/images/awesome.gif" data-background-size="contain" data-source="awesome">
                     </section>
                 </section>
-                <section>
+                <section data-quit>
                     <h2>Preguntas?</h2>
                 </section>
                 <section data-markdown>
@@ -963,7 +963,19 @@ console.log('fmap(compose(g, f))', t3 - t2, 'ms');</span>
             }
 
             document.addEventListener('keydown', function(event) {
-                var indices = Reveal.getIndices();
+                var indices = Reveal.getIndices(),
+                    slides,
+                    quitSlide,
+                    quitSlideIndex;
+
+                if (event.key.toUpperCase() === 'Q') {
+                    slides = document.querySelectorAll('.slides > section');
+                    quitSlide = document.querySelector('.slides > section[data-quit]');
+                    quitSlideIndex = Array.prototype.indexOf.call(slides, quitSlide);
+
+                    Reveal.slide(quitSlideIndex, -1, -1);
+                    return;
+                }
 
                 if (event.shiftKey) {
                     switch (event.key) {
