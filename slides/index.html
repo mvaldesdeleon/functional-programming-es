@@ -603,7 +603,7 @@ Left.of = x => new Left(x);</span>
 <span class="fragment">// ʀight :: b -> Right[b]
 Right.of = x => new Right(x);</span>
 
-<span class="fragment">// map :: <span class="fragment highlight-current" data-highlight="either-1">Either[a, x]</span> -> <span class="fragment highlight-current" data-highlight="either-2">(a -> b)</span> -> <span class="fragment highlight-current" data-highlight="either-3">Either[b, x]</span>
+<span class="fragment">// map :: <span class="fragment highlight-current" data-highlight="either-1">Either[x, a]</span> -> <span class="fragment highlight-current" data-highlight="either-2">(a -> b)</span> -> <span class="fragment highlight-current" data-highlight="either-3">Either[x, b]</span>
 Either.prototype.map = function(<span data-highlight="either-2">fn</span>) {
     if (<span data-highlight="either-1">this</span> instanceof Right)
         return <span data-highlight="either-3">Right.of(<span data-highlight="either-2">fn</span>(<span data-highlight="either-1">this</span>.__value))</span>;
@@ -630,7 +630,7 @@ var toString = x => x.toString();
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape data-large>
-<span class="fragment" data-skip-next></span>// divideTwoBy :: <span class="fragment highlight-current" data-highlight="either-4">Number</span> -> <span class="fragment highlight-current" data-highlight="either-5">Either[Number, String]</span>
+<span class="fragment" data-skip-next></span>// divideTwoBy :: <span class="fragment highlight-current" data-highlight="either-4">Number</span> -> <span class="fragment highlight-current" data-highlight="either-5">Either[String, Number]</span>
 var divideTwoBy = function(<span data-highlight="either-4">x</span>) {
     if (<span data-highlight="either-4">x</span> === 0) return <span data-highlight="either-5">Left.of("can't divide by zero")</span>;
     else return <span data-highlight="either-5">Right.of(2 / <span data-highlight="either-4">x</span>)</span>;
@@ -645,7 +645,7 @@ var subtractOne = x => x - 1</span>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape>
-// join :: <span class="fragment highlight-current" data-highlight="either-6">Either[Either[a, x], y]</span> -> <span class="fragment highlight-current" data-highlight="either-7">Either[a, x]</span>
+// join :: <span class="fragment highlight-current" data-highlight="either-6">Either[y, Either[x, a]]</span> -> <span class="fragment highlight-current" data-highlight="either-7">Either[x, a]</span>
 Either.prototype.join = function() {
     return <span data-highlight="either-7"><span data-highlight="either-6">this</span>.__value</span>;
 };
@@ -664,7 +664,7 @@ var addTen = x => x + 10;</span>
                     </section>
                     <section>
                         <pre><code class="js" data-trim data-noescape>
-// chain :: <span class="fragment highlight-current" data-highlight="either-8">Either[a, x]</span> -> (<span class="fragment highlight-current" data-highlight="either-9">a -> Either[b, y]</span>) -> <span class="fragment highlight-current" data-highlight="either-10">Either[b, y]</span>
+// chain :: <span class="fragment highlight-current" data-highlight="either-8">Either[x, a]</span> -> (<span class="fragment highlight-current" data-highlight="either-9">a -> Either[y, b]</span>) -> <span class="fragment highlight-current" data-highlight="either-10">Either[y, b]</span>
 Either.prototype.chain = function(<span data-highlight="either-9">fn</span>) {
     return <span data-highlight="either-10"><span data-highlight="either-8">this</span>.map(<span data-highlight="either-9">fn</span>).join()</span>;
 };
