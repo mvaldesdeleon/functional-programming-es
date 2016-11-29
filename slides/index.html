@@ -691,20 +691,15 @@ Either.prototype.do = function(<span data-highlight="either-12">l</span>, <span 
         return <span data-highlight="either-14"><span data-highlight="either-12">l</span>(<span data-highlight="either-11">this</span>.__value)</span>;
 };
 
-<span class="fragment">// either :: (<span class="fragment highlight-current" data-highlight="either-15">(a -> x)</span>, <span class="fragment highlight-current" data-highlight="either-16">(b -> x)</span>) -> <span class="fragment highlight-current" data-highlight="either-17">Either[a, b]</span> -> <span class="fragment highlight-current" data-highlight="either-18">x</span>
-var either = (<span data-highlight="either-15">l</span>, <span data-highlight="either-16">r</span>) => <span data-highlight="either-17">e</span> => <span data-highlight="either-17">e</span> instanceof Left ? <span data-highlight="either-18"><span data-highlight="either-15">l</span>(<span data-highlight="either-17">e</span>.__value)</span> : <span data-highlight="either-18"><span data-highlight="either-16">r</span>(<span data-highlight="either-17">e</span>.__value)</span>;</span>
-
 <span class="fragment">var a = Either.of(1).map(subtractOne).chain(divideTwoBy).map(addTen)
     .map(toString);</span>
 <span class="fragment">var b = Either.of(1).map(subtractTwo).chain(divideTwoBy).map(addTen)
     .map(toString);</span>
 
-<span class="fragment">var e = either(value => console.log('this is a left!', value), value => console.log('this is a right!', value));</span>
-
-<span class="fragment">e(a);</span>
+<span class="fragment">a.do(value => console.log('this is a left!', value), value => console.log('this is a right!', value));</span>
 <span class="fragment output console-log">"this is a left!" "can't divide by zero"</span>
 
-<span class="fragment">e(b);</span>
+<span class="fragment">b.do(value => console.log('this is a left!', value), value => console.log('this is a right!', value));</span>
 <span class="fragment output console-log">"this is a right!" "8"</span>
                         </code></pre>
                     </section>
