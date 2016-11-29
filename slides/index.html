@@ -924,16 +924,19 @@ console.log('fmap(compose(g, f))', t3 - t2, 'ms');</span>
 
             function checkSources(event) {
                 var slide = event.currentSlide,
+                    sources = document.querySelector('.sources'),
                     source = slide.getAttribute('data-source');
 
-                document.querySelectorAll('.sources .source.active').forEach(function(source) {
+                sources.querySelectorAll('.source.active').forEach(function(source) {
                     source.classList.remove('active');
                 });
+                sources.classList.remove('active');
 
                 if (source) {
-                    document.querySelectorAll('.sources .source[data-source="' + source + '"]').forEach(function(source) {
+                    sources.querySelectorAll('.source[data-source="' + source + '"]').forEach(function(source) {
                         source.classList.add('active');
                     });
+                    sources.classList.add('active');
                 }
             }
 

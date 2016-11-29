@@ -171,6 +171,7 @@ $logo-size: 200px;
 .sources {
     $source-padding: 30px;
 
+    display: none;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -179,6 +180,10 @@ $logo-size: 200px;
     z-index: 1;
     font-family: "Source Sans Pro", Helvetica, sans-serif;
     font-size: 24px;
+
+    &.active {
+        display: block;
+    }
 
     .source {
         display: none;
