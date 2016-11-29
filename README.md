@@ -111,7 +111,7 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 * ~~Subcategoría~~
 * ~~Functor~~
 * ~~(Pointed Functor)~~
-* ~~Monad
+* ~~Monad~~
 * Axiomas/Leyes
 * Simplificar map/compose
 
