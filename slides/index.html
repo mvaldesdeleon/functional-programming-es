@@ -995,6 +995,17 @@ console.log('fmap(compose(g, f))', t3 - t2, 'ms');</span>
                         return;
                     }
                 }
+
+                if (event.metaKey || event.ctrlKey) {
+                    switch (event.key) {
+                    case 'ArrowUp':
+                        Reveal.slide(indices.h, indices.v - 1, 999);
+                        return;
+                    case 'ArrowDown':
+                        Reveal.slide(indices.h, indices.v + 1, 999);
+                        return;
+                    }
+                }
             });
         </script>
     </body>
