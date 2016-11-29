@@ -506,44 +506,6 @@ var chain = fn => compose(join, fmap(fn));</span></span></span>
                     </section>
                 </section>
                 <section data-title>
-                    <h2>Promises</h2>
-                </section>
-                <section>
-                    <section>
-                        <pre><code class="js" data-trim data-noescape>
-// Promise[a, b] = Pending | Resolved[a] ㅣ Rejected[b]
-
-<span class="fragment">// unit :: a -> Resolved[a]
-var unit = a => Promise.resolve(a);</span>
-
-<span class="fragment">// ʀeject :: b -> Rejected[b]
-var ʀeject = b => Promise.reject(b);</span>
-
-<span class="fragment">// fmap :: <span class="fragment highlight-current" data-highlight="promise-1">(a -> c)</span> -> (<span class="fragment highlight-current" data-highlight="promise-2">Promise[a, b]</span> -> <span class="fragment highlight-current" data-highlight="promise-3">Promise[c, b]</span>)
-var fmap = <span data-highlight="promise-1">fn</span> => <span data-highlight="promise-2">pr</span> => <span data-highlight="promise-3">pr.then(fn);</span></span>
-
-<span class="fragment">// chain :: <span class="fragment highlight-current" data-highlight="promise-4">(a -> Promise[c, b])</span> -> (<span class="fragment highlight-current" data-highlight="promise-5">Promise[a, b]</span> -> <span class="fragment highlight-current" data-highlight="promise-6">Promise[c, b]</span>)
-var chain = <span data-highlight="promise-4">fn</span> => <span data-highlight="promise-5">pr</span> => <span data-highlight="promise-6">pr.then(fn);</span></span>
-<span class="fragment"></span>
-                        </code></pre>
-                    </section>
-                    <section>
-                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
-<span class="fragment" data-skip-next></span>// divideTwoBy :: <span class="fragment highlight-current" data-highlight="promise-7">Number</span> -> <span class="fragment highlight-current" data-highlight="promise-8">Promise[Number, String]</span>
-var divideTwoBy = function(<span data-highlight="promise-7">x</span>) {
-    if (<span data-highlight="promise-7">x</span> === 0) return <span data-highlight="promise-8">Promise.reject("can't divide by zero")</span>;
-    else return <span data-highlight="promise-8">Promise.resolve(2 / <span data-highlight="promise-7">x</span>)</span>;
-};</span>
-
-<span class="fragment">Promise.resolve(0).then(divideTwoBy).then(value => console.log('resolved', value), value => console.log('rejected', value));</span>
-<span class="fragment output console-log">"rejected" "can't divide by zero"</span>
-
-<span class="fragment">Promise.resolve(0).then(divideTwoBy).catch(value => console.log('rejected', value));</span>
-<span class="fragment output console-log">"rejected" "can't divide by zero"</span>
-                        </code></pre>
-                    </section>
-                </section>
-                <section data-title>
                     <h2>Lazy Promises</h2>
                 </section>
                 <section>
