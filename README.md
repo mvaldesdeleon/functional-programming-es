@@ -13,6 +13,7 @@ Por último, también espero hacerle el camino un poco más fácil a quien quier
 
 ##### Archivo
 * [v0.1.0](http://fun.ction.al/es/archive/0.1.0/)
+* [v0.2.0](http://fun.ction.al/es/archive/0.2.0/)
 
 ## TODO
 * ~~Preparar ejemplos (código)~~
