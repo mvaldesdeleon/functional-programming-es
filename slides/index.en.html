@@ -1,0 +1,1024 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Your code could be better and I can prove it mathematically</title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+        <!-- Custom css -->
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Your code could be better</h1>
+                    <h3>and I can prove it mathematically</h3>
+                </section>
+                <section data-title>
+                    <h2>Motivation<h2>
+                </section>
+                <section data-background-color="#ffffff" data-background-image="assets/images/diagram_category.png" data-background-size="contain" data-source="category">
+                </section>
+                <section data-background-color="#ffffff" data-background-image="assets/images/diagram_functor.png" data-background-size="contain" data-source="functor">
+                </section>
+                <section data-background-color="#ffffff" data-background-image="assets/images/diagram_monad.png" data-background-size="contain" data-source="monad">
+                </section>
+                <section id="fn-js">
+                    <object class="js-logo" type="image/svg+xml" data="assets/images/js.svg"></object>
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-large data-noescape>
+<span class="fragment highlight-current">var li = document.getElementsByTagName('li');</span>
+
+var filtered = [];
+<span class="fragment highlight-current">for (let i = 0; i < li.length; i++) {</span>
+    <span class="fragment highlight-current">if (li[i].classList.contains('item')) {</span>
+        <span class="fragment highlight-current">filtered.push(li[i]);</span>
+    }
+}
+
+<span class="fragment highlight-current">for (let i = 0; i < filtered.length; i++) {</span>
+    <span class="fragment highlight-current">for (let j = 0; j < filtered[i].children.length; j++) {</span>
+        <span class="fragment highlight-current">let div = document.createElement('div');</span>
+
+        <span class="fragment highlight-current">div.classList.add('title');</span>
+        <span class="fragment highlight-current">div.innerHTML = 'Hello!';</span>
+        <span class="fragment highlight-current">filtered[i].children[j].insertAdjacentElement('afterbegin', div);</span>
+    }
+}
+<span class="fragment"></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+<span class="fragment highlight-current">$('li')</span>
+    <span class="fragment highlight-current">.filter('.item')</span>
+    <span class="fragment highlight-current">.children()</span>
+        <span class="fragment highlight-current">.prepend</span>(
+            <span class="fragment highlight-current">$('&lt;div&gt;')</span>
+                <span class="fragment highlight-current">.addClass('title')</span>
+                <span class="fragment highlight-current">.html('Hello!')</span>
+        );
+<span class="fragment"></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-large data-noescape>
+var filtered = [];
+<span class="fragment highlight-current">for (let i = 0; i < list.length; i++) {</span>
+    <span class="fragment highlight-current">if (list[i].age >= 18) {</span>
+        <span class="fragment highlight-current">filtered.push(list[i]);</span>
+    }
+}
+
+var sorted = [];
+<span class="fragment highlight-current">for (let i = 0; i < filtered.length; i++) {</span>
+    <span class="fragment highlight-current">let max = i;</span>
+    <span class="fragment highlight-current">for (let j = i; j < filtered.length; j++) {</span>
+        <span class="fragment highlight-current">if (filtered[j].age > filtered[max].age) {</span>
+            <span class="fragment highlight-current">max = j;</span>
+        }
+
+    }
+    <span class="fragment highlight-current">sorted[i] = filtered[max];</span>
+    <span class="fragment highlight-current">filtered[max] = filtered[i];</span>
+}
+
+var uppercaseNames = [];
+<span class="fragment highlight-current">for (let i = 0; i < sorted.length; i++) {</span>
+    <span class="fragment highlight-current">uppercaseNames[i] = sorted[i].name.toUpperCase();</span>
+}
+<span class="fragment"></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+list
+    <span class="fragment highlight-current">.filter(x => x.age >= 18)</span>
+    <span class="fragment highlight-current">.sort((a, b) => b.age - a.age)</span>
+    <span class="fragment highlight-current">.map(x => x.name.toUpperCase());</span>
+<span class="fragment"></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-large data-wrap data-noescape>
+<span class="fragment highlight-current">fs.readFile(path.resolve(__dirname, 'config.json'), function(err, data) {</span>
+    <span class="fragment highlight-current">if (err) {</span>
+        <span class="fragment highlight-current">console.log('Something went wrong', err);</span>
+        return;
+    }
+
+    <span class="fragment highlight-current">var config = JSON.parse(data);</span>
+
+    <span class="fragment highlight-current">request(config.targetUrl, function(err, response, body) {</span>
+        <span class="fragment highlight-current">if (err) {</span>
+            <span class="fragment highlight-current">console.log('Something went wrong', err);</span>
+            return;
+        }
+
+        <span class="fragment highlight-current">fs.writeFile(path.resolve(__dirname, 'target.txt'), body, function(err) {</span>
+            <span class="fragment highlight-current">if (err) {</span>
+                <span class="fragment highlight-current">console.log('Something went wrong', err);</span>
+                return;
+            }
+
+            <span class="fragment highlight-current">console.log('Success');</span>
+        });
+    });
+});
+<span class="fragment"></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-wrap data-noescape>
+<span class="fragment highlight-current">fsp.readFile(path.resolve(__dirname, 'config.json'))</span>
+    <span class="fragment highlight-current">.then(x => JSON.parse(x))</span>
+    <span class="fragment highlight-current">.then(x => requestp(x.targetUrl))</span>
+    <span class="fragment highlight-current">.then(x => fsp.writeFile(path.resolve(__dirname, 'target.txt'), x))</span>
+    .then(<span class="fragment highlight-current">() => console.log('Success')</span> ,<span class="fragment highlight-current">(err) => console.log('Something went wrong', err)</span>);
+<span class="fragment"></span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-title>
+                    <h2>The basics</h2>
+                </section>
+                <section  data-background-image="assets/images/curry.jpg" data-background-size="contain" data-source="curry-a">
+                </section>
+                <section  data-background-image="assets/images/curry_haskell.jpg" data-background-size="contain" data-source="curry-b">
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-wrap data-noescape>
+function addFourNumbers(a, b, c, d) {
+    return a + b + c + d;
+}
+
+<span class="fragment">function addFourNumbersOneByOne(a) {
+    <span class="fragment">return function(b) {
+        <span class="fragment">return function(c) {
+            <span class="fragment">return function(d) {
+                return addFourNumbers(a, b, c, d);
+            }</span>
+        }</span>
+    }</span>
+}</span>
+
+<span class="fragment">var addFourNumbersOneByOneᐟ = a => <span class="fragment">b => <span class="fragment">c => <span class="fragment">d => addFourNumbers(a, b, c, d);</span></span></span></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+var addSix = addFourNumbersOneByOne(1)(2)(3);
+
+<span class="fragment">addSix(10);</span>
+<span class="fragment output">16</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-background-color="#ffffff" data-background-image="assets/images/diagram_composition.png" data-background-size="contain" data-source="composition">
+                </section>
+                <section>
+                    <section data-code-title>
+                        <pre><code class="js" data-trim>
+var z = g(f(x));
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+var y = a(b(c(d(e(f(g(h(i(j(k(x)))))))))));
+
+<span class="fragment">var F = compose(a, b, c, d, e, f, g, h, i, j, k);</span>
+
+<span class="fragment">var yᐟ = F(x);</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-title>
+                    <h2>Types</h2>
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+var num = 12.3; // Number
+
+<span class="fragment">var str = 'rhein-neckar.js'; // String</span>
+
+<span class="fragment">var bool = true; // Boolean<span class="fragment"> = True | False</span></span>
+
+<span class="fragment">var arr = [] // Array</span>
+             <span class="fragment">// Array[a]</span>
+             <span class="fragment">// [a]</span>
+
+<span class="fragment">var strArr = ['hello', 'world', '!'] // Array[String]</span>
+
+<span class="fragment">var fn = function() {}; // Function</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+var fn = function() {}; // Function
+
+<span class="fragment"><span class="fragment">// add :: <span class="fragment highlight-current" data-highlight="add-1">(Number, Number)</span> -> <span class="fragment highlight-current" data-highlight="add-2">Number</span></span>
+var add = <span data-highlight="add-1">(x,y)</span> => <span data-highlight="add-2">x + y</span>;</span>
+
+<span class="fragment"><span class="fragment">//  addᐟ :: <span class="fragment highlight-current" data-highlight="add-3">Number</span> -> <span class="fragment highlight-current" data-highlight="add-4">Number</span> -> <span class="fragment highlight-current" data-highlight="add-5">Number</span></span>
+<span class="fragment">//  addᐟ :: <span class="fragment highlight-current" data-highlight="add-3">Number</span> -> <span class="fragment highlight-current" data-highlight="add-6">(Number -> Number)</span></span>
+var addᐟ = <span data-highlight="add-3">x</span> => <span data-highlight="add-6"><span data-highlight="add-4">y</span> => <span data-highlight="add-5">x + y</span></span>;</span>
+<span class="fragment"></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-large>
+// addTwo :: Number -> Number
+var addTwo = x => x + 2;
+
+<span class="fragment">addTwo(3);</span>
+<span class="fragment output">5</span>
+
+<span class="fragment">addTwo('hello');
+<span class="fragment output">"hello2"</span>
+
+addTwo([]);
+<span class="fragment output">"2"</span>
+
+addTwo({});
+<span class="fragment output">"[object Object]2"</span>
+
+addTwo(undefined);
+<span class="fragment output">NaN</span></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+<span class="fragment">// filter :: <span class="fragment highlight-current" data-highlight="filter-1">Function</span> -> <span class="fragment highlight-current" data-highlight="filter-2">Array</span> -> <span class="fragment highlight-current" data-highlight="filter-3">Array</span></span>
+<span class="fragment">// filter :: <span class="fragment highlight-current" data-highlight="filter-1">(a -> Boolean)</span> -> <span class="fragment highlight-current" data-highlight="filter-2">[a]</span> -> <span class="fragment highlight-current" data-highlight="filter-3">[a]</span></span>
+var filter = <span data-highlight="filter-1">pr</span> => <span data-highlight="filter-2">xs</span> => <span data-highlight="filter-3">xs.filter(pr)</span>;
+
+<span class="fragment"><span class="fragment">// reduce :: <span class="fragment highlight-current" data-highlight="reduce-1">(b -> a -> b)</span> -> <span class="fragment highlight-current" data-highlight="reduce-2">b</span> -> <span class="fragment highlight-current" data-highlight="reduce-3">[a]</span> -> <span class="fragment highlight-current" data-highlight="reduce-4">b</span></span>
+var reduce = <span data-highlight="reduce-1">fn</span> => <span data-highlight="reduce-2">acc</span> => <span data-highlight="reduce-3">xs</span> => <span data-highlight="reduce-4">xs.reduce(fn, acc);</span></span>
+<span class="fragment"></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="bash" data-trim data-noescape>
+$ <span class="fragment">ghci</span>
+<span class="fragment">GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+Prelude> <span class="fragment">:t foldl</span></span>
+<span class="fragment">foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
+Prelude></span>
+                        </code></pre>
+                        <pre class="fragment"><code class="js" data-trim data-noescape>
+// reduce :: (b -> a -> b) -> b -> [a] -> b
+var reduce = fn => acc => xs => xs.reduce(fn, acc);
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-title>
+                    <h2>&ldquo;Environments&rdquo;</h2>
+                </section>
+                <section  data-background-image="assets/images/metaphysics.jpg" data-background-size="contain" data-source="metaphysics">
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+function Environment(something) {
+    <span class="fragment">this.__value = something;</span>
+}
+
+<span class="fragment">var env = new Environment('Help me, I`m trapped inside an environment!');</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-title>
+                    <h2>Case 1</h2>
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// addTwo :: Number -> Number
+var addTwo = x => x + 2;
+
+// [Number]
+var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+<span class="fragment">// addTwoᐟ :: [Number] -> [Number]</span>
+<span class="fragment">// addTwoᐟ = <span class="fragment" data-skip-next>ಠ_ಠ(</span>addTwo<span class="fragment" data-skip-prev>)</span></span>
+
+<span class="fragment">// ಠ_ಠ :: (<span class="fragment highlight-current">Number -> Number</span>) -> (<span class="fragment highlight-current">[Number] -> [Number]</span>)</span>
+<span class="fragment"></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-large>
+// addTwo :: Number -> Number
+var addTwo = x => x + 2;
+
+// [Number]
+var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// ಠ_ಠ :: (<span data-highlight="case1-1">Number -> Number</span>) -> (<span data-highlight="case1-2">[Number]</span> -> <span data-highlight="case1-3">[Number]</span>)
+<span class="fragment">var ಠ_ಠ = function(<span data-highlight="case1-1">fn</span>) {
+    <span class="fragment">return function(<span data-highlight="case1-2">xs</span>) {
+        <span class="fragment">return <span data-highlight="case1-3">xs.map(fn)</span>;</span>
+    }</span>
+};</span><span class="fragment" data-highlight="case1-1"></span><span class="fragment" data-highlight="case1-2"></span><span class="fragment" data-highlight="case1-3"></span>
+
+<span class="fragment">// addTwoᐟ :: [Number] -> [Number]
+addTwoᐟ = ಠ_ಠ(addTwo);</span>
+
+<span class="fragment">addTwoᐟ(Ⅰ_Ⅹ);</span>
+<span class="fragment output">[3, 4, 5, 6, 7, 8, 9, 10, 11, 12]</span>
+
+<span class="fragment">// fmap :: (Number -> Number) -> ([Number] -> [Number])
+var fmap = ಠ_ಠ;</span>
+                        </code></pre>
+                    </section>
+                    <section data-background-image="assets/images/kung_fu.gif" data-source="matrix">
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-large data-wrap>
+// addTwo :: Number -> Number
+var addTwo = x => x + 2;
+
+// timesThree :: Number -> Number
+var timesThree = x => x * 3;
+
+<span class="fragment">// addTwoᐟ :: [Number] -> [Number]
+var addTwoᐟ = fmap(addTwo);
+
+// timesThreeᐟ :: [Number] -> [Number]
+var timesThreeᐟ = fmap(timesThree);</span>
+
+<span class="fragment">// doALotOfThingsᐟ :: [Number] -> [Number]
+var doALotOfThingsᐟ = compose(addTwoᐟ, timesThreeᐟ, timesThreeᐟ, addTwoᐟ, timesThreeᐟ);</span>
+
+<span class="fragment">doALotOfThingsᐟ(Ⅰ_Ⅹ);</span>
+<span class="fragment output">[47, 74, 101, 128, 155, 182, 209, 236, 263, 290]</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-title>
+                    <h2>Case 2</h2>
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// doALotOfThingsᐟ :: [Number] -> [Number]
+var doALotOfThingsᐟ = compose(addTwoᐟ, timesThreeᐟ, timesThreeᐟ, addTwoᐟ, timesThreeᐟ);
+
+// Number
+var two = 2;
+
+<span class="fragment">// ಠ_ಠ :: Number -> [Number]</span>
+<span class="fragment">var ಠ_ಠ = x => [x];</span>
+
+<span class="fragment">doALotOfThingsᐟ(ಠ_ಠ(two));</span>
+<span class="fragment output">74</span>
+
+<span class="fragment">// unit :: Number -> [Number]
+var unit = ಠ_ಠ;
+// ʀeturn :: Number -> [Number]
+var ʀeturn = ಠ_ಠ;</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// sumArray :: [Number] -> Number
+var sumArray = reduce((acc, x) => acc + x)(0);
+
+<span class="fragment">// sumArrayᐟ :: [Number] -> [Number]</span>
+<span class="fragment">var sumArrayᐟ = compose(unit, sumArray);</span>
+
+<span class="fragment">// lift :: (<span class="fragment highlight-current">[Number] -> Number</span>) -> (<span class="fragment highlight-current">[Number] -> [Number]</span>)</span>
+<span class="fragment">var lift = fn => compose(unit, fn);</span>
+
+<span class="fragment">var sumArrayᐟ = lift(sumArray);</span>
+
+<span class="fragment">// doALotOfThingsMoreᐟ :: [Number] -> [Number]
+var doALotOfThingsMoreᐟ = compose(doALotOfThingsᐟ, sumArrayᐟ);</span>
+
+<span class="fragment">doALotOfThingsMoreᐟ(Ⅰ_Ⅹ);</span>
+<span class="fragment output">[1505]</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-title>
+                    <h2>Case 3</h2>
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// firstFiveMultiplesOf :: Number -> [Number]
+var firstFiveMultiplesOf = x => [1, 2, 3, 4, 5].map(n => x * n);
+
+// [Number]
+var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+<span class="fragment">// firstFiveMultiplesOfᐟ :: [Number] -> [[Number]]
+var firstFiveMultiplesOfᐟ = fmap(firstFiveMultiplesOf)</span>
+
+<span class="fragment">firstFiveMultiplesOfᐟ(Ⅰ_Ⅹ);</span>
+<span class="fragment output">[[1, 2, 3, 4, 5], [2, 4, 6, 8, 10], [3, 6, 9, 12, 15], [4, 8, 12, 16, 20], [5, 10, 15, 20, 25], [6, 12, 18, 24, 30], [7, 14, 21, 28, 35], [8, 16, 24, 32, 40], [9, 18, 27, 36, 45], [10, 20, 30, 40, 50]]</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// firstFiveMultiplesOf :: Number -> [Number]
+var firstFiveMultiplesOf = firstNthMultiplesOf(5);
+
+// [Number]
+var Ⅰ_Ⅹ = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// firstFiveMultiplesOfᐟ :: [Number] -> [[Number]]
+var firstFiveMultiplesOfᐟ = fmap(firstFiveMultiplesOf)
+
+<span class="fragment">// ಠ_ಠ :: [[Number]] -> [Number]</span>
+<span class="fragment">var ಠ_ಠ = xss => <span data-highlight="case3-1">xss.reduce</span>(<span data-highlight="case3-2">(acc, xs) => acc.concat(xs)</span>, <span data-highlight="case3-3">[]</span>);</span><span class="fragment" data-highlight="case3-1"></span><span class="fragment" data-highlight="case3-2"></span><span class="fragment" data-highlight="case3-3"></span>
+
+<span class="fragment">ಠ_ಠ(firstFiveMultiplesOfᐟ(Ⅰ_Ⅹ));</span>
+<span class="fragment output">[1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
+
+<span class="fragment">// join :: [[Number]] -> [Number]
+var join = ಠ_ಠ;
+// flatten :: [[Number]] -> [Number]
+var flatten = ಠ_ಠ;</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap>
+// firstFiveMultiplesOf :: Number -> [Number]
+<span class="fragment">// fmap firstFiveMultiplesOf :: [Number] -> [[Number]]</span>
+<span class="fragment">// join (fmap firstFiveMultiplesOf) :: [Number] -> [Number]</span>
+
+<span class="fragment">// chain :: (<span class="fragment highlight-current">Number -> [Number]</span>) -> (<span class="fragment highlight-current">[Number] -> [Number]</span>)</span>
+<span class="fragment">var chain = fn => compose(join, fmap(fn));</span>
+
+<span class="fragment">chain(firstFiveMultiplesOf)(Ⅰ_Ⅹ);</span>
+<span class="fragment output">[1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10, 15, 20, 25, 6, 12, 18, 24, 30, 7, 14, 21, 28, 35, 8, 16, 24, 32, 40, 9, 18, 27, 36, 45, 10, 20, 30, 40, 50]</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section data-background-image="assets/images/portal_cake.jpg" data-source="portal">
+                    </section>
+                    <section data-background-image="assets/images/wat.jpg" data-background-size="contain" data-source="wat">
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// fmap :: (Number -> Number) -> ([Number] -> [Number])
+var fmap = fn => xs => xs.map(fn);
+
+<span class="fragment always-visible first"><span class="fragment always-visible second"><span class="first">// unit :: Number -> [Number]
+var unit = x => [x];</span>
+
+<span class="second">// lift :: ([Number] -> Number) -> ([Number] -> [Number])
+var lift = fn => compose(unit, fn);</span>
+
+<span class="first">// join :: [[Number]] -> [Number]
+var join = xss => xss.reduce((acc, xs) => acc.concat(xs), []);</span>
+
+<span class="second">// chain :: (Number -> [Number]) -> ([Number] -> [Number])
+var chain = fn => compose(join, fmap(fn));</span></span></span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-title>
+                    <h2>Lazy Promises</h2>
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-large>
+2+2;
+<span class="fragment output">4</span>
+
+<span class="fragment">var four = 2 + 2;</span>
+
+<span class="fragment">four;</span>
+<span class="fragment output">4</span>
+
+<span class="fragment">var four = function() {
+    return 2 + 2;
+};</span>
+
+<span class="fragment">four();</span>
+<span class="fragment output">4</span>
+
+<span class="fragment">function thunk() {
+    return new Promise((res, rej) => setTimeout(() => res(100), 3000));
+}</span>
+
+<span class="fragment">thunk().then(value => console.log('resolved A', value));</span>
+<span class="fragment output console-log">"resolved A" 300</span>
+
+<span class="fragment">thunk().then(value => console.log('resolved B', value));</span>
+<span class="fragment output console-log">"resolved B" 300</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// Lazy[a -> Promise[b, x]]
+<span class="fragment">function Lazy(fn) { this.__value = fn; };</span>
+
+<span class="fragment">// unit :: (<span class="fragment highlight-current">a -> Promise[b, x]</span>) -> <span class="fragment highlight-current">Lazy[a -> Promise[b, x]]</span></span>
+<span class="fragment">Lazy.of = fn => new Lazy(fn);</span>
+
+<span class="fragment">// map :: <span class="fragment highlight-current"><span data-highlight="lazy-1">Lazy[a -> Promise[b, x]]</span></span> -> (<span class="fragment highlight-current"><span data-highlight="lazy-2">b -> c</span></span>) -> <span class="fragment highlight-current"><span data-highlight="lazy-3">Lazy[a -> Promise[c, x]]</span></span></span>
+<span class="fragment">// map :: <span class="fragment highlight-current">Lazy[a -> Promise[b, x]]</span> -> (<span class="fragment highlight-current">b -> Promise[c, y]</span>) -> <span class="fragment highlight-current">Lazy[a -> Promise[c, y]]</span></span>
+<span class="fragment">Lazy.prototype.map = function(<span data-highlight="lazy-2">fn</span>) {
+    return <span data-highlight="lazy-3">Lazy.of((a) => <span data-highlight="lazy-1">this</span>.__value(a).then(<span data-highlight="lazy-2">fn</span>))</span>;
+};</span><span class="fragment" data-highlight="lazy-1"></span><span class="fragment" data-highlight="lazy-2"></span><span class="fragment" data-highlight="lazy-3"></span>
+
+<span class="fragment">// do :: <span data-highlight="lazy-4">Lazy[a -> Promise[b, z]]</span> -> <span data-highlight="lazy-5">a</span> -> <span data-highlight="lazy-6">Promise[b, z]</span></span>
+<span class="fragment">Lazy.prototype.do = function(<span data-highlight="lazy-5">a</span>) {
+    return <span data-highlight="lazy-6"><span data-highlight="lazy-4">this</span>.__value(<span data-highlight="lazy-5">a</span>)</span>;
+};</span><span class="fragment" data-highlight="lazy-4"></span><span class="fragment" data-highlight="lazy-5"></span><span class="fragment" data-highlight="lazy-6"></span>
+<span class="fragment"></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// thunk :: Number -> Promise[Number, a]
+function thunk(n) {
+    return new Promise((res, rej) => setTimeout(() => res(100 * n), 1500 * n));
+};
+
+<span class="fragment">// addFifty :: Number -> Number
+var addFifty = x => x + 50;</span>
+
+<span class="fragment">// timesTwoDelayed :: Number -> Promise[Number, a]
+var timesTwoDelayed = x => new Promise((res, rej) => setTimeout(() => res(x * 2), 1000));</span>
+
+<span class="fragment">var lazy = Lazy.of(thunk).map(addFifty).map(timesTwoDelayed);</span>
+
+<span class="fragment">lazy.do(1).then(value => console.log('resolved A', value));</span>
+<span class="fragment output console-log">"resolved A" 300</span>
+<span class="fragment">lazy.do(2).then(value => console.log('resolved B', value));</span>
+<span class="fragment output console-log">"resolved B" 500</span>
+<span class="fragment">lazy.do(3).then(value => console.log('resolved C', value));</span>
+<span class="fragment output console-log">"resolved C" 700</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-title>
+                    <h2>Control flow</h2>
+                </section>
+                <section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-large>
+// Either[a, b] = Left[a] ㅣ Right[b]
+
+<span class="fragment">function Either(x) { this.__value = x; };</span>
+
+<span class="fragment">function Left(...args) { Either.call(this, ...args); };
+Left.prototype = Object.create(Either.prototype);</span>
+
+<span class="fragment">function Right(...args) { Either.call(this, ...args); };
+Right.prototype = Object.create(Either.prototype);</span>
+
+<span class="fragment">// ʟeft :: a -> Left[a]
+Left.of = x => new Left(x);</span>
+<span class="fragment">// ʀight :: b -> Right[b]
+Right.of = x => new Right(x);</span>
+
+<span class="fragment">// map :: <span class="fragment highlight-current" data-highlight="either-1">Either[x, a]</span> -> <span class="fragment highlight-current" data-highlight="either-2">(a -> b)</span> -> <span class="fragment highlight-current" data-highlight="either-3">Either[x, b]</span>
+Either.prototype.map = function(<span data-highlight="either-2">fn</span>) {
+    if (<span data-highlight="either-1">this</span> instanceof Right)
+        return <span data-highlight="either-3">Right.of(<span data-highlight="either-2">fn</span>(<span data-highlight="either-1">this</span>.__value))</span>;
+    else
+        return <span data-highlight="either-3"><span data-highlight="either-1">this</span></span>;
+};</span>
+<span class="fragment"></span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// plusOne :: Number -> Number
+var plusOne = x => x + 1
+
+// timesTwo :: Number -> Number
+var timesTwo = x => x * 2
+
+// toString :: Number -> String
+var toString = x => x.toString();
+
+<span class="fragment">Right.of(1).map(plusOne).map(timesTwo).map(toString);</span>
+<span class="fragment output">Right {__value: "4"}</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-large>
+<span class="fragment" data-skip-next></span>// divideTwoBy :: <span class="fragment highlight-current" data-highlight="either-4">Number</span> -> <span class="fragment highlight-current" data-highlight="either-5">Either[String, Number]</span>
+var divideTwoBy = function(<span data-highlight="either-4">x</span>) {
+    if (<span data-highlight="either-4">x</span> === 0) return <span data-highlight="either-5">Left.of("can't divide by zero")</span>;
+    else return <span data-highlight="either-5">Right.of(2 / <span data-highlight="either-4">x</span>)</span>;
+};
+
+<span class="fragment">// subtractOne :: Number -> Number
+var subtractOne = x => x - 1</span>
+
+<span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy);</span>
+<span class="fragment output">Right {__value: Left {__value: "can't divide by zero"}}</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// join :: <span class="fragment highlight-current" data-highlight="either-6">Either[y, Either[x, a]]</span> -> <span class="fragment highlight-current" data-highlight="either-7">Either[x, a]</span>
+Either.prototype.join = function() {
+    return <span data-highlight="either-7"><span data-highlight="either-6">this</span>.__value</span>;
+};
+
+<span class="fragment">// addTen :: Number -> Number
+var addTen = x => x + 10;</span>
+
+<span class="fragment">Right.of(1).map(subtractTwo).map(divideTwoBy).join()
+    .map(addTen).map(toString);</span>
+<span class="fragment output">Right {__value: "8"}</span>
+
+<span class="fragment">Right.of(1).map(subtractOne).map(divideTwoBy).join()
+    .map(addTen).map(toString);</span>
+<span class="fragment output">Left {__value: "can't divide by zero"}</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+// chain :: <span class="fragment highlight-current" data-highlight="either-8">Either[x, a]</span> -> (<span class="fragment highlight-current" data-highlight="either-9">a -> Either[y, b]</span>) -> <span class="fragment highlight-current" data-highlight="either-10">Either[y, b]</span>
+Either.prototype.chain = function(<span data-highlight="either-9">fn</span>) {
+    return <span data-highlight="either-10"><span data-highlight="either-8">this</span>.map(<span data-highlight="either-9">fn</span>).join()</span>;
+};
+
+<span class="fragment">// unit :: b -> Right[b]
+Either.of = x => new Right(x);</span>
+
+<span class="fragment">Either.of(1).map(subtractTwo).chain(divideTwoBy).map(addTen)
+    .map(toString);</span>
+<span class="fragment output">Right {__value: "8"}</span>
+
+<span class="fragment">Either.of(1).map(subtractOne).chain(divideTwoBy).map(addTen)
+    .map(toString);</span>
+<span class="fragment output">Left {__value: "can't divide by zero"}</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-wrap data-large>
+// do :: <span class="fragment highlight-current" data-highlight="either-11">Either[a, b]</span> -> <span class="fragment highlight-current" data-highlight="either-12">(a -> x)</span> -> <span class="fragment highlight-current" data-highlight="either-13">(b -> x)</span> -> <span class="fragment highlight-current" data-highlight="either-14">x</span>
+Either.prototype.do = function(<span data-highlight="either-12">l</span>, <span data-highlight="either-13">r</span>) {
+    if (<span data-highlight="either-11">this</span> instanceof Right)
+        return <span data-highlight="either-14"><span data-highlight="either-13">r</span>(<span data-highlight="either-11">this</span>.__value)</span>;
+    else
+        return <span data-highlight="either-14"><span data-highlight="either-12">l</span>(<span data-highlight="either-11">this</span>.__value)</span>;
+};
+
+<span class="fragment">var a = Either.of(1).map(subtractOne).chain(divideTwoBy).map(addTen)
+    .map(toString);</span>
+<span class="fragment">var b = Either.of(1).map(subtractTwo).chain(divideTwoBy).map(addTen)
+    .map(toString);</span>
+
+<span class="fragment">a.do(value => console.log('this is a left!', value), value => console.log('this is a right!', value));</span>
+<span class="fragment output console-log">"this is a left!" "can't divide by zero"</span>
+
+<span class="fragment">b.do(value => console.log('this is a left!', value), value => console.log('this is a right!', value));</span>
+<span class="fragment output console-log">"this is a right!" "8"</span>
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-blank>
+                    <!-- This slide intentionally left blank -->
+                    <span class="fragment"></span>
+                </section>
+                <section data-title>
+                    <h2>Category theory</h2>
+                </section>
+                <section data-background-color="#ffffff" data-background-image="assets/images/diagram_category.png" data-background-size="contain" data-source="category">
+                </section>
+                <section data-background-color="#ffffff" data-background-image="assets/images/diagram_hask.png" data-background-size="50%" data-source="hask">
+                </section>
+                <section data-source="axioms">
+                    <h6>Categories</h6>
+                    <img class="formula" src="assets/images/laws_category_assoc.svg">
+                    <img class="formula" src="assets/images/laws_category_id.svg">
+                    <img class="formula" src="assets/images/laws_category_id2.svg">
+                    <div class="fragment"><h6>Functors</h6>
+                    <img class="formula" src="assets/images/laws_functor_id.svg">
+                    <img class="formula" src="assets/images/laws_functor_composition.svg"></div>
+                    <div class="fragment"><h6>Monads</h6>
+                    <img class="formula" src="assets/images/laws_monad_1.svg">
+                    <img class="formula" src="assets/images/laws_monad_2.svg">
+                    <img class="formula" src="assets/images/laws_monad_3.svg">
+                    <img class="formula" src="assets/images/laws_monad_4.svg"></div>
+                </section>
+                <section>
+                    <h1>Your code could be better</h1>
+                    <h3>and I can prove it mathematically</h3>
+                </section>
+                <section>
+                    <section data-image-title data-code-subtitle>
+                        <img class="formula center" src="assets/images/laws_functor_composition.svg">
+                        <pre class="fragment"><code class="js" data-trim>
+fmap(compose(g, f))
+                        </code></pre>
+                        <pre class="fragment"><code class="js" data-trim>
+compose(fmap(g), fmap(f))
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape data-large>
+// firstNthNaturals :: Number -> [Number]
+var firstNthNaturals = n => Array(n).fill().map((_, idx) => idx + 1);
+
+// [Number]
+var Ⅰ_ⅯⅯ = firstNthNaturals(1000000); // [1, 2, ... , 999999, 1000000]
+
+<span class="fragment">// addTwo :: Number -> Number
+var addTwo = x => x + 2;
+
+// timesThree :: Number -> Number
+var timesThree = x => x * 3;</span>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim data-noescape>
+<span class="fragment" data-skip-next>var t0 = performance.now();</span>
+compose(fmap(addTwo), fmap(timesThree))(Ⅰ_ⅯⅯ);
+<span class="fragment" data-skip-next data-skip-prev>var t1 = performance.now();</span>
+
+<span class="fragment" data-skip-next data-skip-prev>var t2 = performance.now();</span>
+fmap(compose(addTwo, timesThree))(Ⅰ_ⅯⅯ);
+<span class="fragment" data-skip-prev>var t3 = performance.now();</span>
+
+<span class="fragment">console.log('compose(fmap(g), fmap(f))', t1 - t0, 'ms');
+<span class="fragment output console-log">"compose(fmap(g), fmap(f))" 225.44499999999994 "ms"</span>
+
+console.log('fmap(compose(g, f))', t3 - t2, 'ms');</span>
+<span class="fragment output console-log">"fmap(compose(g,f))" 134.97500000000002 "ms"</span></span>
+                        </code></pre>
+                    </section>
+                    <section data-background-image="assets/images/awesome.gif" data-background-size="contain" data-source="awesome">
+                    </section>
+                </section>
+                <section data-quit>
+                    <h2>Questions?</h2>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+## References
+* **JS** [Professor Frisby's Mostly Adequate Guide to Functional Programming](https://drboolean.gitbooks.io/mostly-adequate-guide/content/) by Brian Lonsdorf
+* **HS** [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html) by Aditya Bhargava
+* **HS** [Haskell/Category theory (Wikibooks)](https://en.wikibooks.org/wiki/Haskell/Category_theory)
+* **HS** [You Could Have Invented Monads! (And Maybe You Already Have.)](http://blog.sigfpe.com/2006/08/you-could-have-invented-monads-and.html) by Dan Piponi
+* **HS** [Functors are Containers](https://bartoszmilewski.com/2014/01/14/functors-are-containers/) by Bartosz Milewsk
+* **JS** [Faster JavaScript Through Category Theory](http://johnbender.us/2012/02/29/faster-javascript-through-category-theory/) by John Bender
+* And [more...](https://github.com/mvaldesdeleon/functional-programming-es/blob/master/README.md#referencias)
+                    </script>
+                </section>
+                <section>
+                    <h2>Thank you!</h2>
+                </section>
+            </div>
+        </div>
+        <div class="sources">
+            <div class="source" data-source="category"><a href="https://en.wikipedia.org/wiki/Category_(mathematics)" target="_blank">https://en.wikipedia.org/wiki/Category_(mathematics)</a></div>
+            <div class="source" data-source="functor"><a href="https://en.wikipedia.org/wiki/F-algebra" target="_blank">https://en.wikipedia.org/wiki/F-algebra</a></div>
+            <div class="source" data-source="monad"><a href="https://en.wikipedia.org/wiki/Monad_(category_theory)" target="_blank">https://en.wikipedia.org/wiki/Monad_(category_theory)</a></div>
+            <div class="source" data-source="curry-a"><a href="https://en.wikipedia.org/wiki/Curry" target="_blank">https://en.wikipedia.org/wiki/Curry</a></div>
+            <div class="source light" data-source="curry-b"><a href="https://wiki.haskell.org/Haskell_Brooks_Curry" target="_blank">https://wiki.haskell.org/Haskell_Brooks_Curry</a></div>
+            <div class="source" data-source="composition"><a href="https://en.wikipedia.org/wiki/Category_theory" target="_blank">https://en.wikipedia.org/wiki/Category_theory</a></div>
+            <div class="source light" data-source="metaphysics"><a href="http://interfaithspirit.org/wp-content/uploads/2015/09/metaphysics.jpg" target="_blank">http://interfaithspirit.org/wp-content/uploads/2015/09/metaphysics.jpg</a></div>
+            <div class="source light" data-source="matrix"><a href="http://img.pandawhale.com/post-38723-Neo-I-know-kung-fu-gif-Imgur-bUjp.gif" target="_blank">http://img.pandawhale.com/post-38723-Neo-I-know-kung-fu-gif-Imgur-bUjp.gif</a></div>
+            <div class="source light" data-source="portal"><a href="https://www.youtube.com/watch?v=g9xDhAKNcHs" target="_blank">https://www.youtube.com/watch?v=g9xDhAKNcHs</a></div>
+            <div class="source light" data-source="wat"><a href="wattp://wat:wat@wat:wat/wat#wat?wat" target="_blank">wat</a></div>
+            <div class="source" data-source="hask"><a href="http://yannesposito.com/Scratch/en/blog/Category-Theory-Presentation/" target="_blank">http://yannesposito.com/Scratch/en/blog/Category-Theory-Presentation/</a></div>
+            <div class="source light" data-source="axioms"><a href="https://en.wikibooks.org/wiki/Haskell/Category_theory" target="_blank">https://en.wikibooks.org/wiki/Haskell/Category_theory</a></div>
+            <div class="source light" data-source="awesome"><a href="https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA" target="_blank">https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA</a></div>
+        </div>
+        <div class="blank">
+            <div class="text">This slide intentionally left blank</div>
+        </div>
+        <div id="player"></div>
+        <script>
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            window.Bach = undefined;
+
+            function onYouTubeIframeAPIReady() {
+                window.Bach = new YT.Player('player', {
+                    height: '0',
+                    width: '0',
+                    videoId: 'aDVuo7dHtoc',
+                    events: {
+                        'onReady': onPlayerReady
+                    }
+                });
+
+                function onPlayerReady(event) {
+                    event.target.seekTo(50, true);
+                    event.target.pauseVideo();
+                }
+            }
+        </script>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            var evil = eval;
+
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+
+            Reveal.addEventListener('ready', evalSnippets);
+            Reveal.addEventListener('slidechanged', evalSnippets);
+
+            function evalSnippets(event) {
+                var slide = event.currentSlide,
+                    snippets = slide.querySelectorAll('code[data-runnable]');
+
+                if (!snippets.length) slide.querySelectorAll('code [data-runnable]');
+
+                snippets.forEach(function(snippet) {
+                    evil(snippet.textContent);
+                });
+            }
+
+            Reveal.addEventListener('slidechanged', checkSources);
+
+            function checkSources(event) {
+                var slide = event.currentSlide,
+                    sources = document.querySelector('.sources'),
+                    source = slide.getAttribute('data-source');
+
+                sources.querySelectorAll('.source.active').forEach(function(source) {
+                    source.classList.remove('active');
+                });
+                sources.classList.remove('active');
+
+                if (source) {
+                    sources.querySelectorAll('.source[data-source="' + source + '"]').forEach(function(source) {
+                        source.classList.add('active');
+                    });
+                    sources.classList.add('active');
+                }
+            }
+
+            Reveal.addEventListener('fragmentshown', skipFragmentsNext);
+            Reveal.addEventListener('fragmenthidden', skipFragmentsPrev);
+
+            function skipFragmentsNext(event) {
+                var fragment = event.fragment,
+                    skip = fragment.hasAttribute('data-skip-next');
+
+                if (skip) {
+                    Reveal.nextFragment();
+                }
+            }
+
+            function skipFragmentsPrev(event) {
+                var fragment = event.fragment,
+                    skip = fragment.hasAttribute('data-skip-prev');
+
+                if (skip) {
+                    Reveal.prevFragment();
+                }
+            }
+
+            Reveal.addEventListener('fragmentshown', checkHighlight);
+            Reveal.addEventListener('fragmenthidden', checkHighlight);
+
+            function checkHighlight(event) {
+                var fragment = document.querySelector('.current-fragment'),
+                    highlight = fragment && fragment.getAttribute('data-highlight');
+
+                document.querySelectorAll('[data-highlight]:not(.fragment)').forEach(function(element) {
+                    element.classList.remove('highlight');
+                });
+
+                if (highlight) {
+                    document.querySelectorAll('[data-highlight="' + highlight + '"]:not(.fragment)').forEach(function(element) {
+                        element.classList.add('highlight');
+                    });
+                }
+            }
+
+            Reveal.addEventListener('slidechanged', checkBlanks);
+
+            function checkBlanks(event) {
+                var slide = event.currentSlide,
+                    blank = slide.hasAttribute('data-blank');
+
+                if (blank) {
+                    document.querySelector('.blank .text').classList.add('active');
+                } else {
+                    document.querySelector('.blank .text').classList.remove('active');
+                }
+            }
+
+            Reveal.addEventListener('slidechanged', checkBach);
+            Reveal.addEventListener('fragmentshown', checkBach);
+
+            function checkBach(event) {
+                var slide = event.currentSlide,
+                    bach = slide && slide.hasAttribute('data-bach'),
+                    played = slide && slide.classList.contains('played');
+
+                if (bach && !played) {
+                    slide.classList.add('played');
+                    if (Bach) Bach.playVideo();
+                } else {
+                    if (Bach && Bach.getPlayerState() === 1) Bach.pauseVideo();
+                }
+            }
+
+            document.addEventListener('keydown', function(event) {
+                var indices = Reveal.getIndices(),
+                    slides,
+                    quitSlide,
+                    quitSlideIndex;
+
+                if (event.key.toUpperCase() === 'Q') {
+                    slides = document.querySelectorAll('.slides > section');
+                    quitSlide = document.querySelector('.slides > section[data-quit]');
+                    quitSlideIndex = Array.prototype.indexOf.call(slides, quitSlide);
+
+                    Reveal.slide(quitSlideIndex, -1, -1);
+                    return;
+                }
+
+                if (event.shiftKey) {
+                    switch (event.key) {
+                    case 'ArrowUp':
+                        Reveal.slide(indices.h, indices.v - 1, -1);
+                        return;
+                    case 'ArrowDown':
+                        Reveal.slide(indices.h, indices.v + 1, -1);
+                        return;
+                    case 'ArrowLeft':
+                        Reveal.slide(indices.h - 1, undefined, -1);
+                        return;
+                    case 'ArrowRight':
+                        Reveal.slide(indices.h + 1, undefined, -1);
+                        return;
+                    }
+                }
+
+                if (event.altKey) {
+                    switch (event.key) {
+                    case 'ArrowUp':
+                        Reveal.slide(indices.h, -1, -1);
+                        return;
+                    case 'ArrowLeft':
+                        Reveal.slide(indices.h - 1, -1, -1);
+                        return;
+                    case 'ArrowRight':
+                        Reveal.slide(indices.h + 1, -1, -1);
+                        return;
+                    }
+                }
+
+                if (event.metaKey || event.ctrlKey) {
+                    switch (event.key) {
+                    case 'ArrowUp':
+                        Reveal.slide(indices.h, indices.v - 1, 999);
+                        return;
+                    case 'ArrowDown':
+                        Reveal.slide(indices.h, indices.v + 1, 999);
+                        return;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
